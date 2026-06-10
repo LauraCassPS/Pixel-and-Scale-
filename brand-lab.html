@@ -449,6 +449,24 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
 .post-export-btn { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; padding: 12px 22px; background: var(--teal); color: #fff; border-radius: 3px; text-decoration: none; transition: background 0.15s ease; }
 .post-export-btn:hover { background: #095560; color: #fff; }
 
+.inline-cta {
+  display: flex; align-items: center; justify-content: center;
+  gap: 20px; margin-top: 2rem; padding: 1.5rem 1.75rem;
+  background: #fff; border: 1px solid var(--ps-line); border-radius: 4px;
+  flex-wrap: wrap;
+}
+.inline-cta-text {
+  font-family: 'Gilda Display', serif; font-size: 20px;
+  color: var(--ps-dark); margin: 0;
+}
+.inline-cta-btn {
+  display: inline-block; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase; padding: 12px 24px;
+  background: var(--teal); color: #fff; border-radius: 3px;
+  text-decoration: none; white-space: nowrap; transition: background 0.15s ease;
+}
+.inline-cta-btn:hover { background: #095560; color: #fff; }
+
 /* ── IMAGE DROP (Door 04) ── */
 .image-drop {
   display: block; border: 2px dashed var(--ps-line); border-radius: 6px;
@@ -522,7 +540,7 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
   .mood-grid { grid-template-columns: repeat(2, 1fr); }
   .mood-palettes { grid-template-columns: repeat(2, 1fr); }
   .topbar { flex-direction: column; gap: 10px; }
-  .topbar-actions { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 6px; }
+  .topbar-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
   nav.primary { gap: 16px; }
   .mockup-bc-row { flex-direction: column; }
   .mockup-section-b, .mockup-section-c { flex: none; width: 100%; }
@@ -675,8 +693,6 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
         <div class="topbar-brand">Your brand sheet</div>
         <div class="topbar-actions">
           <button class="btn" id="resetBtn">Reset</button>
-          <button class="btn" id="copyHexBtn">Copy hex</button>
-          <button class="btn" id="copyCSSBtn">Copy CSS</button>
           <button class="btn btn-primary" id="exportBtn">Export PNG</button>
           <!-- ── TEMP SAVE (remove before launch) ── -->
           <button class="btn" id="saveBtn" style="background:#fef8ee;border-color:#d4a020;color:#8a6010;">Save</button>
@@ -790,6 +806,12 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
         <a class="post-export-btn" href="index.html#services">See the one-page service →</a>
       </div>
 
+      <!-- INLINE CTA — always visible below the mockup -->
+      <div class="inline-cta">
+        <p class="inline-cta-text">Need help creating your site?</p>
+        <a class="inline-cta-btn" href="index.html#contact">Start a conversation</a>
+      </div>
+
     </div><!-- /.shell -->
   </section>
 
@@ -801,14 +823,8 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
 <footer class="site">
   <div class="wrap" style="display:flex;flex-direction:column;align-items:stretch">
     <hr class="rule" style="width:100%;margin-bottom:32px">
-    <div class="foot-row">
+    <div class="foot-row" style="justify-content:center">
       <a class="foot-mark" href="index.html" style="text-decoration:none">Pixel &amp; Scale</a>
-      <nav aria-label="Footer" style="display:flex;gap:28px">
-        <a href="index.html#about" style="color:var(--ink-2);font-size:15px">About</a>
-        <a href="index.html#services" style="color:var(--ink-2);font-size:15px">Services</a>
-        <a href="mailto:hello@pixelandscale.com" style="color:var(--ink-2);font-size:15px">Contact</a>
-      </nav>
-      <div class="copyright">&copy; 2026 Pixel &amp; Scale</div>
     </div>
   </div>
 </footer>
@@ -1701,7 +1717,7 @@ function colourDistance(a, b) {
 }
 
 function dedupeColours(hexes, minDist) {
-  minDist = minDist || 18;
+  minDist = minDist || 22;
   var out = [];
   for (var i = 0; i < hexes.length; i++) {
     var h = hexes[i];
@@ -1710,62 +1726,109 @@ function dedupeColours(hexes, minDist) {
   return out;
 }
 
+/* HSL helpers — used by assignRoles to nudge colours into usable roles */
+function hexToHsl(hex) {
+  var c = hex.replace('#','');
+  var r = parseInt(c.substr(0,2),16)/255;
+  var g = parseInt(c.substr(2,2),16)/255;
+  var b = parseInt(c.substr(4,2),16)/255;
+  var max = Math.max(r,g,b), min = Math.min(r,g,b);
+  var h=0, s=0, l=(max+min)/2;
+  if (max !== min) {
+    var d = max - min;
+    s = l > 0.5 ? d/(2-max-min) : d/(max+min);
+    if (max===r)      h = ((g-b)/d + (g<b?6:0));
+    else if (max===g) h = (b-r)/d + 2;
+    else              h = (r-g)/d + 4;
+    h /= 6;
+  }
+  return [Math.round(h*360), Math.round(s*100), Math.round(l*100)];
+}
+
+function hslToHex(h, s, l) {
+  h = ((h%360)+360)%360; s = Math.max(0,Math.min(100,s))/100; l = Math.max(0,Math.min(100,l))/100;
+  var c = (1-Math.abs(2*l-1))*s;
+  var x = c*(1-Math.abs((h/60)%2-1));
+  var m = l-c/2, r=0,g=0,b=0;
+  if      (h<60) { r=c;g=x;b=0; } else if (h<120){ r=x;g=c;b=0; }
+  else if (h<180){ r=0;g=c;b=x; } else if (h<240){ r=0;g=x;b=c; }
+  else if (h<300){ r=x;g=0;b=c; } else            { r=c;g=0;b=x; }
+  return '#'+[r+m,g+m,b+m].map(function(v){
+    return Math.round(v*255).toString(16).padStart(2,'0');
+  }).join('').toUpperCase();
+}
+
 function assignRoles(rawHexes) {
-  // Absolute fallback — only used if nothing was pasted
   if (!rawHexes || rawHexes.length === 0) {
-    var fb = ROLES.map(function(r){ return PALETTES[0].swatches[r]; });
-    return ROLES.map(function(r, i){ return { role: r, hex: fb[i] }; });
+    return ROLES.map(function(r){ return { role:r, hex:PALETTES[0].swatches[r] }; });
   }
 
-  // Work entirely from the user's colors — no fallback padding
-  var seed = rawHexes.filter(function(h, i, arr){ return arr.indexOf(h) === i; });
-  if (seed.length > 6) seed = dedupeColours(seed);
+  /* Dedupe — keep visually distinct colours */
+  var seed = rawHexes.filter(function(h,i,a){ return a.indexOf(h)===i; });
+  if (seed.length > 8) seed = dedupeColours(seed, 22);
+  if (!seed.length) seed = rawHexes.slice(0,1);
 
-  var byLum = seed.slice().sort(function(a,b){ return luminance(a) - luminance(b); });
-  var lightest = byLum[byLum.length - 1];
-  var darkest  = byLum[0];
+  /* Sort lightest → darkest */
+  var byLum = seed.slice().sort(function(a,b){ return luminance(b)-luminance(a); });
 
-  var remaining = seed.filter(function(h){ return h !== lightest && h !== darkest; });
-  if (!remaining.length) remaining = [darkest];
+  /* ── background-light ──
+     Take the lightest extracted colour. If it's below L 88 in HSL,
+     nudge it up to a clean near-white tinted with the image's warmth. */
+  var rawLight    = byLum[0];
+  var rawLightHsl = hexToHsl(rawLight);
+  var bgLight = (rawLightHsl[2] >= 88)
+    ? rawLight
+    : hslToHex(rawLightHsl[0], Math.round(rawLightHsl[1]*0.18), 93);
 
-  var accent = remaining.reduce(function(best, h){ return chroma(h) > chroma(best) ? h : best; }, remaining[0]);
+  /* ── background-dark ──
+     Take the darkest extracted colour. If it's above L 22, push it
+     to a rich deep tone that preserves the hue of the image. */
+  var rawDark    = byLum[byLum.length-1];
+  var rawDarkHsl = hexToHsl(rawDark);
+  var bgDark = (rawDarkHsl[2] <= 18)
+    ? rawDark
+    : hslToHex(rawDarkHsl[0], Math.min(80, Math.round(rawDarkHsl[1]*1.1)), 15);
 
-  var afterAccent = remaining.filter(function(h){ return h !== accent; });
-  if (!afterAccent.length) afterAccent = [darkest];
+  /* ── accent ── most vivid/saturated colour in the full set */
+  var accent = seed.reduce(function(best,h){
+    return chroma(h) > chroma(best) ? h : best;
+  }, seed[0]);
 
-  var darkSorted = afterAccent.slice().sort(function(a,b){ return luminance(a) - luminance(b); });
+  /* ── heading ── darkest extracted that passes 4.5:1 on bgLight.
+     If nothing passes, derive a readable dark from the image's dark hue. */
+  var headCandidates = seed.slice().sort(function(a,b){ return luminance(a)-luminance(b); });
   var heading = null;
-  for (var i = 0; i < darkSorted.length; i++) {
-    if (contrastRatio(darkSorted[i], lightest) >= 4.5) { heading = darkSorted[i]; break; }
+  for (var i=0; i<headCandidates.length; i++) {
+    if (contrastRatio(headCandidates[i], bgLight) >= 4.5) { heading = headCandidates[i]; break; }
   }
-  if (!heading) heading = darkSorted[0] || darkest;
-
-  var afterHeading = afterAccent.filter(function(h){ return h !== heading; });
-
-  var body;
-  if (afterHeading.length) {
-    var bodySorted = afterHeading.slice().sort(function(a,b){ return luminance(a) - luminance(b); });
-    body = null;
-    for (var j = 0; j < bodySorted.length; j++) {
-      if (contrastRatio(bodySorted[j], lightest) >= 4.5) { body = bodySorted[j]; break; }
-    }
-    if (!body) body = bodySorted[0];
-  } else {
-    body = heading;
+  if (!heading) {
+    var dh = hexToHsl(rawDark);
+    heading = hslToHex(dh[0], Math.min(55, dh[1]), 18);
   }
 
-  var afterBody = afterHeading.filter(function(h){ return h !== body; });
+  /* ── body ── same as heading by default (users can diverge via swatch edit) */
+  var body = heading;
+
+  /* ── muted ── a soft mid-tone for cards / dividers.
+     Prefer a colour with lightness 55–75% and moderate chroma.
+     Falls back to a tinted light derived from the accent hue. */
+  var mutedPool = seed.filter(function(h){ return h !== accent && h !== heading; });
   var muted;
-  if (afterBody.length) {
-    muted = afterBody.reduce(function(best, h){ return chroma(h) < chroma(best) ? h : best; }, afterBody[0]);
+  if (mutedPool.length) {
+    muted = mutedPool.reduce(function(best, h) {
+      var lh = hexToHsl(h), bh = hexToHsl(best);
+      var scoreH    = 1 - Math.abs(lh[2]-65)/65;
+      var scoreBest = 1 - Math.abs(bh[2]-65)/65;
+      return scoreH > scoreBest ? h : best;
+    }, mutedPool[0]);
   } else {
-    // Reuse the least chromatic color from the full seed rather than pulling a random default palette color
-    muted = seed.reduce(function(best, h){ return chroma(h) < chroma(best) ? h : best; }, seed[0]);
+    var ah = hexToHsl(accent);
+    muted = hslToHex(ah[0], Math.round(ah[1]*0.28), 78);
   }
 
   return [
-    { role:'background-light', hex: lightest },
-    { role:'background-dark',  hex: darkest  },
+    { role:'background-light', hex: bgLight  },
+    { role:'background-dark',  hex: bgDark   },
     { role:'accent',           hex: accent   },
     { role:'heading',          hex: heading  },
     { role:'body',             hex: body     },
@@ -1847,7 +1910,7 @@ function loadImageFile(file) {
     img.onload = function() {
       lastUploadedImage = img;
       document.getElementById('imagePreview').src = img.src;
-      var hexes = extractPaletteFromImage(img, 8);
+      var hexes = extractPaletteFromImage(img, 12);
       if (!hexes.length) { showToast('Could not extract colours'); return; }
       palette = assignRoles(hexes);
       originalPalette = null; currentButtonPref = null;
@@ -1870,8 +1933,6 @@ function loadImageFile(file) {
    ============================================================ */
 function initTopbar() {
   document.getElementById('resetBtn').addEventListener('click', resetPalette);
-  document.getElementById('copyHexBtn').addEventListener('click', copyHex);
-  document.getElementById('copyCSSBtn').addEventListener('click', copyCSS);
   document.getElementById('exportBtn').addEventListener('click', exportPNG);
 
   /* copy-row buttons in palette panel */
@@ -1956,7 +2017,7 @@ function initTopbar() {
     reextractBtn.addEventListener('click', function(e) {
       e.preventDefault(); e.stopPropagation();
       if (!lastUploadedImage) return;
-      var hexes = extractPaletteFromImage(lastUploadedImage, 8);
+      var hexes = extractPaletteFromImage(lastUploadedImage, 12);
       palette = assignRoles(hexes);
       originalPalette = null; currentButtonPref = null;
       renderExtractedPreview(palette.map(function(s){ return s.hex; }));
