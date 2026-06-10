@@ -86,14 +86,12 @@ a:hover { text-decoration: underline; text-decoration-color: var(--pink); text-u
 
 /* Header */
 header.site { border-bottom: 1px solid var(--paper-3); background: var(--paper); }
-header.site .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; padding-bottom: 28px; }
+header.site .wrap { display: flex; align-items: center; justify-content: center; position: relative; padding-top: 24px; padding-bottom: 24px; }
 .wordmark { display: inline-flex; align-items: center; }
-.wordmark img { display: block; height: 56px; width: auto; }
-nav.primary { display: flex; align-items: center; gap: 40px; }
-nav.primary a { color: var(--ink); font-family: var(--font-nav); font-size: 16px; letter-spacing: 0.01em; }
-nav.primary a:hover { color: var(--teal); text-decoration: none; }
-nav.primary a.nav-cta { color: var(--teal); border: 1px solid var(--teal); padding: 8px 18px; border-radius: 2px; font-size: 14px; }
-nav.primary a.nav-cta:hover { background: var(--teal); color: var(--paper); }
+.wordmark img { display: block; height: 78px; width: auto; }
+nav.primary { position: absolute; right: 48px; display: flex; align-items: center; }
+nav.primary a.nav-cta { color: var(--teal); border: 1px solid var(--teal); padding: 8px 18px; border-radius: 2px; font-family: var(--font-nav); font-size: 14px; letter-spacing: 0.01em; text-decoration: none; }
+nav.primary a.nav-cta:hover { background: var(--teal); color: var(--paper); text-decoration: none; }
 
 /* Typography */
 h1, h2, h3 { font-family: var(--font-display); font-weight: 400; color: var(--ink); letter-spacing: -0.005em; }
@@ -547,7 +545,8 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
   .mockup-card { height: auto; }
 }
 @media (max-width: 480px) {
-  nav.primary a:not(.nav-cta) { display: none; }
+  nav.primary { position: absolute; right: 16px; }
+  nav.primary a.nav-cta { font-size: 12px; padding: 7px 12px; }
 }
 @media (max-width: 480px) { .hero h1 { font-size: 2.4rem; } .library-grid { grid-template-columns: repeat(2, 1fr); } .mood-palettes { grid-template-columns: 1fr 1fr; } }
 </style>
@@ -564,8 +563,7 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
       <img src="https://images.squarespace-cdn.com/content/v1/685e47ed4fc6e9282fe56d00/99827f16-fd08-4c29-8f86-7d0eee9069db/pixel-scale-logo-square.png?format=300w" alt="Pixel &amp; Scale">
     </a>
     <nav class="primary" aria-label="Primary">
-      <a href="index.html#about">About</a>
-      <a href="index.html#services" class="nav-cta">See the service</a>
+      <a href="#contact-cta" class="nav-cta">Book a conversation</a>
     </nav>
   </div>
 </header>
@@ -807,7 +805,7 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
       </div>
 
       <!-- INLINE CTA — always visible below the mockup -->
-      <div class="inline-cta">
+      <div class="inline-cta" id="contact-cta">
         <p class="inline-cta-text">Need help creating your site?</p>
         <a class="inline-cta-btn" href="index.html#contact">Start a conversation</a>
       </div>
