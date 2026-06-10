@@ -1455,13 +1455,30 @@ function buildPresetList() {
 
 function updatePresetPreviews() {
   var texts = getPreviewTexts();
+
+  /* update font pairing cards */
   document.querySelectorAll('.preset').forEach(function(btn, i) {
-    var pair = FONT_PAIRINGS[i];
     var hEl = btn.querySelector('.preset-headline');
     var sEl = btn.querySelector('.preset-subhead');
     if (hEl) hEl.textContent = texts.headline;
     if (sEl) sEl.textContent = texts.subhead;
   });
+
+  /* update live mockup — sections A and B share the same headline/body */
+  var lightSection = document.querySelector('.mockup-section-light');
+  if (lightSection) {
+    var lh = lightSection.querySelector('.mockup-headline');
+    var lb = lightSection.querySelector('.mockup-body');
+    if (lh) lh.textContent = texts.headline;
+    if (lb) lb.textContent = texts.subhead;
+  }
+  var darkSection = document.querySelector('.mockup-section-b');
+  if (darkSection) {
+    var dh = darkSection.querySelector('.mockup-headline');
+    var db = darkSection.querySelector('.mockup-body');
+    if (dh) dh.textContent = texts.headline;
+    if (db) db.textContent = texts.subhead;
+  }
 }
 
 /* ============================================================
