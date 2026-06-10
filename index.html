@@ -314,9 +314,15 @@
       color: rgba(24,23,21,.55); margin-top: 1.75rem; font-size: 0.975rem;
     }
     @media (max-width: 600px) {
-      .psp-slider { min-height: 300px; }
-      .psp-slider__before { padding: 1rem 1rem 1rem 1.25rem; }
-      .psp-slider__after  { padding: 1rem 1.25rem; }
+      .psp-slider { min-height: 340px; }
+      .psp-slider__before { padding: 0.75rem 0.5rem 0.75rem 0.75rem; }
+      .psp-slider__after  { padding: 0.75rem 0.5rem 0.75rem 0.75rem; }
+      .psp-slider__badge  { display: none; }
+      .psp-slider__heading { font-size: 0.82rem; margin-bottom: 0.55rem; line-height: 1.25; }
+      .psp-slider__after  .psp-slider__list li,
+      .psp-slider__before .psp-slider__list li { font-size: 0.72rem; padding: 0.18rem 0 0.18rem 1.1rem; }
+      .psp-slider__after  .psp-slider__list li::before,
+      .psp-slider__before .psp-slider__list li::before { top: 0.18rem; font-size: 0.62rem; }
     }
 
     /* ============================================================
