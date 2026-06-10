@@ -758,14 +758,23 @@
     }
     .psp-nav__link:hover { color: var(--teal); }
     .psp-nav__link:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+    .psp-header__cta-group { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
     .psp-header__cta {
       font-family: 'Lora', serif; font-size: 0.85rem;
       color: var(--berry); text-decoration: none; white-space: nowrap;
-      border: 1px solid var(--berry); padding: 0.45rem 1.25rem; flex-shrink: 0;
+      border: 1px solid var(--berry); padding: 0.45rem 1.25rem;
     }
     .psp-header__cta:hover { background: var(--berry); color: var(--cream); }
     .psp-header__cta:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-    @media (max-width: 860px) { .psp-nav { display: none; } }
+    .psp-header__cta--teal { color: var(--teal); border-color: var(--teal); }
+    .psp-header__cta--teal:hover { background: var(--teal); color: var(--cream); }
+    .psp-header__cta--teal:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+    @media (min-width: 861px) { .psp-header__brand-lab-btn { display: none; } }
+    @media (max-width: 860px) {
+      .psp-nav { display: none; }
+      .psp-header__cta-group { flex-direction: column; gap: 0.3rem; align-items: stretch; }
+      .psp-header__cta-group .psp-header__cta { font-size: 0.78rem; padding: 0.35rem 0.9rem; text-align: center; white-space: normal; }
+    }
 
     /* ============================================================
        BRIEF INTRO SECTION (below hero)
@@ -899,7 +908,10 @@
           <a href="#about" class="psp-nav__link">About</a>
           <a href="brand-lab.html" class="psp-nav__link" target="_blank" rel="noopener noreferrer">Brand Lab</a>
         </nav>
-        <a href="#contact" class="psp-header__cta">Start a conversation</a>
+        <div class="psp-header__cta-group">
+          <a href="#contact" class="psp-header__cta">Start a conversation</a>
+          <a href="brand-lab.html" class="psp-header__cta psp-header__cta--teal psp-header__brand-lab-btn">Brand Lab</a>
+        </div>
       </div>
     </header>
     <main id="main-content">
