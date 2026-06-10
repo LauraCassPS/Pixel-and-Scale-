@@ -555,10 +555,19 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
 @media (max-width: 767px) {
 
   /* ── Header fix ── */
-  header.site .wrap { justify-content: space-between; padding-top: 14px; padding-bottom: 14px; }
-  .wordmark img { height: 50px; }
-  nav.primary { position: static; right: auto; }
-  nav.primary a.nav-cta { font-size: 12px; padding: 7px 14px; }
+  header.site .wrap {
+    justify-content: space-between !important;
+    position: static !important;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .wordmark img { height: 48px; }
+  nav.primary {
+    position: static !important;
+    right: auto !important;
+    display: flex;
+  }
+  nav.primary a.nav-cta { font-size: 12px; padding: 7px 12px; }
 
   /* ── Mobile banner ── */
   .mobile-banner {
