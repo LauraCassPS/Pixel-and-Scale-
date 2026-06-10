@@ -544,11 +544,67 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
   .mockup-section-b, .mockup-section-c { flex: none; width: 100%; }
   .mockup-card { height: auto; }
 }
-@media (max-width: 480px) {
-  nav.primary { position: absolute; right: 16px; }
-  nav.primary a.nav-cta { font-size: 12px; padding: 7px 12px; }
-}
 @media (max-width: 480px) { .hero h1 { font-size: 2.4rem; } .library-grid { grid-template-columns: repeat(2, 1fr); } .mood-palettes { grid-template-columns: 1fr 1fr; } }
+
+/* ============================================================
+   MOBILE EXPLORE MODE  (<768px)
+   Tablet (≥768px) gets the full tool.
+============================================================ */
+.mobile-banner { display: none; }
+
+@media (max-width: 767px) {
+
+  /* ── Header fix ── */
+  header.site .wrap { justify-content: space-between; padding-top: 14px; padding-bottom: 14px; }
+  .wordmark img { height: 50px; }
+  nav.primary { position: static; right: auto; }
+  nav.primary a.nav-cta { font-size: 12px; padding: 7px 14px; }
+
+  /* ── Mobile banner ── */
+  .mobile-banner {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--teal); color: #fff;
+    padding: 12px 16px; font-family: 'Lora', serif; font-size: 13px; line-height: 1.5;
+  }
+  .mobile-banner-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .mobile-banner-body { flex: 1; }
+  .mobile-banner-body strong { display: block; font-size: 13px; margin-bottom: 3px; }
+  .mobile-banner-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .mobile-banner-copy {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.4);
+    color: #fff; padding: 6px 12px; border-radius: 2px; cursor: pointer;
+  }
+  .mobile-banner-copy:active { background: rgba(255,255,255,0.3); }
+  .mobile-banner-dismiss {
+    background: none; border: none; color: rgba(255,255,255,0.7);
+    font-size: 18px; line-height: 1; cursor: pointer; padding: 0; flex-shrink: 0; align-self: flex-start;
+  }
+
+  /* ── Lock the colour swatches ── */
+  .swatch { position: relative; cursor: not-allowed; }
+  .swatch::after {
+    content: ''; position: absolute; inset: 0; border-radius: inherit;
+    background: rgba(255,255,255,0.22);
+  }
+  .swatch-grid::before {
+    content: 'Colour editing — desktop only';
+    display: block; grid-column: 1 / -1;
+    font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ps-muted);
+    padding: 4px 0 6px; text-align: center;
+  }
+
+  /* ── Hide Door 4 (image upload) — drag-drop doesn't work on mobile ── */
+  .door-tab[data-door="4"] { display: none; }
+  .door-content[data-door="4"] { display: none !important; }
+
+  /* ── Topbar: keep Reset + Export PNG, hide Save ── */
+  #saveBtn { display: none; }
+
+  /* ── Typography inputs — keep fully working ── */
+  /* (no changes needed — inputs work on mobile) */
+}
 </style>
 </head>
 
@@ -567,6 +623,19 @@ footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: itali
     </nav>
   </div>
 </header>
+
+<!-- Mobile explore banner (hidden on desktop via CSS) -->
+<div class="mobile-banner" id="mobileBanner" role="note">
+  <span class="mobile-banner-icon">&#9998;</span>
+  <div class="mobile-banner-body">
+    <strong>You're exploring on mobile</strong>
+    Browse palettes and font pairings freely. Colour editing and export work best on a laptop — bookmark this page to revisit.
+    <div class="mobile-banner-actions">
+      <button class="mobile-banner-copy" id="mobileCopyLink">Copy link</button>
+    </div>
+  </div>
+  <button class="mobile-banner-dismiss" id="mobileBannerDismiss" aria-label="Dismiss">&#215;</button>
+</div>
 
 <main>
 
@@ -1224,6 +1293,10 @@ function positionPicker(picker, anchor) {
 }
 
 function openSwatchPicker(i, anchor) {
+  if (window.innerWidth < 768) {
+    showToast('Open on a laptop to edit colours');
+    return;
+  }
   var picker = document.getElementById('swatchPicker');
   activeEditIndex = i;
   originalEditHex = palette[i].hex;
@@ -2082,6 +2155,33 @@ function initTopbar() {
   }
 })();
 /* ── /TEMP SAVE ── */
+
+/* ── Mobile banner ── */
+(function() {
+  var banner = document.getElementById('mobileBanner');
+  if (!banner) return;
+
+  document.getElementById('mobileBannerDismiss').addEventListener('click', function() {
+    banner.style.display = 'none';
+  });
+
+  document.getElementById('mobileCopyLink').addEventListener('click', function() {
+    var url = window.location.href.split('?')[0].split('#')[0];
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function() {
+        showToast('Link copied — open on a laptop to use the full tool');
+      });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = url;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('Link copied — open on a laptop to use the full tool');
+    }
+  });
+})();
 </script>
 
 </body>
