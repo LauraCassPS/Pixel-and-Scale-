@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<!--
+  PIXEL & SCALE — ONE-PAGE SALES SITE
+  Deploy: Cloudflare Pages (single file)
+
+  _headers file (create at repo root):
+  /*
+    X-Frame-Options: DENY
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: strict-origin-when-cross-origin
+    Permissions-Policy: camera=(), microphone=(), geolocation=()
+    Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; form-action https://formspree.io; img-src 'self' data:;
+
+  PLACEHOLDERS:
+  - HERO: add background-image to .psp-hero in CSS
+  - ABOUT PHOTO: swap .psp-about__photo div with <img>
+  - TESTIMONIAL PHOTO: swap .psp-testimonial__avatar div with <img>
+  - WORK PHOTOS: add background-image to .psp-work__preview-placeholder divs
+  - OG / canonical: fill empty content="" attributes below
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel &amp; Scale — One-Page Websites for Established Independents</title>
+  <meta name="description" content="One-page websites for established service-based independents. Done-for-you, custom HTML, built in one to two weeks.">
+  <meta property="og:title" content="Pixel &amp; Scale — One-Page Websites for Established Independents">
+  <meta property="og:description" content="A done-for-you custom one-page website for experienced service providers. Built in one to two weeks.">
+  <meta property="og:image" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pixelandscale.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pixel &amp; Scale — One-Page Websites for Established Independents">
+  <meta name="twitter:description" content="A done-for-you custom one-page website for experienced service providers. Built in one to two weeks.">
+  <meta name="twitter:image" content="">
+  <link rel="canonical" href="https://pixelandscale.com">
+  <link rel="icon" type="image/png" href="Images/pixel-scale-website.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    img  { display: block; max-width: 100%; height: auto; }
+
+    /* ============================================================
+       SKIP LINK
+    ============================================================ */
+    .psp-skip {
+      position: absolute; top: -100%; left: 1rem; z-index: 9999;
+      background: #0b6e7e; color: #f6f3ee;
+      font-family: 'Lora', serif; font-size: 0.9rem;
+      padding: 0.75rem 1.5rem; text-decoration: none;
+      border-radius: 0 0 4px 4px;
+    }
+    .psp-skip:focus { top: 0; outline: 2px solid #f6f3ee; outline-offset: 2px; }
+
+    /* ============================================================
+       TOKENS & WRAP
+    ============================================================ */
+    .psp-wrap {
+      --cream:         #f6f3ee;
+      --teal:          #0b6e7e;
+      --teal-light:    #c5dde0;
+      --teal-soft:     #A9C7CD;
+      --berry:         #9E2259;
+      --ink:           #181715;
+      --stone:         #ebe5d6;
+      --warm-stone:    #d9d1be;
+      --teal-dark:     #084f5c;
+      --berry-dark:    #7d1b47;
+
+      font-family: 'Lora', serif;
+      font-size: 17px; line-height: 1.7;
+      color: var(--ink); background: var(--cream);
+    }
+    .psp-wrap *:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+    /* ============================================================
+       TYPOGRAPHY
+    ============================================================ */
+    .psp-wrap h1, .psp-wrap h2, .psp-wrap h3 {
+      font-family: 'Gilda Display', serif;
+      font-weight: 400; line-height: 1.2;
+    }
+    .psp-wrap h1 { font-size: clamp(2rem, 5vw, 3.1rem); }
+    .psp-wrap h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
+    .psp-wrap h3 { font-size: clamp(1.15rem, 3vw, 1.55rem); }
+    .psp-eyebrow {
+      display: block; font-family: 'Lora', serif;
+      font-size: 0.72rem; text-transform: uppercase;
+      letter-spacing: 0.28em; color: var(--berry); margin-bottom: 0.75rem;
+    }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .psp-section   { padding: 90px 0; }
+    .psp-container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+
+    .psp-bg-cream      { background: var(--cream); }
+    .psp-bg-stone      { background: var(--stone); }
+    .psp-bg-teal       { background: var(--teal);  }
+    .psp-bg-teal-light { background: var(--teal-light); }
+    .psp-bg-teal-soft  { background: var(--teal-soft);  }
+    .psp-bg-ink        { background: var(--ink);   }
+
+    .psp-sr {
+      position: absolute; width: 1px; height: 1px; padding: 0;
+      margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
+    }
+
+    /* ============================================================
+       BUTTON
+    ============================================================ */
+    .psp-btn {
+      display: inline-block; font-family: 'Lora', serif; font-size: 1rem;
+      background: var(--berry); color: var(--cream); border: none;
+      padding: 0.875rem 2.25rem; cursor: pointer; text-decoration: none;
+      letter-spacing: 0.02em; min-height: 44px;
+    }
+    .psp-btn:hover         { background: var(--berry-dark); }
+    .psp-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+    /* ============================================================
+       S01 HERO — full-bleed with #A9C7CD tinted overlay
+       HERO PHOTO: add  background-image: url('your-photo.jpg');
+       to .psp-hero once the image is ready.
+    ============================================================ */
+    .psp-hero {
+      position: relative; min-height: 620px;
+      display: flex; align-items: center;
+      background-image: url('Images/website-design-small-business.png');
+      background-color: var(--stone);
+      background-size: cover; background-position: center top;
+      padding: 100px 0 90px;
+    }
+    .psp-hero__overlay {
+      position: absolute; inset: 0;
+      background: rgba(246, 243, 238, 0.80); /* #F6F3EE at 80% */
+      pointer-events: none;
+    }
+    .psp-hero__placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: flex-end;
+      padding: 0 4rem; pointer-events: none;
+    }
+    .psp-hero__placeholder-label {
+      font-style: italic; font-size: 0.82rem;
+      color: rgba(24,23,21,.28);
+    }
+    .psp-hero__content { position: relative; z-index: 1; max-width: 520px; }
+    .psp-hero__content h1  { color: var(--ink); margin-bottom: 1.25rem; }
+    .psp-hero__sub {
+      font-size: 1.15rem; color: rgba(24,23,21,.7);
+      line-height: 1.65; margin-bottom: 2.25rem;
+    }
+    @media (max-width: 768px) {
+      .psp-hero { min-height: 480px; }
+      .psp-hero__placeholder { display: none; }
+    }
+
+    /* ============================================================
+       S02 TABS — Stone (active: berry border)
+    ============================================================ */
+    .psp-tabs { margin-top: 2.5rem; }
+    .psp-tabs__layout {
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+      max-width: 760px; margin: 2.5rem auto 0;
+    }
+    /* 5 equal boxes, same width as the panel below */
+    .psp-tabs__list {
+      list-style: none; display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      width: 100%;
+    }
+    .psp-tabs__list > li { display: flex; }
+    .psp-tabs__btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; font-family: 'Lora', serif; font-size: 0.78rem;
+      line-height: 1.4; text-align: center;
+      background: var(--warm-stone); border: none;
+      border-right: 1px solid rgba(24,23,21,.12);
+      border-bottom: 3px solid transparent;
+      padding: 0.85rem 0.75rem; cursor: pointer;
+      color: rgba(24,23,21,.5); min-height: 64px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .psp-tabs__list > li:last-child .psp-tabs__btn { border-right: none; }
+    .psp-tabs__btn[aria-selected="true"] {
+      background: var(--cream); color: var(--ink);
+      border-bottom-color: var(--berry);
+    }
+    .psp-tabs__btn:hover:not([aria-selected="true"]) {
+      background: var(--stone); color: rgba(24,23,21,.7);
+    }
+    .psp-tabs__panel {
+      display: none; padding: 2rem 2.25rem; width: 100%;
+      background: var(--cream); border-top: none;
+      border: 1px solid rgba(24,23,21,.08); border-top: none;
+    }
+    .psp-tabs__panel.is-active { display: block; }
+    .psp-tabs__panel h3  { margin-bottom: 0.9rem; }
+    .psp-tabs__panel p   { margin-bottom: 1.1rem; }
+    .psp-tabs__outcome   { font-style: italic; color: var(--teal); }
+    @media (max-width: 700px) {
+      .psp-tabs__list { grid-template-columns: 1fr 1fr; }
+      .psp-tabs__list > li:nth-child(5) { grid-column: span 2; }
+      .psp-tabs__list > li:nth-child(2n) .psp-tabs__btn { border-right: none; }
+      .psp-tabs__btn { border-bottom: 1px solid rgba(24,23,21,.12); border-right: 1px solid rgba(24,23,21,.12); min-height: 54px; }
+    }
+
+    /* ============================================================
+       S03 SLIDER — Cream
+       Drag RIGHT → reveals After (before clips from left as pos rises)
+       After panel blurs at low pos; fully sharp at pos=100%
+       Starts at pos=50%
+    ============================================================ */
+    .psp-slider-wrap h2  { text-align: center; margin-bottom: 2.75rem; }
+
+    .psp-slider {
+      position: relative; overflow: hidden; min-height: 460px;
+      cursor: ew-resize; user-select: none; -webkit-user-select: none;
+      touch-action: none; --pos: 50%;
+    }
+
+    /* Before: fixed LEFT half — always 50%, never changes. */
+    .psp-slider__before {
+      position: absolute; top: 0; left: 0; bottom: 0;
+      width: 50%;
+      z-index: 2;
+      background: #dddbd6;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 3rem 2rem 3rem 3.5rem;
+      overflow: hidden;
+    }
+
+    /* After: fixed RIGHT half — always 50%, never changes. Blur clears as handle moves right. */
+    .psp-slider__after {
+      position: absolute; top: 0; bottom: 0;
+      right: 0; width: 50%;
+      z-index: 1;
+      background: var(--teal);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 3rem 3.5rem;
+      filter: blur(6px);
+    }
+
+    /* Badge labels */
+    .psp-slider__badge {
+      display: inline-block; font-family: 'Lora', serif;
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em;
+      padding: 0.25rem 0.65rem; border-radius: 2px; margin-bottom: 1rem;
+    }
+    /* After is teal background — cream badge */
+    .psp-slider__after .psp-slider__badge {
+      background: rgba(246,243,238,.18); color: rgba(246,243,238,.9);
+    }
+    /* Before is grey background — dark badge */
+    .psp-slider__before .psp-slider__badge {
+      background: rgba(24,23,21,.1); color: rgba(24,23,21,.65);
+    }
+
+    /* Panel headings */
+    .psp-slider__heading {
+      font-family: 'Gilda Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.85rem);
+      line-height: 1.2; margin-bottom: 1.4rem;
+    }
+    .psp-slider__after  .psp-slider__heading { color: var(--cream); }
+    .psp-slider__before .psp-slider__heading { color: rgba(24,23,21,.75); }
+
+    /* Lists */
+    .psp-slider__list { list-style: none; }
+    .psp-slider__after .psp-slider__list li {
+      font-family: 'Lora', serif; font-size: 0.93rem;
+      color: rgba(246,243,238,.88);
+      padding: 0.35rem 0 0.35rem 1.75rem; position: relative;
+    }
+    .psp-slider__after .psp-slider__list li::before {
+      content: '✓'; position: absolute; left: 0; top: 0.35rem;
+      font-size: 0.82rem; color: var(--berry);
+    }
+    .psp-slider__before .psp-slider__list li {
+      font-family: 'Lora', serif; font-size: 0.93rem;
+      color: rgba(24,23,21,.62);
+      padding: 0.35rem 0 0.35rem 1.75rem; position: relative;
+    }
+    .psp-slider__before .psp-slider__list li::before {
+      content: '✕'; position: absolute; left: 0; top: 0.35rem;
+      font-size: 0.7rem; color: var(--berry);
+    }
+
+    /* Handle — berry line + knob */
+    .psp-slider__handle {
+      position: absolute; top: 0; bottom: 0;
+      left: var(--pos); transform: translateX(-50%);
+      width: 3px; background: var(--berry);
+      z-index: 10; display: flex; align-items: center; justify-content: center;
+    }
+    .psp-slider__knob {
+      width: 44px; height: 44px; background: var(--berry);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; color: #fff; font-size: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,.25); flex-shrink: 0;
+    }
+    .psp-slider__caption {
+      text-align: center; font-style: italic;
+      color: rgba(24,23,21,.55); margin-top: 1.75rem; font-size: 0.975rem;
+    }
+    @media (max-width: 600px) {
+      .psp-slider { min-height: 300px; }
+      .psp-slider__before { padding: 1rem 1rem 1rem 1.25rem; }
+      .psp-slider__after  { padding: 1rem 1.25rem; }
+    }
+
+    /* ============================================================
+       S04 INCLUDED — Stone (3-col flip cards)
+    ============================================================ */
+    .psp-included__grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .psp-included__card { perspective: 1200px; cursor: pointer; }
+    .psp-included__inner {
+      position: relative; width: 100%; min-height: 300px;
+      transform-style: preserve-3d;
+      transition: transform 0.42s ease;
+    }
+    .psp-included__card.is-flipped .psp-included__inner { transform: rotateY(180deg); }
+    .psp-included__front,
+    .psp-included__back {
+      position: absolute; inset: 0;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 2rem 1.75rem;
+    }
+    .psp-included__front {
+      background: var(--cream); border: 1px solid var(--warm-stone);
+      justify-content: flex-start;
+    }
+    .psp-included__num {
+      font-family: 'Gilda Display', serif; font-size: 2.2rem;
+      color: var(--berry); margin-bottom: 0.65rem; line-height: 1;
+    }
+    .psp-included__label {
+      font-family: 'Gilda Display', serif; font-size: 1.05rem;
+      color: var(--ink); margin-bottom: 0.75rem; line-height: 1.25;
+    }
+    .psp-included__desc {
+      font-size: 0.88rem; color: rgba(24,23,21,.65); line-height: 1.6; flex: 1;
+    }
+    .psp-included__flip {
+      margin-top: 1.25rem; font-family: 'Lora', serif; font-size: 0.68rem;
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--teal);
+    }
+    .psp-included__back {
+      background: var(--teal); transform: rotateY(180deg); justify-content: center;
+    }
+    .psp-included__back-label {
+      font-family: 'Lora', serif; font-size: 0.65rem;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: rgba(246,243,238,.55); margin-bottom: 1rem;
+    }
+    .psp-included__back-text {
+      font-family: 'Lora', serif; font-style: italic;
+      font-size: 0.95rem; color: var(--cream); line-height: 1.65;
+    }
+    .psp-included__back-flip {
+      margin-top: 1.5rem; font-family: 'Lora', serif; font-size: 0.68rem;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: rgba(246,243,238,.5);
+    }
+    .psp-included__note {
+      text-align: center; font-style: italic;
+      color: rgba(24,23,21,.52); margin-top: 2.25rem; font-size: 0.93rem;
+    }
+    @media (max-width: 768px) { .psp-included__grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 500px)  { .psp-included__grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       S05 WORK — Cream
+    ============================================================ */
+    .psp-work__cards {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2.5rem; margin-top: 2.5rem;
+    }
+    .psp-work__card { border: 1px solid var(--warm-stone); background: var(--cream); }
+    .psp-work__preview { position: relative; height: 304px; overflow: hidden; background: var(--cream); }
+    .psp-work__preview-placeholder {
+      position: absolute; inset: 1rem;
+      background-size: cover; background-position: top left;
+      border-radius: 2px;
+    }
+    .psp-work__preview-overlay {
+      position: absolute; inset: 0; background: rgba(0,0,0,.38);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 1.5rem; text-align: center;
+    }
+    .psp-work__preview-eyebrow {
+      font-size: 0.63rem; text-transform: uppercase; letter-spacing: 0.22em;
+      color: rgba(246,243,238,.65); margin-bottom: 0.5rem; font-family: 'Lora', serif;
+    }
+    .psp-work__preview-name {
+      font-family: 'Gilda Display', serif; font-size: 2.1rem;
+      color: var(--cream); line-height: 1.1; margin-bottom: 0.35rem;
+    }
+    .psp-work__preview-sub {
+      font-size: 0.78rem; color: rgba(246,243,238,.55); font-style: italic;
+    }
+    .psp-work__preview-note {
+      position: absolute; bottom: 0.6rem; right: 0.75rem;
+      font-size: 0.65rem; font-style: italic;
+      color: rgba(246,243,238,.3); font-family: 'Lora', serif;
+    }
+    .psp-work__body    { padding: 1.75rem; }
+    .psp-work__name    { font-family: 'Gilda Display', serif; font-size: 1.2rem; margin-bottom: 0.7rem; }
+    .psp-work__desc    {
+      font-size: 0.88rem; color: rgba(24,23,21,.7);
+      line-height: 1.65; margin-bottom: 1.1rem;
+    }
+    .psp-work__link {
+      font-size: 0.875rem; color: var(--teal);
+      text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+    }
+    .psp-work__link:hover { color: var(--teal-dark); }
+    @media (max-width: 640px) { .psp-work__cards { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       TESTIMONIAL — standalone Teal section
+       Circle photo placeholder on the right
+    ============================================================ */
+    .psp-testimonial-section {
+      padding: 5rem 0;
+      background: var(--teal);
+    }
+    .psp-testimonial__inner {
+      max-width: 900px; margin: 0 auto; padding: 0 2rem;
+    }
+    .psp-testimonial__quote {
+      font-family: 'Gilda Display', serif;
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      color: var(--cream); line-height: 1.7;
+      text-align: center; margin-bottom: 2.25rem;
+    }
+    .psp-testimonial__divider {
+      border: none; border-top: 1px solid var(--berry);
+      margin: 0 0 1.75rem;
+    }
+    .psp-testimonial__row {
+      display: flex; align-items: center;
+      justify-content: center; gap: 2rem;
+    }
+    .psp-testimonial__attr {
+      font-family: 'Lora', serif; font-style: italic; font-weight: 500;
+      font-size: 1rem; color: var(--cream); text-align: left;
+    }
+    /* Circle photo placeholder */
+    .psp-testimonial__avatar {
+      width: 84px; height: 84px; border-radius: 50%;
+      background: rgba(246,243,238,.15);
+      border: 2px solid rgba(246,243,238,.3);
+      flex-shrink: 0; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* TESTIMONIAL PHOTO: replace this div with
+       <img src="rowena.jpg" alt="Rowena Doyle" class="psp-testimonial__avatar-img">
+       once the photo is ready. */
+    .psp-testimonial__avatar-label {
+      font-size: 0.55rem; color: rgba(246,243,238,.4);
+      text-align: center; font-style: italic; padding: 0.35rem; line-height: 1.3;
+    }
+    .psp-testimonial__avatar-img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+    }
+    @media (max-width: 600px) {
+      .psp-testimonial__row { flex-direction: column; text-align: center; }
+      .psp-testimonial__attr { text-align: center; }
+    }
+
+    /* ============================================================
+       S06 ABOUT — #A9C7CD (teal-soft) background
+       Layout: centered heading + eyebrow rule, then 2-col:
+       copy card (left) | photo with teal frame (right)
+    ============================================================ */
+    .psp-about__header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .psp-about__rule {
+      width: 80px; border: none; border-top: 1.5px solid var(--berry);
+      margin: 0 auto 0.9rem;
+    }
+    .psp-about__header h2 { color: var(--ink); }
+    .psp-about__header h2 em { font-style: italic; color: var(--berry); }
+
+    .psp-about__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: stretch;
+    }
+    /* Left: cream copy card — stretches to match photo height */
+    .psp-about__copy-card {
+      background: var(--cream); padding: 2.5rem 2.25rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .psp-about__copy-card p { margin-bottom: 1.1rem; color: var(--ink); }
+    .psp-about__copy-card p:last-child { margin-bottom: 0; }
+
+    /* Right: photo inside thick teal border frame */
+    .psp-about__photo-frame {
+      border: 14px solid var(--teal);
+      display: flex; flex-direction: column;
+    }
+    .psp-about__photo {
+      height: 460px;
+      background: var(--warm-stone);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .psp-about__photo-label {
+      font-style: italic; color: rgba(24,23,21,.38);
+      font-size: 0.88rem; text-align: center; padding: 1rem;
+    }
+    @media (max-width: 768px) {
+      .psp-about__grid { grid-template-columns: 1fr; gap: 2rem; }
+      .psp-about__photo { height: 280px; }
+    }
+
+    /* ============================================================
+       S07 PROCESS — teal-light bg, cream card boxes
+    ============================================================ */
+    .psp-process__cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .psp-process__card {
+      background: var(--cream); padding: 2.5rem 2rem;
+      border: 1px solid rgba(11,110,126,.12);
+    }
+    .psp-process__num {
+      display: block; font-family: 'Gilda Display', serif;
+      font-size: 2.4rem; color: var(--berry); margin-bottom: 0.9rem;
+    }
+    .psp-process__card h3 { color: var(--teal); margin-bottom: 0.75rem; }
+    .psp-process__card p  { font-size: 0.93rem; color: rgba(24,23,21,.75); line-height: 1.68; }
+    .psp-bg-teal-light .psp-eyebrow { color: var(--berry); }
+    .psp-bg-teal-light h2 { color: var(--teal-dark); }
+    @media (max-width: 768px) { .psp-process__cards { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       TEAL CTA
+    ============================================================ */
+    .psp-cta { text-align: center; padding: 90px 0; }
+    .psp-cta h2 {
+      color: var(--cream); font-size: clamp(1.7rem, 4vw, 2.6rem); margin-bottom: 1rem;
+    }
+    .psp-cta__sub {
+      color: rgba(246,243,238,.78); font-size: 1.1rem;
+      max-width: 540px; margin: 0 auto 2.25rem; line-height: 1.65;
+    }
+
+    /* ============================================================
+       S08 FAQ — Stone
+    ============================================================ */
+    .psp-faq { margin-top: 2.5rem; max-width: 760px; }
+    .psp-faq details:first-of-type { border-top: 1px solid var(--warm-stone); }
+    .psp-faq details { border-bottom: 1px solid var(--warm-stone); }
+    .psp-faq summary {
+      font-family: 'Lora', serif; font-size: 1rem;
+      padding: 1.2rem 2.75rem 1.2rem 0;
+      cursor: pointer; list-style: none; position: relative;
+      color: var(--ink); min-height: 44px;
+      display: flex; align-items: center;
+    }
+    .psp-faq summary::-webkit-details-marker { display: none; }
+    .psp-faq summary::after {
+      content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      width: 20px; height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%230b6e7e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5 8 10 13 15 8'/%3E%3C/svg%3E");
+      background-size: contain; background-repeat: no-repeat;
+    }
+    .psp-faq details[open] summary::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%230b6e7e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5 12 10 7 15 12'/%3E%3C/svg%3E");
+    }
+    .psp-faq summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+    .psp-faq__body {
+      padding: 0.25rem 0 1.5rem; font-size: 0.93rem;
+      color: rgba(24,23,21,.75); line-height: 1.7;
+    }
+
+    /* ============================================================
+       S09 PRICING — Cream (Stone card, teal accent, teal price)
+    ============================================================ */
+    .psp-pricing__card {
+      max-width: 560px; margin: 2.5rem auto 0;
+      padding: 3rem; background: var(--stone);
+      border: 1px solid var(--warm-stone); border-top: 4px solid var(--teal);
+      box-shadow: 0 4px 24px rgba(24,23,21,.08); text-align: center;
+    }
+    .psp-pricing__price {
+      font-family: 'Gilda Display', serif; font-size: 3.25rem;
+      color: var(--teal); margin: 0.5rem 0 0.25rem;
+    }
+    .psp-pricing__subprice {
+      font-family: 'Lora', serif; font-size: 0.82rem;
+      color: rgba(24,23,21,.45); margin-bottom: 2rem; font-style: italic;
+    }
+    .psp-pricing__list { list-style: none; text-align: left; margin-bottom: 2.25rem; }
+    .psp-pricing__list li {
+      font-size: 0.93rem; padding: 0.45rem 0 0.45rem 1.85rem;
+      position: relative; color: var(--ink);
+    }
+    .psp-pricing__list li::before {
+      content: ''; position: absolute; left: 0; top: 0.75rem;
+      width: 15px; height: 15px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%230b6e7e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2 8 6 12 14 4'/%3E%3C/svg%3E");
+      background-size: contain; background-repeat: no-repeat;
+    }
+    .psp-pricing__terms {
+      font-style: italic; font-size: 0.8rem;
+      color: rgba(24,23,21,.45); margin-top: 1.25rem;
+    }
+
+    /* ============================================================
+       S10 CONTACT — Stone
+    ============================================================ */
+    .psp-form { max-width: 600px; margin: 2.5rem auto 0; }
+    .psp-form__group { margin-bottom: 1.5rem; }
+    .psp-form label { display: block; font-size: 0.875rem; margin-bottom: 0.4rem; color: var(--ink); }
+    .psp-form__req  { color: var(--berry); margin-left: 0.15rem; }
+    .psp-form input,
+    .psp-form textarea {
+      width: 100%; padding: 0.8rem 1rem;
+      font-family: 'Lora', serif; font-size: 1rem;
+      color: var(--ink); background: var(--cream);
+      border: 1px solid var(--warm-stone);
+      appearance: none; -webkit-appearance: none;
+      line-height: 1.5; border-radius: 0;
+    }
+    .psp-form input:focus,
+    .psp-form textarea:focus {
+      outline: 2px solid var(--teal); outline-offset: 0; border-color: var(--teal);
+    }
+    .psp-form input[aria-invalid="true"],
+    .psp-form textarea[aria-invalid="true"] { border-color: var(--berry); }
+    .psp-form textarea { min-height: 160px; resize: vertical; }
+    .psp-form__field-err {
+      display: block; font-size: 0.82rem; color: var(--berry); margin-top: 0.35rem;
+    }
+    .psp-form__result { display: none; margin-top: 1.25rem; font-size: 0.95rem; }
+    .psp-form__result--ok  { color: var(--teal); }
+    .psp-form__result--err { color: var(--berry); }
+    .psp-form__result a    { color: inherit; }
+
+    /* ============================================================
+       FREE TOOLS — Brand Lab + Website Planner
+    ============================================================ */
+    .psp-tool {
+      padding: 90px 0;
+    }
+    .psp-tool__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .psp-tool__grid--flip { direction: rtl; }
+    .psp-tool__grid--flip > * { direction: ltr; }
+    .psp-tool__copy { }
+    .psp-tool__copy p {
+      font-size: 1.05rem; color: rgba(24,23,21,.72);
+      line-height: 1.75; margin-bottom: 2rem;
+    }
+
+    /* Decorative visual — Brand Lab: colour swatch grid */
+    .psp-tool__visual {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .psp-brandlab-swatches {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; width: 280px; height: 280px;
+    }
+    .psp-brandlab-swatches__cell {
+      border-radius: 6px; transition: transform 0.25s ease;
+    }
+    .psp-brandlab-swatches__cell:nth-child(1) { background: var(--teal); }
+    .psp-brandlab-swatches__cell:nth-child(2) { background: var(--berry); }
+    .psp-brandlab-swatches__cell:nth-child(3) { background: var(--stone); border: 1px solid var(--warm-stone); }
+    .psp-brandlab-swatches__cell:nth-child(4) {
+      background: var(--cream); border: 1px solid var(--warm-stone);
+      display: flex; align-items: flex-end; padding: 1rem;
+    }
+    .psp-brandlab-swatches__type {
+      font-family: 'Gilda Display', serif; font-size: 1.15rem;
+      color: var(--ink); line-height: 1.2;
+    }
+
+    /* Decorative visual — Website Planner: stylised outline */
+    .psp-planner-visual {
+      width: 260px; padding: 2rem;
+      background: var(--cream); border: 1px solid var(--warm-stone);
+      box-shadow: 6px 6px 0 var(--warm-stone);
+    }
+    .psp-planner-visual__line {
+      height: 10px; background: var(--teal-light);
+      margin-bottom: 10px; border-radius: 2px;
+    }
+    .psp-planner-visual__line:nth-child(2) { width: 80%; }
+    .psp-planner-visual__line:nth-child(3) { width: 65%; }
+    .psp-planner-visual__divider {
+      border: none; border-top: 1px solid var(--warm-stone); margin: 1.25rem 0;
+    }
+    .psp-planner-visual__block {
+      height: 8px; background: var(--stone);
+      margin-bottom: 8px; border-radius: 2px;
+    }
+    .psp-planner-visual__block:last-child { width: 55%; margin-bottom: 0; }
+    .psp-planner-visual__dot {
+      width: 28px; height: 28px; background: var(--berry);
+      border-radius: 50%; margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .psp-tool__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .psp-tool__grid--flip { direction: ltr; }
+      .psp-tool__visual { order: -1; }
+      .psp-brandlab-swatches { width: 220px; height: 220px; }
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    /* ============================================================
+       HEADER + NAV
+    ============================================================ */
+    .psp-header {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--cream);
+      border-bottom: 1px solid var(--warm-stone);
+      padding: 0.6rem 0;
+    }
+    .psp-header .psp-container {
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    .psp-header__logo-img { height: 38px; width: auto; display: block; }
+    .psp-nav { display: flex; align-items: center; gap: 1.75rem; }
+    .psp-nav__link {
+      font-family: 'Lora', serif; font-size: 0.85rem;
+      color: rgba(24,23,21,.7); text-decoration: none; white-space: nowrap;
+    }
+    .psp-nav__link:hover { color: var(--teal); }
+    .psp-nav__link:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+    .psp-header__cta {
+      font-family: 'Lora', serif; font-size: 0.85rem;
+      color: var(--berry); text-decoration: none; white-space: nowrap;
+      border: 1px solid var(--berry); padding: 0.45rem 1.25rem; flex-shrink: 0;
+    }
+    .psp-header__cta:hover { background: var(--berry); color: var(--cream); }
+    .psp-header__cta:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+    @media (max-width: 860px) { .psp-nav { display: none; } }
+
+    /* ============================================================
+       BRIEF INTRO SECTION (below hero)
+    ============================================================ */
+    .psp-intro-section { padding: 70px 0; }
+    .psp-intro__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .psp-intro__copy h2 { margin-bottom: 1.5rem; color: var(--ink); }
+    .psp-intro__copy h2 em { font-style: italic; color: var(--teal); }
+    .psp-intro__copy p { margin-bottom: 1.1rem; color: var(--ink); }
+    .psp-intro__tagline {
+      font-style: italic; color: var(--teal);
+      margin-bottom: 0 !important;
+    }
+    .psp-intro__img-wrap {
+      position: relative; border-radius: 4px; overflow: hidden;
+      width: 100%; aspect-ratio: 16 / 9;
+    }
+    .psp-intro__img-placeholder {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .psp-intro__img-overlay {
+      position: absolute; inset: 0;
+      background: rgba(246, 243, 238, 0.45);
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .psp-intro__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* Hero left alignment — override centered container so text hugs the left */
+    .psp-hero .psp-container { max-width: none; margin-left: 0; padding-left: 4rem; padding-right: 2rem; }
+
+    /* Hero italic accent */
+    .psp-hero__accent { font-style: italic; color: var(--berry); }
+
+    /* Teal italic accent — used in h2 headings throughout */
+    .psp-accent-teal { font-style: italic; color: var(--teal); }
+
+    /* ============================================================
+       TABS ON TEAL BACKGROUND
+    ============================================================ */
+    .psp-tabs-teal { background: var(--teal); }
+    .psp-tabs-teal .psp-eyebrow { color: rgba(246,243,238,.65); }
+    .psp-tabs-teal h2 { color: var(--cream); }
+    .psp-tabs-teal .psp-tabs__btn {
+      background: rgba(246,243,238,.12); color: rgba(246,243,238,.6);
+      border-right-color: rgba(246,243,238,.18); border-bottom-color: transparent;
+    }
+    .psp-tabs-teal .psp-tabs__btn[aria-selected="true"] {
+      background: var(--cream); color: var(--ink); border-bottom-color: var(--berry);
+    }
+    .psp-tabs-teal .psp-tabs__btn:hover:not([aria-selected="true"]) {
+      background: rgba(246,243,238,.22); color: rgba(246,243,238,.85);
+    }
+    .psp-tabs-teal .psp-tabs__panel { background: var(--cream); border-color: rgba(246,243,238,.15); }
+
+    /* ============================================================
+       WEBSITE PLANNER — COMING SOON
+    ============================================================ */
+    .psp-planner-soon { position: relative; width: 380px; }
+    .psp-planner-soon-img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .psp-planner-soon__overlay {
+      position: absolute; inset: 0; border-radius: 4px;
+      background: rgba(11,110,126,.6);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .psp-planner-soon__label {
+      font-family: 'Gilda Display', serif; font-size: 1.5rem;
+      color: var(--cream); letter-spacing: 0.06em;
+    }
+    .psp-btn--muted {
+      background: rgba(24,23,21,.3); cursor: default; pointer-events: none;
+    }
+    .psp-btn--muted:hover { background: rgba(24,23,21,.3); }
+    @media (max-width: 768px) { .psp-planner-soon { width: 280px; } }
+
+    /* Brand Lab photo — no crop */
+    .psp-brandlab-img {
+      width: 300px; height: auto; display: block; border-radius: 4px;
+    }
+    @media (max-width: 768px) { .psp-brandlab-img { width: 220px; } }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .psp-footer { padding: 3rem 0; text-align: center; }
+    .psp-footer p { font-size: 0.83rem; color: rgba(246,243,238,.45); line-height: 1.9; }
+    .psp-footer a { color: rgba(246,243,238,.45); text-decoration: underline; text-underline-offset: 2px; }
+    .psp-footer a:hover { color: rgba(246,243,238,.75); }
+    .psp-footer a:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
+    .psp-footer__nav {
+      display: flex; gap: 1.75rem; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 1.5rem; list-style: none;
+    }
+    .psp-footer__nav-link {
+      font-family: 'Lora', serif; font-size: 0.83rem;
+      color: rgba(246,243,238,.55); text-decoration: none; white-space: nowrap;
+    }
+    .psp-footer__nav-link:hover { color: rgba(246,243,238,.85); }
+    .psp-footer__contact {
+      display: flex; align-items: center; gap: 1.25rem;
+      justify-content: center; margin-bottom: 1.5rem;
+    }
+    .psp-footer__email {
+      font-family: 'Lora', serif; font-size: 0.83rem;
+      color: rgba(246,243,238,.55); text-decoration: underline; text-underline-offset: 2px;
+    }
+    .psp-footer__email:hover { color: rgba(246,243,238,.85); }
+    .psp-footer__linkedin { color: var(--teal-light); display: flex; align-items: center; }
+    .psp-footer__linkedin:hover { color: var(--cream); }
+
+  </style>
+</head>
+
+<body>
+  <a class="psp-skip" href="#main-content">Skip to main content</a>
+
+  <div class="psp-wrap">
+    <header class="psp-header" role="banner">
+      <div class="psp-container">
+        <a href="index.html" aria-label="Pixel and Scale — home">
+          <img src="Images/web-brand-design-pixel-scale.png" alt="Pixel and Scale" class="psp-header__logo-img">
+        </a>
+        <nav class="psp-nav" aria-label="Main navigation">
+          <a href="#how-it-works" class="psp-nav__link">How it works</a>
+          <a href="#portfolio" class="psp-nav__link">Portfolio</a>
+          <a href="#about" class="psp-nav__link">About</a>
+          <a href="brand-lab.html" class="psp-nav__link" target="_blank" rel="noopener noreferrer">Brand Lab</a>
+        </nav>
+        <a href="#contact" class="psp-header__cta">Start a conversation</a>
+      </div>
+    </header>
+    <main id="main-content">
+
+      <!-- ============================================================
+           S01 HERO — full-bleed, #A9C7CD overlay
+           HERO PHOTO: add background-image: url('photo.jpg') to .psp-hero
+      ============================================================ -->
+      <section class="psp-section psp-hero" aria-labelledby="hero-h1">
+        <div class="psp-hero__overlay" aria-hidden="true"></div>
+        <div class="psp-container">
+          <div class="psp-hero__content">
+            <h1 id="hero-h1">A one-page website that reflects the <em class="psp-hero__accent">quality of your work.</em></h1>
+            <p class="psp-hero__sub">For established consultants, coaches, therapists and service-based businesses who want a clear, professional place to send people.</p>
+            <a href="#contact" class="psp-btn">Start a conversation</a>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           BRIEF INTRO — cream, 2-col copy + landscape image
+      ============================================================ -->
+      <section class="psp-section psp-intro-section" aria-labelledby="intro-h2">
+        <div class="psp-container">
+          <div class="psp-intro__grid">
+            <div class="psp-intro__copy">
+              <span class="psp-eyebrow">A brief introduction</span>
+              <h2 id="intro-h2">I'm <em>Laura Cassidy.</em></h2>
+              <p>I design and build one-page websites for established independent practitioners and consultants.</p>
+              <p>Every site starts with understanding you and your business: who you work with, what you do, and the journey you want your clients to take. The work is about presenting your expertise clearly and in a way that feels aligned with how you work and who you are.</p>
+            </div>
+            <div class="psp-intro__img-wrap">
+              <img src="Images/website-strategy-meeting.png" alt="Website strategy meeting" class="psp-intro__img-placeholder">
+              <div class="psp-intro__img-overlay" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           S02 TABS — Stone
+      ============================================================ -->
+      <section class="psp-section psp-tabs-teal" aria-labelledby="tabs-h2">
+        <div class="psp-container">
+          <span class="psp-eyebrow">Where you might be starting from</span>
+          <h2 id="tabs-h2">Pick the version that fits.</h2>
+          <div class="psp-tabs">
+            <div class="psp-tabs__layout">
+              <nav aria-label="Starting point options">
+                <ul class="psp-tabs__list" role="tablist">
+                  <li role="none"><button class="psp-tabs__btn" role="tab" id="tab-1" aria-selected="true"  aria-controls="panel-1" tabindex="0">A clearer way to present my work</button></li>
+                  <li role="none"><button class="psp-tabs__btn" role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2" tabindex="-1">Enquiries come through referrals and social</button></li>
+                  <li role="none"><button class="psp-tabs__btn" role="tab" id="tab-3" aria-selected="false" aria-controls="panel-3" tabindex="-1">My business has evolved, the site hasn't</button></li>
+                  <li role="none"><button class="psp-tabs__btn" role="tab" id="tab-4" aria-selected="false" aria-controls="panel-4" tabindex="-1">A simpler way for people to enquire or book</button></li>
+                  <li role="none"><button class="psp-tabs__btn" role="tab" id="tab-5" aria-selected="false" aria-controls="panel-5" tabindex="-1">A clearer way to organise services or sessions</button></li>
+                </ul>
+              </nav>
+              <div>
+                <div class="psp-tabs__panel is-active" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+                  <h3>Clear presentation of work</h3>
+                  <p>You know your work well. What is often harder is finding a clear, considered way to present it online. People who find you through referral or LinkedIn arrive at something that doesn't match the conversation they just had.</p>
+                  <p class="psp-tabs__outcome">A focused page that introduces you the way you would in a discovery call.</p>
+                </div>
+                <div class="psp-tabs__panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2">
+                  <h3>Social and referral-led enquiries</h3>
+                  <p>Most of your work comes through word of mouth or social media. When someone asks for your website, there's a pause before you send it. Sometimes you send your LinkedIn instead.</p>
+                  <p class="psp-tabs__outcome">A professional place to direct every referral, so the introduction isn't undermined before the call starts.</p>
+                </div>
+                <div class="psp-tabs__panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3">
+                  <h3>Evolved business, outdated website</h3>
+                  <p>The site you have reflects a version of your business from two or three years ago. The services have changed, the positioning has shifted, and the copy still says things you would never say now.</p>
+                  <p class="psp-tabs__outcome">A current, accurate page built around how you actually work today.</p>
+                </div>
+                <div class="psp-tabs__panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4">
+                  <h3>Booking and enquiry friction</h3>
+                  <p>People are interested but the path to contact is unclear. The booking link is buried or the form doesn't work on mobile. People send a DM instead of booking because it's easier.</p>
+                  <p class="psp-tabs__outcome">A clear next step built into the page, connected to your booking tool or enquiry form.</p>
+                </div>
+                <div class="psp-tabs__panel" role="tabpanel" id="panel-5" aria-labelledby="tab-5">
+                  <h3>Services, sessions or events</h3>
+                  <p>You run multiple services or session types. The current setup makes people ask which one is right for them before they've had a proper look at your work.</p>
+                  <p class="psp-tabs__outcome">A structured page that lays out your offer clearly without overwhelming the reader.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           S03 BEFORE/AFTER SLIDER — Cream
+           Drag RIGHT to reveal After. After blurs until revealed.
+      ============================================================ -->
+      <section class="psp-section psp-bg-cream psp-slider-wrap" aria-labelledby="slider-h2">
+        <div class="psp-container">
+          <h2 id="slider-h2">What people find when they <em class="psp-accent-teal">look you up.</em></h2>
+
+          <div class="psp-sr">
+            <p>Before: Scattered profiles across different platforms, a LinkedIn page and a referral message, an outdated or unfinished website, different links depending on how they found you.</p>
+            <p>After: One clear place to understand your work, services explained simply and directly, a professional considered presentation, a clear next step when they're ready to get in touch.</p>
+          </div>
+
+          <div class="psp-slider" id="psp-slider" aria-hidden="true">
+
+            <!-- Before: on top (z-index 2), LEFT side, clips from right as you drag right -->
+            <div class="psp-slider__before">
+              <span class="psp-slider__badge">Before</span>
+              <p class="psp-slider__heading">Without a clear online presence</p>
+              <ul class="psp-slider__list">
+                <li>Scattered profiles across different platforms</li>
+                <li>A LinkedIn page and a referral message</li>
+                <li>An outdated or unfinished website</li>
+                <li>Different links depending on how they found you</li>
+              </ul>
+            </div>
+
+            <!-- After: behind (z-index 1), RIGHT side, revealed as Before slides left -->
+            <div class="psp-slider__after" id="psp-after">
+              <span class="psp-slider__badge">After</span>
+              <p class="psp-slider__heading">With a Pixel &amp; Scale site</p>
+              <ul class="psp-slider__list">
+                <li>One clear place to understand your work</li>
+                <li>Services explained simply and directly</li>
+                <li>A professional, considered presentation</li>
+                <li>A clear next step when they're ready to get in touch</li>
+              </ul>
+            </div>
+
+            <div class="psp-slider__handle" id="psp-handle"
+              role="slider" tabindex="0"
+              aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+              aria-label="Before and after comparison. Drag right to unblur the after side. Use arrow keys to adjust.">
+              <div class="psp-slider__knob" aria-hidden="true">&#8594;</div>
+            </div>
+          </div>
+
+          <p class="psp-slider__caption">Drag the handle right to reveal the difference → This isn't about adding more. It's about presenting what's already there with clarity and intention.</p>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           S04 INCLUDED — Stone (flip cards)
+      ============================================================ -->
+      <section class="psp-section psp-bg-stone" aria-labelledby="included-h2">
+        <div class="psp-container">
+          <span class="psp-eyebrow">What's included</span>
+          <h2 id="included-h2">What the build <em class="psp-accent-teal">includes.</em></h2>
+          <div class="psp-included__grid" role="list">
+
+            <div class="psp-included__card" role="listitem" tabindex="0"
+              aria-label="Consultation Call. Tap or press Enter to see more detail.">
+              <div class="psp-included__inner">
+                <div class="psp-included__front">
+                  <span class="psp-included__num" aria-hidden="true">01</span>
+                  <span class="psp-included__label">Consultation Call</span>
+                  <p class="psp-included__desc">A video call where we explore your business, your clients, and what a strong first impression looks like for your work.</p>
+                  <span class="psp-included__flip" aria-hidden="true">Tap to flip &#8594;</span>
+                </div>
+                <div class="psp-included__back" aria-hidden="true">
+                  <span class="psp-included__back-label">How it works</span>
+                  <p class="psp-included__back-text">We talk through your services, who you work with, and what you would like your site to communicate. Everything that follows is shaped by that conversation.</p>
+                  <span class="psp-included__back-flip">&#8592; Tap to go back</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="psp-included__card" role="listitem" tabindex="0"
+              aria-label="Foundational Branding. Tap or press Enter to see more detail.">
+              <div class="psp-included__inner">
+                <div class="psp-included__front">
+                  <span class="psp-included__num" aria-hidden="true">02</span>
+                  <span class="psp-included__label">Foundational Branding</span>
+                  <p class="psp-included__desc">A considered visual direction including colour palette, typography and supporting visual elements.</p>
+                  <span class="psp-included__flip" aria-hidden="true">Tap to flip &#8594;</span>
+                </div>
+                <div class="psp-included__back" aria-hidden="true">
+                  <span class="psp-included__back-label">What you receive</span>
+                  <p class="psp-included__back-text">A palette, type pairing, and visual tone that carries through every element of the site. Cohesive from the first line of copy to the last section.</p>
+                  <span class="psp-included__back-flip">&#8592; Tap to go back</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="psp-included__card" role="listitem" tabindex="0"
+              aria-label="Full Copy, Written For You. Tap or press Enter to see more detail.">
+              <div class="psp-included__inner">
+                <div class="psp-included__front">
+                  <span class="psp-included__num" aria-hidden="true">03</span>
+                  <span class="psp-included__label">Full Copy, Written For You</span>
+                  <p class="psp-included__desc">You provide the information about your work, your clients and your services. I shape it into clear, considered copy that sounds like you.</p>
+                  <span class="psp-included__flip" aria-hidden="true">Tap to flip &#8594;</span>
+                </div>
+                <div class="psp-included__back" aria-hidden="true">
+                  <span class="psp-included__back-label">The process</span>
+                  <p class="psp-included__back-text">We work through two rounds of refinement until every line feels right. The copy is written around your specific business and for your ideal client.</p>
+                  <span class="psp-included__back-flip">&#8592; Tap to go back</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="psp-included__card" role="listitem" tabindex="0"
+              aria-label="One-Page Site Structure. Tap or press Enter to see more detail.">
+              <div class="psp-included__inner">
+                <div class="psp-included__front">
+                  <span class="psp-included__num" aria-hidden="true">04</span>
+                  <span class="psp-included__label">One-Page Site Structure</span>
+                  <p class="psp-included__desc">A layout that takes your reader on a journey, from first impression to ready to get in touch.</p>
+                  <span class="psp-included__flip" aria-hidden="true">Tap to flip &#8594;</span>
+                </div>
+                <div class="psp-included__back" aria-hidden="true">
+                  <span class="psp-included__back-label">How it's built</span>
+                  <p class="psp-included__back-text">Each section is planned around how your ideal client reads and decides. It speaks to where they are, shows how you can help, and makes the next step feel obvious.</p>
+                  <span class="psp-included__back-flip">&#8592; Tap to go back</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="psp-included__card" role="listitem" tabindex="0"
+              aria-label="Custom AI-Generated Images. Tap or press Enter to see more detail.">
+              <div class="psp-included__inner">
+                <div class="psp-included__front">
+                  <span class="psp-included__num" aria-hidden="true">05</span>
+                  <span class="psp-included__label">Custom AI-Generated Images</span>
+                  <p class="psp-included__desc">Images created to sit naturally within your site and support the overall visual direction.</p>
+                  <span class="psp-included__flip" aria-hidden="true">Tap to flip &#8594;</span>
+                </div>
+                <div class="psp-included__back" aria-hidden="true">
+                  <span class="psp-included__back-label">Bespoke to your brand</span>
+                  <p class="psp-included__back-text">Images made for your brand, placed where they belong on the page. Visual consistency without a photoshoot.</p>
+                  <span class="psp-included__back-flip">&#8592; Tap to go back</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="psp-included__card" role="listitem" tabindex="0"
+              aria-label="SEO and Accessibility Built In. Tap or press Enter to see more detail.">
+              <div class="psp-included__inner">
+                <div class="psp-included__front">
+                  <span class="psp-included__num" aria-hidden="true">06</span>
+                  <span class="psp-included__label">SEO and Accessibility Built In</span>
+                  <p class="psp-included__desc">Your site is built to be found, easy to use, and fully responsive on every device.</p>
+                  <span class="psp-included__flip" aria-hidden="true">Tap to flip &#8594;</span>
+                </div>
+                <div class="psp-included__back" aria-hidden="true">
+                  <span class="psp-included__back-label">What's covered</span>
+                  <p class="psp-included__back-text">The technical side is handled: search optimisation, accessibility standards, mobile responsiveness, and clean code structure. You don't need to know what any of that means. It's built in from the start.</p>
+                  <span class="psp-included__back-flip">&#8592; Tap to go back</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <p class="psp-included__note">Links to your booking tool, call scheduler or contact page included. Three rounds of revisions built in.</p>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           S05 RECENT WORK — Cream
+      ============================================================ -->
+      <section id="portfolio" class="psp-section psp-bg-cream" aria-labelledby="work-h2">
+        <div class="psp-container">
+          <span class="psp-eyebrow">Recent work</span>
+          <h2 id="work-h2">A sample of <em class="psp-accent-teal">recent work.</em></h2>
+
+          <div class="psp-work__cards">
+            <article class="psp-work__card" aria-labelledby="work-reframd">
+              <!-- WORK PHOTO 1: add background-image: url('reframd-photo.jpg') to .psp-work__preview-placeholder -->
+              <div class="psp-work__preview">
+                <div class="psp-work__preview-placeholder" style="background-color:#606b51; background-image:url('Images/leadership-coach-website.png'); background-size:cover; background-position:top left;"></div>
+                <div class="psp-work__preview-overlay" style="background:rgba(255,254,247,0.15);"></div>
+                <span class="psp-work__preview-note">Photo placeholder</span>
+              </div>
+              <div class="psp-work__body">
+                <h3 class="psp-work__name" id="work-reframd">Reframd</h3>
+                <p class="psp-work__desc">A one-page site for Rowena Doyle's leadership development practice, built to direct organisations, senior leaders, and event attendees to the right place. The practice focuses on experience-led development for leaders navigating complexity and change. Full copy, WCAG-compliant build, hosted on Cloudflare Pages.</p>
+                <a class="psp-work__link" href="https://reframd.co/" target="_blank" rel="noopener noreferrer"
+                  aria-label="Visit reframd.co (opens in a new tab)">Visit reframd.co &#8599;</a>
+              </div>
+            </article>
+
+            <article class="psp-work__card" aria-labelledby="work-triumph">
+              <!-- WORK PHOTO 2: add background-image: url('triumph-photo.jpg') to .psp-work__preview-placeholder -->
+              <div class="psp-work__preview">
+                <div class="psp-work__preview-placeholder" style="background-color:#7e5498; background-image:url('Images/therapist-website-design.png'); background-size:cover; background-position:top left;"></div>
+                <div class="psp-work__preview-overlay" style="background:rgba(255,254,247,0.15);"></div>
+                <span class="psp-work__preview-note">Photo placeholder</span>
+              </div>
+              <div class="psp-work__body">
+                <h3 class="psp-work__name" id="work-triumph">Triumph Mental Health</h3>
+                <p class="psp-work__desc">A single-page site for a licensed therapist in Fort Lauderdale, built to simplify an existing four-page site into one focused, calm experience with integrated booking and a full brand refresh.</p>
+                <a class="psp-work__link" href="https://www.triumphmentalhealth.com/" target="_blank" rel="noopener noreferrer"
+                  aria-label="Visit triumphmentalhealth.com (opens in a new tab)">Visit triumphmentalhealth.com &#8599;</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           TESTIMONIAL — standalone Teal section
+           Circle photo placeholder right of attribution
+      ============================================================ -->
+      <section class="psp-testimonial-section" aria-label="Testimonial from Rowena Doyle">
+        <div class="psp-testimonial__inner">
+          <p class="psp-testimonial__quote">When I was developing my business idea around Reframd, I knew I needed a website but had very little clarity on where to start. Laura came to my rescue. She designed a beautiful website, completely understood the vision and brought it to life in such a thoughtful way. I absolutely love it.</p>
+          <hr class="psp-testimonial__divider" aria-hidden="true">
+          <div class="psp-testimonial__row">
+            <cite class="psp-testimonial__attr">Rowena Doyle, Founder, Reframd</cite>
+            <div class="psp-testimonial__avatar">
+              <img src="Images/leadership-coach-wesbite.jpeg" alt="Rowena Doyle, Founder of Reframd" class="psp-testimonial__avatar-img">
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           S07 PROCESS — Light Teal, cream card boxes
+      ============================================================ -->
+      <section id="how-it-works" class="psp-section psp-bg-teal-light" aria-labelledby="process-h2">
+        <div class="psp-container">
+          <span class="psp-eyebrow">The process</span>
+          <h2 id="process-h2">How we work <em class="psp-accent-teal">together.</em></h2>
+          <div class="psp-process__cards">
+            <div class="psp-process__card">
+              <span class="psp-process__num" aria-hidden="true">01</span>
+              <h3>Clarity</h3>
+              <p>We begin with a focused conversation about your work, the people you want to reach, and what your website needs to achieve. We clarify who the site is for, what they need to understand, and the key message you want to communicate.</p>
+            </div>
+            <div class="psp-process__card">
+              <span class="psp-process__num" aria-hidden="true">02</span>
+              <h3>Structure and Design</h3>
+              <p>From there, I map a simple and intuitive journey through your website. We decide what information genuinely matters and shape it into a clear, considered layout that feels aligned with your work and easy for visitors to navigate.</p>
+            </div>
+            <div class="psp-process__card">
+              <span class="psp-process__num" aria-hidden="true">03</span>
+              <h3>Build and Launch</h3>
+              <p>I design and build the website, bringing everything together into a professional, cohesive online presence. You will have a website that inspires trust through clarity and simplicity, with two weeks of post-launch support included.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           S06 ABOUT — #A9C7CD background
+           Centred heading · copy card left · teal-framed photo right
+      ============================================================ -->
+      <section id="about" class="psp-section psp-bg-teal-soft" aria-labelledby="about-h2">
+        <div class="psp-container">
+          <div class="psp-about__header">
+            <hr class="psp-about__rule" aria-hidden="true">
+            <h2 id="about-h2">Hello, I'm <em>Laura.</em></h2>
+          </div>
+          <div class="psp-about__grid">
+            <div class="psp-about__copy-card">
+              <p>I design and build one-page websites for established independent practitioners and consultants.</p>
+              <p>Every site starts with understanding you and your business: who you work with, what you do, and the journey you want your clients to take. The work is about presenting your expertise clearly and in a way that feels aligned with how you work and who you are.</p>
+            </div>
+            <div class="psp-about__photo-frame">
+              <img src="Images/Laura-cassidy-web-design.png" alt="Portrait of Laura Cassidy" style="width:100%; height:100%; min-height:320px; object-fit:cover; display:block;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           FREE TOOL — Brand Lab
+      ============================================================ -->
+      <section class="psp-tool psp-bg-cream" aria-labelledby="brandlab-h2">
+        <div class="psp-container">
+          <div class="psp-tool__grid">
+            <div class="psp-tool__copy">
+              <span class="psp-eyebrow">Free tool</span>
+              <h2 id="brandlab-h2">See how colour and type <em class="psp-accent-teal">shape a brand.</em></h2>
+              <p>Browse palettes, test font pairings and see how different visual directions change the feel of a page. A free interactive space to explore before anything is decided.</p>
+              <a href="brand-lab.html" target="_blank" rel="noopener noreferrer" class="psp-btn">Explore the Brand Lab &#8594;</a>
+            </div>
+            <div class="psp-tool__visual" aria-hidden="true">
+              <img src="Images/brand-design-website.png" alt="" class="psp-brandlab-img">
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           FREE TOOL — Website Planner
+      ============================================================ -->
+      <section class="psp-tool psp-bg-stone" aria-labelledby="planner-h2">
+        <div class="psp-container">
+          <div class="psp-tool__grid psp-tool__grid--flip">
+            <div class="psp-tool__copy">
+              <span class="psp-eyebrow">Free tool</span>
+              <h2 id="planner-h2">Think through your website before it's built.</h2>
+              <p>A simple guided space to map your services, your clients and what your website needs to say. Work through it at your own pace before we speak.</p>
+              <a href="#" class="psp-btn psp-btn--muted" aria-disabled="true">Coming soon</a>
+            </div>
+            <div class="psp-tool__visual" aria-hidden="true">
+              <div class="psp-planner-soon">
+                <img src="Images/wesbite-design-strategy.png" alt="" class="psp-planner-soon-img">
+                <div class="psp-planner-soon__overlay">
+                  <span class="psp-planner-soon__label">Coming soon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           TEAL CTA
+      ============================================================ -->
+      <section class="psp-section psp-bg-teal psp-cta" aria-labelledby="cta-h2">
+        <div class="psp-container">
+          <h2 id="cta-h2">Present your work with clarity and confidence.</h2>
+          <p class="psp-cta__sub">A focused one-page website for experienced service-based professionals who want one considered place online.</p>
+          <a href="#contact" class="psp-btn">Start a conversation</a>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           S09 PRICING — Cream (Stone card, teal accent, teal price)
+      ============================================================ -->
+      <section id="services" class="psp-section psp-bg-cream" aria-labelledby="pricing-h2">
+        <div class="psp-container">
+          <div class="psp-pricing__card">
+            <span class="psp-eyebrow">Your investment</span>
+            <h2 id="pricing-h2">The one-page website</h2>
+            <p class="psp-pricing__price">&euro;895</p>
+            <p class="psp-pricing__subprice">One fixed price. No monthly fees.</p>
+            <ul class="psp-pricing__list" aria-label="What's included in the price">
+              <li>Consultation call</li>
+              <li>Foundational branding (palette, type, tone)</li>
+              <li>Full copy, shaped around your business and your ideal client</li>
+              <li>Custom one-page site structure</li>
+              <li>AI-generated custom images</li>
+              <li>SEO and accessibility built in</li>
+              <li>Mobile responsive on every device</li>
+              <li>Links to your booking tool, scheduler or contact page</li>
+              <li>Three rounds of revisions</li>
+              <li>One to two week turnaround</li>
+            </ul>
+            <a href="#contact" class="psp-btn">Start a conversation</a>
+            <p class="psp-pricing__terms">Cancellation terms by stage are in the proposal. No refunds once design begins.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           S08 FAQ — Stone
+      ============================================================ -->
+      <section class="psp-section psp-bg-stone" aria-labelledby="faq-h2">
+        <div class="psp-container">
+          <span class="psp-eyebrow">Questions</span>
+          <h2 id="faq-h2">Frequently asked <em class="psp-accent-teal">questions.</em></h2>
+          <div class="psp-faq">
+            <details><summary>Is a one-page website really enough?</summary><div class="psp-faq__body">For many established service-based professionals, yes. A well-structured one-page website can present your services clearly and guide people towards booking or enquiry. If something more complex is needed, I will always say so.</div></details>
+            <details><summary>What if I'm still refining my positioning?</summary><div class="psp-faq__body">You don't need everything fully defined before we start. The clarity session is there to shape the focus of the page and how your work is presented. It helps if you have a general sense of the services or work you want to be known for.</div></details>
+            <details><summary>Do you write the copy for me?</summary><div class="psp-faq__body">You don't need finished copy. I work from your notes, your experience, and what we define in the clarity session. The writing is developed as part of the project, based on how your work is best communicated.</div></details>
+            <details><summary>Do I need a full brand identity first?</summary><div class="psp-faq__body">No. We can work with what you already have. If you don't have defined brand elements, I will guide a simple visual direction for the website. Clarity and consistency matter more than a complete brand system at this stage.</div></details>
+            <details><summary>How long does the process take?</summary><div class="psp-faq__body">The website is typically designed and built within one to two weeks once the clarity session is complete and the core information is in place.</div></details>
+            <details><summary>Are there ongoing costs?</summary><div class="psp-faq__body">Your only ongoing cost is your domain, paid directly to your provider. There are no recurring fees from me.</div></details>
+            <details><summary>How does payment work?</summary><div class="psp-faq__body">Payment is split into two stages: a 50% deposit to begin the project, and the remaining 50% before the website goes live.</div></details>
+            <details><summary>What happens after launch?</summary><div class="psp-faq__body">You receive two weeks of support after launch for small adjustments or final refinements. After that, you can request updates or changes as your business evolves.</div></details>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           S10 CONTACT — Stone
+      ============================================================ -->
+      <section class="psp-section psp-bg-stone" id="contact" aria-labelledby="contact-h2">
+        <div class="psp-container">
+          <span class="psp-eyebrow">Enquire</span>
+          <h2 id="contact-h2">Start a <em class="psp-accent-teal">conversation</em></h2>
+          <form class="psp-form" id="psp-contact-form"
+            action="https://formspree.io/f/mpqkyzgq"
+            method="POST" novalidate aria-label="Enquiry form">
+            <div class="psp-form__group">
+              <label for="f-name">Name <span class="psp-form__req" aria-hidden="true">*</span></label>
+              <input type="text" id="f-name" name="name" required aria-required="true" autocomplete="name" placeholder="Your name">
+            </div>
+            <div class="psp-form__group">
+              <label for="f-email">Email <span class="psp-form__req" aria-hidden="true">*</span></label>
+              <input type="email" id="f-email" name="email" required aria-required="true" autocomplete="email" placeholder="your@email.com">
+            </div>
+            <div class="psp-form__group">
+              <label for="f-message">Message <span class="psp-form__req" aria-hidden="true">*</span></label>
+              <textarea id="f-message" name="message" required aria-required="true"
+                placeholder="Tell me a little about your business and what you're looking for"></textarea>
+            </div>
+            <button type="submit" class="psp-btn">Send message</button>
+            <p class="psp-form__result psp-form__result--ok" id="form-ok" role="alert" aria-live="polite">
+              Thank you, I'll be in touch within two working days.
+            </p>
+            <p class="psp-form__result psp-form__result--err" id="form-err" role="alert" aria-live="polite">
+              Something went wrong. Please email me directly at
+              <a href="mailto:laura@pixelandscale.com">laura@pixelandscale.com</a>
+            </p>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="psp-section psp-bg-ink psp-footer" role="contentinfo">
+      <div class="psp-container">
+        <nav class="psp-footer__nav" aria-label="Footer navigation">
+          <a href="#how-it-works" class="psp-footer__nav-link">How it works</a>
+          <a href="#portfolio" class="psp-footer__nav-link">Portfolio</a>
+          <a href="#about" class="psp-footer__nav-link">About</a>
+          <a href="brand-lab.html" class="psp-footer__nav-link" target="_blank" rel="noopener noreferrer">Brand Lab</a>
+        </nav>
+        <div class="psp-footer__contact">
+          <a href="mailto:laura@pixelandscale.com" class="psp-footer__email">laura@pixelandscale.com</a>
+          <a href="https://www.linkedin.com/in/laura-cassidy-pixel-scale/" class="psp-footer__linkedin" target="_blank" rel="noopener noreferrer" aria-label="Laura Cassidy on LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+        <p>&copy; 2026 Pixel and Scale &middot; All Rights Reserved</p>
+        <p><a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#">Terms and Conditions</a></p>
+      </div>
+    </footer>
+
+  </div><!-- /.psp-wrap -->
+
+
+  <script>
+    /* ============================================================
+       TABS
+    ============================================================ */
+    (function () {
+      var tabs   = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('[role="tabpanel"]'));
+
+      function activate(tab) {
+        tabs.forEach(function (t) { t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); });
+        panels.forEach(function (p) { p.classList.remove('is-active'); });
+        tab.setAttribute('aria-selected','true'); tab.setAttribute('tabindex','0');
+        var panel = document.getElementById(tab.getAttribute('aria-controls'));
+        if (panel) panel.classList.add('is-active');
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () { activate(tab); });
+        tab.addEventListener('keydown', function (e) {
+          var idx = tabs.indexOf(document.activeElement);
+          if (e.key==='ArrowRight'||e.key==='ArrowDown')  { e.preventDefault(); var n=tabs[(idx+1)%tabs.length]; n.focus(); activate(n); }
+          else if (e.key==='ArrowLeft'||e.key==='ArrowUp') { e.preventDefault(); var p=tabs[(idx-1+tabs.length)%tabs.length]; p.focus(); activate(p); }
+          else if (e.key==='Home') { e.preventDefault(); tabs[0].focus(); activate(tabs[0]); }
+          else if (e.key==='End')  { e.preventDefault(); tabs[tabs.length-1].focus(); activate(tabs[tabs.length-1]); }
+        });
+      });
+    })();
+
+
+    /* ============================================================
+       BEFORE/AFTER SLIDER
+       --pos = left edge of Before panel (inset 0 0 0 pos%).
+       Before shows pos→100%. Handle at pos (left edge of Before).
+       Drag RIGHT → pos increases → Before shows less → After reveals.
+       Blur on After: high at low pos (After hidden), zero at high pos.
+    ============================================================ */
+    (function () {
+      var slider  = document.getElementById('psp-slider');
+      var handle  = document.getElementById('psp-handle');
+      var afterEl = document.getElementById('psp-after');
+      if (!slider || !handle || !afterEl) return;
+
+      var pos = 50, isDrag = false;
+
+      function setPos(pct) {
+        pct = Math.max(2, Math.min(98, pct));
+        pos = pct;
+        slider.style.setProperty('--pos', pct + '%');
+        /* Blur: max at left (handle in before area), clears as handle moves right into after */
+        var blurPx = Math.max(0, (100 - pct) / 100 * 12);
+        afterEl.style.filter = 'blur(' + blurPx.toFixed(1) + 'px)';
+        handle.setAttribute('aria-valuenow', Math.round(pct));
+      }
+
+      function pctFromEvent(e) {
+        var rect = slider.getBoundingClientRect();
+        var x = e.touches ? e.touches[0].clientX : e.clientX;
+        return ((x - rect.left) / rect.width) * 100;
+      }
+
+      handle.addEventListener('mousedown',  function (e) { e.preventDefault(); isDrag = true; });
+      document.addEventListener('mousemove', function (e) { if (isDrag) setPos(pctFromEvent(e)); });
+      document.addEventListener('mouseup',   function ()  { isDrag = false; });
+
+      handle.addEventListener('touchstart', function (e) { e.preventDefault(); isDrag = true; }, { passive: false });
+      document.addEventListener('touchmove', function (e) { if (isDrag) setPos(pctFromEvent(e)); }, { passive: true });
+      document.addEventListener('touchend',  function ()  { isDrag = false; });
+
+      slider.addEventListener('click', function (e) {
+        if (handle.contains(e.target)) return;
+        setPos(pctFromEvent(e));
+      });
+
+      handle.addEventListener('keydown', function (e) {
+        if (e.key==='ArrowRight') { e.preventDefault(); setPos(pos + 5); }
+        if (e.key==='ArrowLeft')  { e.preventDefault(); setPos(pos - 5); }
+        if (e.key==='Home')       { e.preventDefault(); setPos(2);  }
+        if (e.key==='End')        { e.preventDefault(); setPos(98); }
+      });
+
+      setPos(50);
+    })();
+
+
+    /* ============================================================
+       FLIP CARDS
+    ============================================================ */
+    (function () {
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.psp-included__card'));
+      cards.forEach(function (card) {
+        function toggle() {
+          var flipped = card.classList.toggle('is-flipped');
+          var lbl = card.getAttribute('aria-label') || '';
+          if (flipped) {
+            card.setAttribute('aria-label', lbl.replace('Tap or press Enter to see more detail.', 'Showing detail. Tap or press Enter to go back.'));
+          } else {
+            card.setAttribute('aria-label', lbl.replace('Showing detail. Tap or press Enter to go back.', 'Tap or press Enter to see more detail.'));
+          }
+        }
+        card.addEventListener('click', toggle);
+        card.addEventListener('keydown', function (e) { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggle(); } });
+      });
+    })();
+
+
+    /* ============================================================
+       CONTACT FORM — XMLHttpRequest
+    ============================================================ */
+    (function () {
+      var form = document.getElementById('psp-contact-form');
+      var ok   = document.getElementById('form-ok');
+      var err  = document.getElementById('form-err');
+      if (!form) return;
+
+      function showMsg(el) { ok.style.display=err.style.display='none'; el.style.display='block'; el.focus(); }
+
+      function clearFieldErrors() {
+        form.querySelectorAll('[aria-invalid]').forEach(function (f) { f.removeAttribute('aria-invalid'); f.removeAttribute('aria-describedby'); });
+        form.querySelectorAll('.psp-form__field-err').forEach(function (e) { e.remove(); });
+      }
+
+      function fieldError(field, msg) {
+        var id = field.id+'-err';
+        field.setAttribute('aria-invalid','true'); field.setAttribute('aria-describedby',id);
+        var s = document.createElement('span');
+        s.className='psp-form__field-err'; s.id=id; s.setAttribute('role','alert'); s.textContent=msg;
+        field.parentNode.appendChild(s);
+      }
+
+      function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); clearFieldErrors(); ok.style.display=err.style.display='none';
+        var name=document.getElementById('f-name'), email=document.getElementById('f-email'), message=document.getElementById('f-message'), valid=true;
+        if (!name.value.trim())              { fieldError(name,    'Please enter your name.');             valid=false; }
+        if (!validEmail(email.value.trim())) { fieldError(email,   'Please enter a valid email address.'); valid=false; }
+        if (!message.value.trim())           { fieldError(message, 'Please enter a message.');             valid=false; }
+        if (!valid) { form.querySelector('[aria-invalid]').focus(); return; }
+        var btn=form.querySelector('[type="submit"]'); btn.disabled=true; btn.textContent='Sending…';
+        var xhr=new XMLHttpRequest(); xhr.open('POST',form.action); xhr.setRequestHeader('Accept','application/json');
+        xhr.onreadystatechange=function () {
+          if (xhr.readyState!==4) return;
+          btn.disabled=false; btn.textContent='Send message';
+          if (xhr.status>=200&&xhr.status<300) { form.reset(); showMsg(ok); } else { showMsg(err); }
+        };
+        xhr.onerror=function () { btn.disabled=false; btn.textContent='Send message'; showMsg(err); };
+        xhr.send(new FormData(form));
+      });
+    })();
+  </script>
+
+</body>
+</html>

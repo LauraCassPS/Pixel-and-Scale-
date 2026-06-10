@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brand Lab — Pixel &amp; Scale</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pixelandscale.com/brand-lab">
+<meta name="description" content="Explore colour palettes and font pairings for your website. Pick a mood, browse 84 curated palettes, or drop in your own colours — then preview your brand in a live mockup.">
+
+<!-- Open Graph -->
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="Brand Lab — Pixel &amp; Scale">
+<meta property="og:description" content="Explore colour palettes and font pairings for your website. Pick a mood, browse 84 curated palettes, or drop in your own colours — then preview your brand in a live mockup.">
+<meta property="og:site_name"   content="Pixel &amp; Scale">
+
+<!-- Twitter/X card -->
+<meta name="twitter:card"        content="summary">
+<meta name="twitter:title"       content="Brand Lab — Pixel &amp; Scale">
+<meta name="twitter:description" content="Explore colour palettes and font pairings for your website.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Caprasimo&family=Cardo:ital,wght@0,400;1,400&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono&family=DM+Sans:wght@400;500&family=EB+Garamond:ital,wght@0,400;1,400&family=Forum&family=Fraunces:ital,wght@0,400;0,700;1,400;1,900&family=Gilda+Display&family=Inter:wght@400;500;600&family=Italiana&family=Karla:wght@400;600&family=Lato:wght@400;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@400;600&family=Marcellus&family=Newsreader:ital,wght@0,400;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500&family=Prata&family=Source+Sans+3:wght@400;600&family=Spectral:ital,wght@0,400;1,400&family=Syne:wght@400;700&family=Yeseva+One&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<style>
+/* ============================================================
+   SITE SHELL — inherited from brand-lab-landing.html
+   ============================================================ */
+:root {
+  --paper:    #f6f3ee;
+  --paper-2:  #efeae0;
+  --paper-3:  #e6dfd1;
+  --ink:      #333333;
+  --ink-2:    #5c5c5c;
+  --ink-3:    #8a8885;
+  --teal:     #0b6e7e;
+  --teal-ink: #064651;
+  --pink:     #d62483;
+  --font-display:   "Gilda Display", "Cormorant Garamond", Georgia, serif;
+  --font-body:      "Inter", -apple-system, sans-serif;
+  --font-nav:       "Poppins", -apple-system, sans-serif;
+  --font-button:    "Lato", -apple-system, sans-serif;
+  --font-editorial: "Lora", Georgia, serif;
+  --font-mono:      "DM Mono", "Courier New", monospace;
+
+  /* brand vars — live-updated by JS */
+  --bg-light:  #F5F0E8;
+  --bg-dark:   #2C3E2D;
+  --accent:    #B85C38;
+  --heading:   #4A4A3A;
+  --body:      #4A4A3A;
+  --muted:     #C4B9A8;
+  --heading-on-dark: #F5F0E8;
+  --body-on-dark:    #F5F0E8;
+  --button-bg:   #B85C38;
+  --button-text: #fff;
+  --heading-font: 'Gilda Display', Georgia, serif;
+  --body-font:    'Lora', Georgia, serif;
+
+  /* legacy aliases */
+  --ps-cream:  #f6f3ee;
+  --ps-line:   #e0ddd6;
+  --ps-teal:   #0b6e7e;
+  --ps-pink:   #D62483;
+  --ps-dark:   #333333;
+  --ps-muted:  #8a857d;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { min-height: 100vh; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+a { color: var(--teal); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-color: var(--pink); text-underline-offset: 4px; }
+::selection { background: var(--pink); color: var(--paper); }
+
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 48px; }
+
+/* Header */
+header.site { border-bottom: 1px solid var(--paper-3); background: var(--paper); }
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; padding-bottom: 28px; }
+.wordmark { display: inline-flex; align-items: center; }
+.wordmark img { display: block; height: 56px; width: auto; }
+nav.primary { display: flex; align-items: center; gap: 40px; }
+nav.primary a { color: var(--ink); font-family: var(--font-nav); font-size: 16px; letter-spacing: 0.01em; }
+nav.primary a:hover { color: var(--teal); text-decoration: none; }
+nav.primary a.nav-cta { color: var(--teal); border: 1px solid var(--teal); padding: 8px 18px; border-radius: 2px; font-size: 14px; }
+nav.primary a.nav-cta:hover { background: var(--teal); color: var(--paper); }
+
+/* Typography */
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; color: var(--ink); letter-spacing: -0.005em; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.3; }
+.emph { color: var(--teal); font-weight: 700; font-style: italic; font-family: var(--font-editorial); }
+p { margin: 0 0 1em 0; }
+.body-line { font-size: 17px; color: var(--ink-2); }
+
+/* Rule */
+.rule { display: block; width: 64px; height: 1.5px; background: var(--pink); border: 0; margin: 0; }
+.rule.long { width: 120px; }
+
+/* Buttons */
+.site-btn {
+  display: inline-block; font-family: var(--font-button); font-size: 15px;
+  font-weight: 700; letter-spacing: 0.02em; text-transform: capitalize;
+  background: var(--teal); color: var(--paper); padding: 16px 32px;
+  border: 1px solid var(--teal); border-radius: 0; cursor: pointer;
+  text-decoration: none; transition: background 160ms ease-out, border-color 160ms ease-out;
+}
+.site-btn:hover { background: var(--teal-ink); border-color: var(--teal-ink); color: var(--paper); }
+
+/* Hero */
+.hero { padding: 72px 0 80px; }
+.hero h1 { margin-bottom: 20px; max-width: 18ch; }
+.hero .rule { margin-bottom: 24px; }
+.hero .subhead {
+  font-family: var(--font-display); font-size: 21px; line-height: 1.45;
+  color: var(--ink); margin: 0 0 14px; max-width: 52ch;
+}
+.hero .body-line { max-width: 56ch; margin-bottom: 0; }
+
+/* Placeholder */
+.placeholder {
+  background: var(--paper-2); border: 1px solid var(--paper-3);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-3); font-family: var(--font-body); font-style: italic;
+  font-size: 15px; position: relative;
+}
+
+/* Video */
+.video-section { padding: 0 0 56px; border-top: 1px solid var(--paper-3); }
+.video-wrap { max-width: 560px; margin: 0 auto; padding: 48px 0; }
+.video-ph { aspect-ratio: 16/9; width: 100%; flex-direction: column; gap: 12px; }
+.play-icon { font-size: 32px; color: var(--ink-3); }
+.video-caption { text-align: center; font-style: italic; font-size: 14px; color: var(--ink-3); margin-top: 12px; }
+
+/* Footer */
+footer.site { background: var(--paper); padding: 40px 0 56px; border-top: 1px solid var(--paper-3); }
+footer.site .wrap { flex-direction: column; align-items: stretch; }
+footer.site .rule { width: 100%; margin-bottom: 32px; }
+footer.site .foot-row { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+footer.site .foot-mark { font-family: var(--font-display); color: var(--teal); font-size: 20px; }
+footer.site nav { display: flex; gap: 28px; }
+footer.site nav a { color: var(--ink-2); font-size: 15px; }
+footer.site nav a:hover { color: var(--teal); }
+footer.site .copyright { color: var(--ink-3); font-size: 14px; font-style: italic; }
+
+/* ============================================================
+   TOOL SHELL — ported from brand-lab.html
+   ============================================================ */
+.tool-section { border-top: 1px solid var(--paper-3); }
+.shell {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+/* ── DOORS (2 tabs) ── */
+.doors {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+.door-tab {
+  background: #fff;
+  border: 1px solid var(--ps-line);
+  border-radius: 4px;
+  padding: 1rem 1.15rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+.door-tab:hover { border-color: var(--teal); }
+.door-tab.active { background: var(--ps-dark); border-color: var(--ps-dark); }
+.door-tab.active .door-eyebrow { color: var(--ps-pink); }
+.door-tab.active .door-title,
+.door-tab.active .door-sub { color: #fff; }
+.door-eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.22em; color: var(--ps-muted); margin-bottom: 0.35rem; }
+.door-title { font-family: 'Gilda Display', serif; font-size: 18px; color: var(--ps-dark); margin-bottom: 0.25rem; }
+.door-sub { font-family: 'Lora', serif; font-size: 13px; color: var(--ps-muted); }
+
+/* ── DOOR CONTENT ── */
+.door-content {
+  display: none;
+  background: #fff;
+  border: 1px solid var(--ps-line);
+  border-radius: 4px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.75rem;
+}
+.door-content.active { display: block; }
+.door-content-header { margin-bottom: 1.25rem; }
+.door-content-header .panel-eyebrow {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.22em; color: var(--ps-muted); text-transform: uppercase; margin-bottom: 0.35rem;
+}
+.door-content-header .panel-title {
+  font-family: 'Gilda Display', serif; font-size: 20px; color: var(--ps-dark);
+}
+
+/* ── LIBRARY (Door 2: Browse all) ── */
+.library-wrap { display: grid; gap: 2.5rem; }
+.library-mood-header { margin-bottom: 1rem; }
+.library-mood-title { font-family: 'Gilda Display', serif; font-size: 20px; font-weight: 400; color: var(--ps-dark); margin-bottom: 0.3rem; }
+.library-mood-desc { font-family: 'Lora', serif; font-size: 13px; font-style: italic; color: var(--ps-muted); max-width: 640px; line-height: 1.45; }
+.library-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.lib-card {
+  background: var(--ps-cream); border: 1px solid var(--ps-line);
+  border-radius: 4px; padding: 0.75rem; cursor: pointer;
+  text-align: left; font-family: inherit; transition: all 0.15s ease;
+}
+.lib-card:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.mini-palette {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+  margin-bottom: 0.55rem; border-radius: 2px; overflow: hidden;
+}
+.mini-sw { height: 44px; }
+.lib-name { font-family: 'Lora', serif; font-size: 12px; font-weight: 500; color: var(--ps-dark); margin-bottom: 0.15rem; }
+.lib-mood-tag { font-family: var(--font-mono); font-size: 9px; color: var(--ps-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ── MOOD GRID (Door 1: Build from a mood) ── */
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+.mood-btn {
+  background: var(--ps-cream); border: 1px solid var(--ps-line); border-radius: 4px;
+  padding: 0.85rem 0.75rem; cursor: pointer; text-align: center;
+  font-family: 'Lora', serif; font-size: 13px; color: var(--ps-dark); line-height: 1.3; transition: all 0.15s ease;
+}
+.mood-btn:hover { border-color: var(--teal); }
+.mood-btn.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+.mood-btn .mood-swatch-strip { display: flex; height: 18px; border-radius: 2px; overflow: hidden; margin-bottom: 6px; }
+.mood-btn .mood-swatch-strip div { flex: 1; }
+.mood-btn .mood-btn-name { font-size: 12px; line-height: 1.3; }
+
+.mood-result-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ps-muted); margin-bottom: 0.75rem; }
+.mood-palettes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+
+/* ── DIVIDER / TOPBAR ── */
+.downstream-divider { height: 1px; background: var(--ps-line); margin: 1.5rem 0 1.75rem; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border: 1px solid var(--ps-line); border-radius: 4px;
+  padding: 0.75rem 1.25rem; margin-bottom: 1.25rem;
+}
+.topbar-brand { font-family: 'Gilda Display', serif; font-size: 17px; color: var(--ps-dark); }
+.topbar-actions { display: flex; gap: 8px; }
+.btn {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 8px 14px; border-radius: 3px; border: 1px solid var(--ps-line);
+  background: #fff; color: var(--ps-dark); cursor: pointer; transition: all 0.15s ease;
+}
+.btn:hover { background: var(--ps-cream); border-color: var(--teal); }
+.btn-primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+.btn-primary:hover { background: #095560; color: #fff; }
+
+/* ── MAIN GRID ── */
+.grid { display: grid; grid-template-columns: 280px 300px 1fr; gap: 14px; }
+.panel { background: #fff; border: 1px solid var(--ps-line); border-radius: 4px; padding: 1.25rem; }
+.panel-eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ps-muted); text-transform: uppercase; margin-bottom: 0.4rem; }
+.panel-title { font-family: 'Gilda Display', serif; font-size: 18px; color: var(--ps-dark); margin-bottom: 1rem; }
+
+/* ── PALETTE PANEL ── */
+.swatch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 0.85rem; }
+.swatch {
+  position: relative; height: 72px; border-radius: 3px; cursor: pointer;
+  border: 0.5px solid rgba(0,0,0,0.08); transition: transform 0.15s ease; overflow: hidden;
+}
+.swatch:hover { transform: translateY(-1px); }
+.swatch-role {
+  position: absolute; top: 6px; left: 6px; right: 6px;
+  font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(255,255,255,0.95); text-shadow: 0 0 3px rgba(0,0,0,0.5); line-height: 1.2;
+}
+.swatch.light .swatch-role { color: rgba(0,0,0,0.65); text-shadow: 0 0 3px rgba(255,255,255,0.5); }
+.swatch-hex {
+  position: absolute; bottom: 5px; left: 6px;
+  font-family: var(--font-mono); font-size: 9.5px; color: rgba(255,255,255,0.9);
+  text-shadow: 0 0 3px rgba(0,0,0,0.5); letter-spacing: 0.04em;
+}
+.swatch.light .swatch-hex { color: rgba(0,0,0,0.65); text-shadow: 0 0 3px rgba(255,255,255,0.4); }
+.hint { font-family: 'Lora', serif; font-size: 11.5px; font-style: italic; color: var(--ps-muted); line-height: 1.4; }
+
+/* Accessibility check */
+.a11y-check { margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid var(--ps-line); }
+.a11y-eyebrow { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.18em; color: var(--ps-muted); text-transform: uppercase; margin-bottom: 0.6rem; }
+.a11y-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid #f3efe7; }
+.a11y-row:first-of-type { border-top: none; }
+.a11y-swatch-pair { display: inline-flex; flex: 0 0 auto; width: 30px; }
+.a11y-sw { width: 15px; height: 15px; border-radius: 2px; border: 0.5px solid rgba(0,0,0,0.1); }
+.a11y-sw + .a11y-sw { margin-left: -4px; }
+.a11y-label { font-family: 'Lora', serif; font-size: 11px; color: var(--ps-dark); flex: 1; line-height: 1.3; }
+.a11y-status { display: inline-flex; align-items: center; gap: 5px; flex: 0 0 auto; font-family: var(--font-mono); font-size: 10px; color: var(--ps-muted); }
+.a11y-mark { display: inline-flex; width: 16px; height: 16px; align-items: center; justify-content: center; border-radius: 50%; font-size: 10px; font-weight: 700; }
+.a11y-mark.pass { background: #2d7a3d; color: #fff; }
+.a11y-mark.fail { background: #c0392b; color: #fff; }
+.a11y-note { margin-top: 0.75rem; font-family: 'Lora', serif; font-size: 11px; font-style: italic; color: var(--ps-muted); line-height: 1.45; }
+
+.copy-row { display: flex; gap: 4px; margin-top: 0.75rem; }
+.copy-btn {
+  flex: 1; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 7px 5px; background: #fff; border: 1px solid var(--ps-line);
+  border-radius: 2px; cursor: pointer; color: var(--ps-dark); transition: all 0.15s ease;
+}
+.copy-btn:hover { background: var(--ps-cream); border-color: var(--teal); color: var(--teal); }
+
+/* ── TYPOGRAPHY PANEL ── */
+.font-select-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.16em; color: var(--ps-muted); text-transform: uppercase; margin-bottom: 3px; }
+
+/* ──── Visual font picker ──── */
+.font-pick-wrap {
+  background: var(--ps-cream); border: 1px solid var(--ps-line);
+  border-radius: 3px; padding: 8px 10px; margin-bottom: 6px; position: relative;
+}
+.font-pick-trigger {
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; background: none; border: none; width: 100%;
+  padding: 0; text-align: left;
+}
+.font-pick-display { font-size: 15px; color: var(--ps-dark); letter-spacing: 0.01em; line-height: 1.3; }
+.font-pick-chevron { font-family: var(--font-mono); font-size: 11px; color: var(--ps-muted); flex-shrink: 0; }
+.font-pick-dropdown {
+  position: absolute; left: 0; right: 0; top: calc(100% + 4px);
+  background: #fff; border: 1px solid var(--ps-line); border-radius: 3px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); z-index: 60;
+  max-height: 260px; overflow-y: auto; display: none;
+}
+.font-pick-dropdown.open { display: block; }
+.font-pick-dropdown::-webkit-scrollbar { width: 4px; }
+.font-pick-dropdown::-webkit-scrollbar-thumb { background: var(--ps-line); border-radius: 2px; }
+.font-pick-option {
+  padding: 9px 12px; cursor: pointer; font-size: 16px; color: var(--ps-dark);
+  border-bottom: 1px solid #f5f2ec; transition: background 0.1s ease;
+  background: none; border-left: none; border-right: none; border-top: none;
+  width: 100%; text-align: left; display: block; letter-spacing: 0.01em;
+}
+.font-pick-option:last-child { border-bottom: none; }
+.font-pick-option:hover { background: var(--ps-cream); }
+.font-pick-option.selected { background: var(--teal); color: #fff; }
+
+/* Preset list */
+.presets-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; color: var(--ps-muted); text-transform: uppercase; margin: 1rem 0 0.5rem; }
+.preset-list { display: grid; gap: 5px; max-height: 310px; overflow-y: auto; padding-right: 2px; }
+.preset-list::-webkit-scrollbar { width: 4px; }
+.preset-list::-webkit-scrollbar-thumb { background: var(--ps-line); border-radius: 2px; }
+.preset {
+  background: #fff; border: 1px solid var(--ps-line); border-radius: 3px;
+  padding: 8px 10px 7px; cursor: pointer; transition: all 0.15s ease; text-align: left; width: 100%;
+}
+.preset:hover { border-color: var(--teal); }
+.preset.active { background: var(--teal); border-color: var(--teal); }
+.preset.active .preset-headline,
+.preset.active .preset-subhead,
+.preset.active .preset-pair { color: #fff !important; }
+.preset.active .preset-subhead { opacity: 0.75; }
+.preset.active .preset-pair { opacity: 0.7; }
+.preset-headline { font-size: 15px; color: var(--ps-dark); line-height: 1.2; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.preset-subhead { font-family: inherit; font-size: 11px; color: var(--ps-muted); line-height: 1.35; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.preset-display {
+  font-size: 16px; font-weight: 400; color: var(--ps-dark);
+  line-height: 1.2; margin-bottom: 4px; letter-spacing: 0.01em;
+}
+.preset-pair { font-family: var(--font-mono); font-size: 9px; color: var(--ps-muted); letter-spacing: 0.04em; }
+/* preview copy inputs */
+.preview-copy-section { margin: 1rem 0 0; }
+.font-select-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.16em; color: var(--ps-muted); text-transform: uppercase; margin-bottom: 3px; }
+.preview-copy-input { width: 100%; display: block; font-size: 12.5px; padding: 7px 9px; border: 1px solid var(--ps-line); border-radius: 3px; background: #fff; color: var(--ps-dark); font-family: inherit; outline: none; margin-bottom: 4px; transition: border-color 0.15s; box-sizing: border-box; }
+.preview-copy-input:focus { border-color: var(--teal); }
+.preview-copy-input::placeholder { color: var(--ps-muted); font-style: italic; }
+
+/* ── PREVIEW PANEL ── */
+.preview-panel { padding: 1.25rem; }
+.mockup-frame {
+  border-radius: 4px; overflow: hidden; border: 1px solid var(--ps-line);
+  background: var(--bg-light); transition: background-color 0.25s ease;
+}
+.mockup-header {
+  background: var(--bg-light); display: flex; justify-content: space-between;
+  align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid var(--muted);
+}
+.mockup-logo { font-family: var(--heading-font); font-size: 17px; color: var(--heading); letter-spacing: 0.02em; outline: none; }
+.mockup-nav { display: flex; gap: 1.25rem; }
+.mockup-nav span { font-family: var(--body-font); font-size: 11px; color: var(--body); letter-spacing: 0.06em; }
+.mockup-section { padding: 1.4rem 1.3rem; position: relative; }
+/* B+C side-by-side */
+.mockup-bc-row { display: flex; align-items: stretch; }
+.mockup-section-b { flex: 0 0 55%; }
+.mockup-section-c { flex: 0 0 45%; display: flex; flex-direction: column; }
+.mockup-section-light { background: var(--bg-light); }
+.mockup-section-dark  { background: var(--bg-dark); }
+.mockup-section-card-host { background: var(--bg-light); }
+.mockup-eyebrow { font-family: var(--body-font); font-weight: 500; font-size: 10px; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.55rem; outline: none; }
+.mockup-section-dark .mockup-eyebrow { color: var(--accent); }
+.mockup-headline { font-family: var(--heading-font); font-size: clamp(17px, 1.9vw, 23px); font-weight: 400; line-height: 1.15; color: var(--heading); margin-bottom: 0.6rem; letter-spacing: -0.01em; outline: none; }
+.mockup-section-dark .mockup-headline { color: var(--heading-on-dark); }
+.mockup-body { font-family: var(--body-font); font-size: 12px; line-height: 1.5; color: var(--body); margin-bottom: 0.8rem; outline: none; }
+.mockup-section-dark .mockup-body { color: var(--body-on-dark); }
+.mockup-cta {
+  display: inline-block; background: var(--button-bg); color: var(--button-text);
+  font-family: var(--body-font); font-weight: 500; font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 10px 20px; border-radius: 3px; outline: none;
+  text-decoration: none; cursor: default;
+}
+.mockup-cta:hover { text-decoration: none; color: var(--button-text); }
+.mockup-divider { height: 1px; width: 56px; background: var(--muted); margin-top: 1.5rem; }
+.mockup-section-dark .mockup-divider { background: var(--bg-light); opacity: 0.3; }
+.mockup-card { background: var(--muted); padding: 1.2rem; border-radius: 4px; border-top: 2px solid var(--accent); height: 100%; }
+.mockup-card .mockup-headline { font-size: clamp(15px, 1.5vw, 18px); margin-bottom: 0.45rem; }
+.mockup-card .mockup-body { margin-bottom: 0.75rem; }
+.preview-hint { font-family: 'Lora', serif; font-size: 11.5px; font-style: italic; color: var(--ps-muted); margin-top: 0.85rem; text-align: center; }
+
+/* ── SWATCH PICKER POPUP ── */
+.swatch-picker {
+  display: none; position: fixed; width: 260px;
+  background: #fff; border: 1px solid var(--ps-line); border-radius: 6px;
+  padding: 1rem 1.1rem; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 100; font-family: 'Lora', serif;
+}
+.swatch-picker.show { display: block; }
+.sp-role { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ps-muted); margin-bottom: 0.85rem; }
+.sp-row { display: flex; gap: 10px; margin-bottom: 1rem; align-items: center; }
+.sp-colour { width: 44px; height: 44px; border-radius: 4px; border: 1px solid var(--ps-line); cursor: pointer; padding: 0; background: transparent; }
+.sp-colour::-webkit-color-swatch-wrapper { padding: 2px; }
+.sp-colour::-webkit-color-swatch { border: none; border-radius: 3px; }
+.sp-hex { flex: 1; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; padding: 11px 12px; border: 1px solid var(--ps-line); border-radius: 3px; background: var(--ps-cream); color: var(--ps-dark); text-transform: uppercase; width: 100%; min-width: 0; outline: none; }
+.sp-hex:focus { border-color: var(--teal); }
+.sp-actions { display: flex; gap: 8px; }
+.sp-back, .sp-done { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; padding: 9px 12px; border-radius: 3px; border: 1px solid var(--ps-line); background: #fff; color: var(--ps-dark); cursor: pointer; flex: 1; transition: all 0.15s ease; }
+.sp-back:hover { background: var(--ps-cream); border-color: var(--teal); color: var(--teal); }
+.sp-done { background: var(--teal); color: #fff; border-color: var(--teal); }
+.sp-done:hover { background: #095560; }
+
+/* ── POST-EXPORT CTA ── */
+.post-export { display: none; margin-top: 1.75rem; background: #fff; border: 1px solid var(--ps-line); border-radius: 4px; padding: 1.5rem 1.75rem; }
+.post-export.show { display: block; }
+.post-export-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ps-pink); margin-bottom: 0.5rem; }
+.post-export-title { font-family: 'Gilda Display', serif; font-size: 20px; color: var(--ps-dark); margin-bottom: 1rem; max-width: 560px; }
+.post-export-btn { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; padding: 12px 22px; background: var(--teal); color: #fff; border-radius: 3px; text-decoration: none; transition: background 0.15s ease; }
+.post-export-btn:hover { background: #095560; color: #fff; }
+
+/* ── IMAGE DROP (Door 04) ── */
+.image-drop {
+  display: block; border: 2px dashed var(--ps-line); border-radius: 6px;
+  padding: 2.5rem 1.5rem; text-align: center; cursor: pointer;
+  background: #fff; transition: all 0.15s ease; margin-bottom: 0.85rem;
+}
+.image-drop:hover, .image-drop.is-dragover { border-color: var(--teal); background: var(--ps-cream); }
+.image-drop-empty { display: block; }
+.image-drop-loaded { display: none; }
+.image-drop.has-image .image-drop-empty { display: none; }
+.image-drop.has-image .image-drop-loaded {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 1.5rem; align-items: center; text-align: left;
+}
+.image-drop-icon { font-family: 'Gilda Display', serif; font-size: 32px; color: var(--teal); margin-bottom: 0.5rem; line-height: 1; }
+.image-drop-title { font-family: 'Gilda Display', serif; font-size: 17px; color: var(--ps-dark); margin-bottom: 0.35rem; }
+.image-drop-sub { font-family: 'Lora', serif; font-size: 13px; color: var(--ps-muted); font-style: italic; }
+#imagePreview { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; border: 0.5px solid var(--ps-line); }
+.image-extracted-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ps-muted); margin-bottom: 0.5rem; }
+.image-extracted-swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 0.75rem; }
+.image-extracted-swatch { aspect-ratio: 1; border-radius: 3px; border: 0.5px solid rgba(0,0,0,0.1); position: relative; }
+.image-extracted-hex { position: absolute; bottom: 4px; left: 0; right: 0; text-align: center; font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.04em; color: rgba(255,255,255,0.9); text-shadow: 0 0 3px rgba(0,0,0,0.5); }
+.image-extracted-swatch.light .image-extracted-hex { color: rgba(0,0,0,0.7); text-shadow: 0 0 3px rgba(255,255,255,0.5); }
+.image-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ── PASTE ZONE (Door 03) ── */
+.paste-zone {
+  width: 100%; min-height: 90px; background: var(--ps-cream); border: 1px dashed var(--ps-line);
+  border-radius: 3px; padding: 10px 12px; font-family: var(--font-mono); font-size: 12px;
+  color: var(--ps-dark); resize: vertical; outline: none; transition: border-color 0.2s; margin-bottom: 0.75rem; display: block;
+}
+.paste-zone:focus { border-color: var(--teal); }
+.paste-zone::placeholder { color: var(--ps-muted); }
+.parse-btn {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 10px 18px; border: 1px solid var(--teal); background: var(--teal); color: #fff;
+  border-radius: 3px; cursor: pointer; transition: all 0.15s ease;
+}
+.parse-btn:hover { background: #095560; }
+
+/* ── TOAST ── */
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--ps-dark); color: #fff; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 18px; border-radius: 3px; opacity: 0; pointer-events: none; transition: all 0.3s ease; z-index: 1000; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── EXPORT SHEET (off-screen) ── */
+.export-sheet { position: fixed; top: -10000px; left: -10000px; width: 1200px; background: #fff; padding: 60px; font-family: 'Lora', serif; }
+.export-sheet .es-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; color: var(--teal); text-transform: uppercase; margin-bottom: 8px; }
+.export-sheet .es-title { font-family: 'Gilda Display', serif; font-size: 42px; color: #333; font-weight: 400; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #e0ddd6; }
+.export-sheet .es-section { margin-bottom: 40px; }
+.export-sheet .es-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; color: #8a857d; text-transform: uppercase; margin-bottom: 16px; }
+.export-sheet .es-swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.export-sheet .es-swatch { aspect-ratio: 1; border-radius: 4px; position: relative; border: 0.5px solid rgba(0,0,0,0.06); }
+.export-sheet .es-swatch-label { position: absolute; bottom: 8px; left: 10px; font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.95); text-shadow: 0 0 3px rgba(0,0,0,0.5); }
+.export-sheet .es-swatch.light .es-swatch-label { color: rgba(0,0,0,0.75); text-shadow: 0 0 3px rgba(255,255,255,0.5); }
+.export-sheet .es-fonts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.export-sheet .es-font-card { background: #faf8f4; padding: 24px; border-radius: 4px; border: 1px solid #efebe3; }
+.export-sheet .es-font-role { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; color: #8a857d; text-transform: uppercase; margin-bottom: 8px; }
+.export-sheet .es-font-name { font-size: 28px; color: #333; line-height: 1.1; margin-bottom: 8px; }
+.export-sheet .es-font-sample { font-size: 14px; color: #555; line-height: 1.5; }
+.export-sheet .es-mockup-wrap { border: 1px solid #efebe3; border-radius: 4px; overflow: hidden; }
+.export-sheet .es-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e0ddd6; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: #8a857d; text-transform: uppercase; display: flex; justify-content: space-between; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1200px) { .grid { grid-template-columns: 280px 280px 1fr; } .library-grid { grid-template-columns: repeat(4, 1fr); } .mood-palettes { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 1000px) { .grid { grid-template-columns: 1fr; } .library-grid { grid-template-columns: repeat(3, 1fr); } .mood-grid { grid-template-columns: repeat(5, 1fr); } .mood-palettes { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 800px) {
+  .wrap { padding: 0 20px; }
+  .shell { padding: 1.75rem 1.25rem 3rem; }
+  .doors { grid-template-columns: 1fr; }
+  .library-grid { grid-template-columns: repeat(2, 1fr); }
+  .mood-grid { grid-template-columns: repeat(2, 1fr); }
+  .mood-palettes { grid-template-columns: repeat(2, 1fr); }
+  .topbar { flex-direction: column; gap: 10px; }
+  .topbar-actions { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 6px; }
+  nav.primary { gap: 16px; }
+  .mockup-bc-row { flex-direction: column; }
+  .mockup-section-b, .mockup-section-c { flex: none; width: 100%; }
+  .mockup-card { height: auto; }
+}
+@media (max-width: 480px) {
+  nav.primary a:not(.nav-cta) { display: none; }
+}
+@media (max-width: 480px) { .hero h1 { font-size: 2.4rem; } .library-grid { grid-template-columns: repeat(2, 1fr); } .mood-palettes { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     SITE HEADER
+     ============================================================ -->
+<header class="site">
+  <div class="wrap">
+    <a class="wordmark" href="index.html" aria-label="Pixel and Scale">
+      <img src="https://images.squarespace-cdn.com/content/v1/685e47ed4fc6e9282fe56d00/99827f16-fd08-4c29-8f86-7d0eee9069db/pixel-scale-logo-square.png?format=300w" alt="Pixel &amp; Scale">
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="index.html#about">About</a>
+      <a href="index.html#services" class="nav-cta">See the service</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero">
+    <div class="wrap">
+      <hr class="rule long">
+      <h1 style="margin-top:20px">Build your visual brand</h1>
+      <p class="subhead">Explore palettes. Tweak the colours. Test your fonts. See them live. Download your brand sheet.</p>
+      <p class="body-line">Free to use. No account needed. Take your time to explore and have fun!</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VIDEO PLACEHOLDER
+       ============================================================ -->
+  <section class="video-section">
+    <div class="wrap">
+      <div class="video-wrap">
+        <!-- VIDEO: embed walkthrough here when ready -->
+        <div class="placeholder video-ph" role="img" aria-label="Video walkthrough placeholder" style="display:flex">
+          <span class="play-icon" aria-hidden="true">&#9654;</span>
+        </div>
+        <p class="video-caption">Watch: a 2-minute walkthrough of the Brand Lab.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TOOL SECTION
+       ============================================================ -->
+  <section class="tool-section">
+    <div class="shell">
+
+      <!-- 2 DOORS -->
+      <div class="doors" role="tablist">
+        <button class="door-tab active" data-door="1" role="tab" aria-selected="true">
+          <div class="door-eyebrow">01</div>
+          <div class="door-title">Build from a mood</div>
+          <div class="door-sub">Start from a feeling.</div>
+        </button>
+        <button class="door-tab" data-door="2" role="tab" aria-selected="false">
+          <div class="door-eyebrow">02</div>
+          <div class="door-title">Browse all palettes</div>
+          <div class="door-sub">84 palettes, 9 moods.</div>
+        </button>
+        <button class="door-tab" data-door="3" role="tab" aria-selected="false">
+          <div class="door-eyebrow">03</div>
+          <div class="door-title">Already have colours?</div>
+          <div class="door-sub">Paste hex codes.</div>
+        </button>
+        <button class="door-tab" data-door="4" role="tab" aria-selected="false">
+          <div class="door-eyebrow">04</div>
+          <div class="door-title">From an image</div>
+          <div class="door-sub">Drop a photo.</div>
+        </button>
+      </div>
+
+      <!-- DOOR 1: Build from a mood -->
+      <section class="door-content active" data-door="1">
+        <div class="door-content-header">
+          <div class="panel-eyebrow">Build from a mood</div>
+          <div class="panel-title">Pick a feeling.</div>
+        </div>
+        <div class="mood-grid" id="moodGrid"></div>
+        <div class="mood-result" id="moodResult"></div>
+      </section>
+
+      <!-- DOOR 2: Browse all palettes -->
+      <section class="door-content" data-door="2">
+        <div class="door-content-header">
+          <div class="panel-eyebrow">Browse all palettes</div>
+          <div class="panel-title">Pick a look. Tweak it after.</div>
+        </div>
+        <div class="library-wrap" id="libraryWrap"></div>
+      </section>
+
+      <!-- DOOR 3: Paste hex codes -->
+      <section class="door-content" data-door="3">
+        <div class="door-content-header">
+          <div class="panel-eyebrow">Already have colours?</div>
+          <div class="panel-title">Paste hex codes from anywhere.</div>
+        </div>
+        <textarea class="paste-zone" id="pasteZone" placeholder="Paste hex codes, CSS variables, or any text containing colours — e.g. #F5F0E8, #2C3E2D, #B85C38&#10;The tool picks out the hex codes and assigns them to palette roles automatically."></textarea>
+        <button class="parse-btn" id="parseBtn">Extract colours</button>
+      </section>
+
+      <!-- DOOR 4: From an image -->
+      <section class="door-content" data-door="4">
+        <div class="door-content-header">
+          <div class="panel-eyebrow">From an image</div>
+          <div class="panel-title">Upload a photo. We pull the colours.</div>
+        </div>
+        <label class="image-drop" id="imageDrop">
+          <input type="file" id="imageInput" accept="image/*" hidden>
+          <div class="image-drop-empty">
+            <div class="image-drop-icon">+</div>
+            <div class="image-drop-title">Drop an image or click to upload</div>
+            <div class="image-drop-sub">JPG, PNG, WebP. Works best with photos that have a clear colour story.</div>
+          </div>
+          <div class="image-drop-loaded">
+            <img id="imagePreview" alt="Uploaded image preview">
+            <div>
+              <div class="image-extracted-label">Extracted palette</div>
+              <div class="image-extracted-swatches" id="imageExtracted"></div>
+              <div class="image-drop-sub">Loaded into the brand sheet below. Click any swatch there to edit.</div>
+            </div>
+          </div>
+        </label>
+        <div class="image-actions">
+          <button class="btn" id="imageReextractBtn" style="display:none">Re-extract</button>
+          <button class="btn" id="imageClearBtn" style="display:none">Upload different image</button>
+        </div>
+      </section>
+
+      <div class="downstream-divider" id="downstreamAnchor"></div>
+
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div class="topbar-brand">Your brand sheet</div>
+        <div class="topbar-actions">
+          <button class="btn" id="resetBtn">Reset</button>
+          <button class="btn" id="copyHexBtn">Copy hex</button>
+          <button class="btn" id="copyCSSBtn">Copy CSS</button>
+          <button class="btn btn-primary" id="exportBtn">Export PNG</button>
+          <!-- ── TEMP SAVE (remove before launch) ── -->
+          <button class="btn" id="saveBtn" style="background:#fef8ee;border-color:#d4a020;color:#8a6010;">Save</button>
+          <!-- ── /TEMP SAVE ── -->
+        </div>
+      </div>
+
+
+      <!-- 3-COLUMN GRID -->
+      <div class="grid">
+
+        <!-- COL 1: Palette -->
+        <div class="panel">
+          <div class="panel-eyebrow">01 · Palette</div>
+          <div class="panel-title">Six colours</div>
+          <div class="swatch-grid" id="swatchGrid"></div>
+          <div class="hint">Click any swatch to edit its colour.</div>
+          <div class="a11y-check">
+            <div class="a11y-eyebrow">Accessibility check</div>
+            <div id="a11yRows"></div>
+            <div class="a11y-note">A red cross means the text may be hard to read in that combination. Adjust the colour to fix it.</div>
+          </div>
+          <div class="copy-row">
+            <button class="copy-btn" data-copy="hex">Copy hex</button>
+            <button class="copy-btn" data-copy="css">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- COL 2: Typography -->
+        <div class="panel">
+          <div class="panel-eyebrow">02 · Typography</div>
+          <div class="panel-title">Font pairing</div>
+
+          <!-- Visual heading font picker -->
+          <div class="font-select-label">Heading font</div>
+          <div class="font-pick-wrap" id="headPickWrap">
+            <button class="font-pick-trigger" id="headTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="font-pick-display" id="headDisplay" style="font-family:'Gilda Display',serif">Gilda Display</span>
+              <span class="font-pick-chevron">▾</span>
+            </button>
+            <div class="font-pick-dropdown" id="headDropdown" role="listbox"></div>
+          </div>
+
+          <!-- Visual body font picker -->
+          <div class="font-select-label" style="margin-top:4px">Body font</div>
+          <div class="font-pick-wrap" id="bodyPickWrap">
+            <button class="font-pick-trigger" id="bodyTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="font-pick-display" id="bodyDisplay" style="font-family:'Lora',serif">Lora</span>
+              <span class="font-pick-chevron">▾</span>
+            </button>
+            <div class="font-pick-dropdown" id="bodyDropdown" role="listbox"></div>
+          </div>
+
+          <div class="preview-copy-section">
+            <div class="font-select-label">Your headline</div>
+            <input type="text" class="preview-copy-input" id="previewHeadline" placeholder="You are already well established" maxlength="60">
+            <div class="font-select-label" style="margin-top:5px">Your subheadline</div>
+            <input type="text" class="preview-copy-input" id="previewSubhead" placeholder="A short tagline or supporting sentence" maxlength="100">
+          </div>
+
+          <div class="presets-label" style="margin-top:1.25rem">Recommended pairings · 20</div>
+          <div class="preset-list" id="presetList"></div>
+        </div>
+
+        <!-- COL 3: Live preview -->
+        <div class="panel preview-panel">
+          <div class="panel-eyebrow">03 · Live preview</div>
+          <div class="panel-title">Mockup</div>
+
+          <div class="mockup-frame" id="mockupFrame">
+            <div class="mockup-header">
+              <div class="mockup-logo" contenteditable="true">Studio Name</div>
+              <div class="mockup-nav">
+                <span>Work</span><span>About</span><span>Contact</span>
+              </div>
+            </div>
+            <!-- Section A: light — eyebrow + divider removed to save height -->
+            <section class="mockup-section mockup-section-light">
+              <h2 class="mockup-headline" contenteditable="true">You are already well established</h2>
+              <p class="mockup-body" contenteditable="true">A one-page website that reflects the depth of your work and gives your warm leads a clear, confident next step.</p>
+              <a class="mockup-cta" contenteditable="true">Start a conversation</a>
+            </section>
+            <!-- Sections B + C: side by side -->
+            <div class="mockup-bc-row">
+              <section class="mockup-section mockup-section-dark mockup-section-b">
+                <div class="mockup-eyebrow" contenteditable="true">The Practice</div>
+                <h2 class="mockup-headline" contenteditable="true">Considered work for established practitioners</h2>
+                <p class="mockup-body" contenteditable="true">Thoughtful, unhurried design for the people who are already doing excellent work.</p>
+                <a class="mockup-cta" contenteditable="true">Start a conversation</a>
+              </section>
+              <section class="mockup-section mockup-section-card-host mockup-section-c">
+                <div class="mockup-card">
+                  <div class="mockup-eyebrow" contenteditable="true">The Service</div>
+                  <h3 class="mockup-headline" contenteditable="true">One page. Done right.</h3>
+                  <p class="mockup-body" contenteditable="true">Everything your warm leads need to say yes.</p>
+                  <a class="mockup-cta" contenteditable="true">Book a call</a>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="preview-hint">Click any text in the mockup to edit it.</div>
+        </div>
+
+      </div><!-- /.grid -->
+
+      <!-- POST-EXPORT CTA -->
+      <div class="post-export" id="postExport">
+        <div class="post-export-eyebrow">Like what you built?</div>
+        <div class="post-export-title">Pixel &amp; Scale turns this into a one-page website designed around your work.</div>
+        <a class="post-export-btn" href="index.html#services">See the one-page service →</a>
+      </div>
+
+    </div><!-- /.shell -->
+  </section>
+
+</main>
+
+<!-- ============================================================
+     SITE FOOTER
+     ============================================================ -->
+<footer class="site">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:stretch">
+    <hr class="rule" style="width:100%;margin-bottom:32px">
+    <div class="foot-row">
+      <a class="foot-mark" href="index.html" style="text-decoration:none">Pixel &amp; Scale</a>
+      <nav aria-label="Footer" style="display:flex;gap:28px">
+        <a href="index.html#about" style="color:var(--ink-2);font-size:15px">About</a>
+        <a href="index.html#services" style="color:var(--ink-2);font-size:15px">Services</a>
+        <a href="mailto:hello@pixelandscale.com" style="color:var(--ink-2);font-size:15px">Contact</a>
+      </nav>
+      <div class="copyright">&copy; 2026 Pixel &amp; Scale</div>
+    </div>
+  </div>
+</footer>
+
+<!-- OFF-SCREEN EXPORT SHEET -->
+<div class="export-sheet" id="exportSheet"></div>
+
+<!-- SWATCH PICKER POPUP -->
+<div class="swatch-picker" id="swatchPicker" role="dialog" aria-label="Edit colour">
+  <div class="sp-role" id="spRole"></div>
+  <div class="sp-row">
+    <input type="color" class="sp-colour" id="spColour">
+    <input type="text" class="sp-hex" id="spHex" maxlength="7" spellcheck="false" autocomplete="off">
+  </div>
+  <div class="sp-actions">
+    <button type="button" class="sp-back" id="spBack">Revert</button>
+    <button type="button" class="sp-done" id="spDone">Done</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   ROLES
+   ============================================================ */
+const ROLES = ['background-light','background-dark','accent','heading','body','muted'];
+const ROLE_LABELS = {
+  'background-light': 'Background · light',
+  'background-dark':  'Background · dark',
+  'accent':           'Accent',
+  'heading':          'Heading text',
+  'body':             'Body text',
+  'muted':            'Muted'
+};
+
+/* ============================================================
+   PALETTE DATA — 100 palettes · 10 categories · 10 each
+   Swatch order: background-light, background-dark, accent, heading, body, muted
+   Note: heading & body start as the same value; both are editable.
+   ============================================================ */
+function sw(bgL, bgD, ac, text, muted) {
+  return { 'background-light': bgL, 'background-dark': bgD, 'accent': ac, 'heading': text, 'body': text, 'muted': muted };
+}
+
+const PALETTES = [
+  // ── WARM & EARTHY ────────────────────────────────────────
+  { id:'we-1',  mood:'warm-earthy',       name:'Sage & Clay',          swatches: sw('#F5F0E8','#2C3E2D','#B85C38','#4A4A3A','#C4B9A8') },
+  { id:'we-3',  mood:'warm-earthy',       name:'Terracotta & Bone',    swatches: sw('#F7F0E6','#3E362E','#C4683A','#865D36','#A69080') },
+  { id:'we-4',  mood:'warm-earthy',       name:'Teal, Rust & Cream',   swatches: sw('#FBE9D0','#244855','#E64833','#874F41','#90AEAD') },
+  { id:'we-5',  mood:'warm-earthy',       name:'Sand & Mustard',       swatches: sw('#EFE2BA','#2C3531','#D79922','#116466','#D9B08C') },
+  { id:'we-6',  mood:'warm-earthy',       name:'Rust & Warm Grey',     swatches: sw('#F5F5F0','#4A4A40','#E8652F','#707060','#C8C8B8') },
+  { id:'we-7',  mood:'warm-earthy',       name:'Butter & Navy',        swatches: sw('#FBE8A6','#303C6C','#F4976C','#874F41','#D2FDFF') },
+  { id:'we-8',  mood:'warm-earthy',       name:'Blush & Mauve',        swatches: sw('#EAE7DC','#25274D','#E98074','#464866','#AAABB8') },
+  { id:'we-9',  mood:'warm-earthy',       name:'Clay & Bark',          swatches: sw('#F2EDE4','#3E362E','#93785B','#865D36','#C8B49A') },
+  { id:'we-10', mood:'warm-earthy',       name:'Crimson & Parchment',  swatches: sw('#EDC7B7','#5D001E','#AC3B61','#123C69','#EEE2DC') },
+
+  // ── CALM & COLLECTED ─────────────────────────────────────
+  { id:'cc-1',  mood:'calm-collected',    name:'Mist & Mint',          swatches: sw('#D6E4E8','#0D2B45','#4EC4B0','#1A4A6B','#8FA8B0') },
+  { id:'cc-2',  mood:'calm-collected',    name:'Ivory & Ocean',        swatches: sw('#F4F0E6','#1B3A4B','#3A8FA8','#2A6070','#C4C0B0') },
+  { id:'cc-3',  mood:'calm-collected',    name:'Mushroom & Lavender',  swatches: sw('#E8E4DC','#2A1F3D','#9B8EC4','#3D2E5A','#B8B4C0') },
+  { id:'cc-4',  mood:'calm-collected',    name:'Soft Teal & Stone',    swatches: sw('#F0F5F5','#112D32','#88BDBC','#254E58','#6E6658') },
+  { id:'cc-5',  mood:'calm-collected',    name:'Periwinkle',           swatches: sw('#EDE8F5','#2A3080','#3A5A9A','#2A2A4A','#ADBBDA') },
+  { id:'cc-6',  mood:'calm-collected',    name:'Navy & Slate',         swatches: sw('#D3D9D4','#212A31','#124E66','#2E3944','#748D92') },
+  { id:'cc-7',  mood:'calm-collected',    name:'Steel & Cyan',         swatches: sw('#F7F9FB','#25274D','#2E9CCA','#464866','#AAABB8') },
+  { id:'cc-8',  mood:'calm-collected',    name:'Blue & Warm Yellow',   swatches: sw('#F7F9FB','#24305E','#374785','#A8D0E6','#F8E9A1') },
+  { id:'cc-9',  mood:'calm-collected',    name:'Sage & Dusty Pink',    swatches: sw('#F8F6F2','#2F4454','#DA7B93','#376E6F','#1C3334') },
+  { id:'cc-10', mood:'calm-collected',    name:'Slate Blue & Teal',    swatches: sw('#F7F9FB','#2A3A48','#3A6E8E','#1A2A38','#8FC1E3') },
+
+  // ── SOFT & MODERN ────────────────────────────────────────
+  { id:'sm-1',  mood:'soft-modern',       name:'Off-white & Coral',    swatches: sw('#FAF5EE','#1E2832','#D4644A','#3A4858','#F2DDD0') },
+  { id:'sm-2',  mood:'soft-modern',       name:'Plum & Mint',          swatches: sw('#F4F2EE','#141418','#8AC4A8','#3A1A4A','#C0A0B0') },
+  { id:'sm-3',  mood:'soft-modern',       name:'Cream, Cobalt & Sun',  swatches: sw('#F5F2E8','#141414','#C89010','#1A3690','#C8C0A0') },
+  { id:'sm-4',  mood:'soft-modern',       name:'Lavender & Emerald',   swatches: sw('#F8F5FF','#2A1B3D','#00C897','#6B4FB0','#C8C0E0') },
+  { id:'sm-5',  mood:'soft-modern',       name:'Warm White & Cobalt',  swatches: sw('#FAFAFA','#1A1A1A','#2B3FE0','#505060','#C8C8D8') },
+  { id:'sm-6',  mood:'soft-modern',       name:'Pink & Electric Blue', swatches: sw('#FFFFFF','#1A1A1A','#D83F87','#2B4EFF','#E8E8F0') },
+  { id:'sm-7',  mood:'soft-modern',       name:'Mint & Charcoal',      swatches: sw('#F8FFFE','#17252A','#3AAFA9','#2B7A78','#DEF2F1') },
+  { id:'sm-8',  mood:'soft-modern',       name:'Lilac & Chartreuse',   swatches: sw('#F7F9FB','#46344E','#C8C010','#5A5560','#9D8D8F') },
+  { id:'sm-9',  mood:'soft-modern',       name:'Fuchsia & Deep Violet',swatches: sw('#F0EBF4','#2A1B3D','#D83F87','#44318D','#A4B3B6') },
+  { id:'sm-10', mood:'soft-modern',       name:'Lilac, Mist & Rose',   swatches: sw('#F0EBF4','#3A2880','#C06098','#2A2045','#B39BC8') },
+
+  // ── EDITORIAL & REFINED ──────────────────────────────────
+  { id:'er-1',  mood:'editorial-refined', name:'Bone, Slate & Burgundy',swatches: sw('#F0EDEA','#1A3A4A','#8B1A3A','#1E5A6A','#A89890') },
+  { id:'er-2',  mood:'editorial-refined', name:'Cream, Plum & Bronze', swatches: sw('#F4EFE4','#2A0A3A','#C4903A','#4A1A5A','#C4B8A8') },
+  { id:'er-4',  mood:'editorial-refined', name:'Editorial Elegance',   swatches: sw('#F2F0EB','#141414','#B85A3A','#2A3A50','#C8C0B0') },
+  { id:'er-5',  mood:'editorial-refined', name:'Bottle Green & Blush', swatches: sw('#F6F2EC','#180E10','#E8B0B8','#1A3A28','#4A6A48') },
+  { id:'er-6',  mood:'editorial-refined', name:'Ink & Violet',         swatches: sw('#F0EEF5','#2D283E','#802BB1','#564F6F','#D1D7E0') },
+  { id:'er-7',  mood:'editorial-refined', name:'Deep Navy & Coral',    swatches: sw('#F5F5F5','#314455','#C96567','#644E5B','#97AABD') },
+  { id:'er-8',  mood:'editorial-refined', name:'Cobalt & Bone',        swatches: sw('#F5F4F0','#141414','#0A21C0','#474853','#B3B4BD') },
+  { id:'er-9',  mood:'editorial-refined', name:'Charcoal & Dusty Pink',swatches: sw('#F5F2EE','#2F4454','#DA7B93','#464866','#AAABB8') },
+  { id:'er-10', mood:'editorial-refined', name:'Claret & Royal Blue',  swatches: sw('#F3E0DC','#5C2018','#4285F4','#BC4639','#D4A59A') },
+
+  // ── BOLD & CONFIDENT ─────────────────────────────────────
+  { id:'bc-1',  mood:'bold-confident',    name:'Black, Cobalt & Red',  swatches: sw('#F5F0EC','#1A1A3A','#C42A00','#1A1E2E','#EAE6E2') },
+  { id:'bc-3',  mood:'bold-confident',    name:'Cream, Cobalt & Red',  swatches: sw('#EFE2BA','#7A5010','#F13C20','#1E2848','#EAECF4') },
+  { id:'bc-4',  mood:'bold-confident',    name:'Grey, Orange & Yellow',swatches: sw('#F2F2F0','#241810','#D85020','#202020','#F0E8C8') },
+  { id:'bc-5',  mood:'bold-confident',    name:'Purple, Gold & Cyan',  swatches: sw('#F5EEE8','#2E1458','#9B4AC0','#201830','#F0E4C8') },
+  { id:'bc-6',  mood:'bold-confident',    name:'Cyan, Blue & Amber',   swatches: sw('#F5EDE0','#162848','#0A6FA0','#141E30','#F0DEB8') },
+  { id:'bc-7',  mood:'bold-confident',    name:'Charcoal, Cyan & Teal',swatches: sw('#C5C6C7','#0D1820','#38C9C0','#141D28','#C8ECEC') },
+  { id:'bc-8',  mood:'bold-confident',    name:'Berry & Magenta',      swatches: sw('#F5F0EC','#20122A','#C43875','#1C1025','#EAE0EC') },
+  { id:'bc-10', mood:'bold-confident',    name:'Midnight Navy & Emerald',swatches: sw('#F4E4C1','#0A1060','#15DB95','#060E5A','#F5E8C4') },
+
+  // ── QUIET & NEUTRAL ──────────────────────────────────────
+  { id:'qn-1',  mood:'quiet-neutral',     name:'Linen & Dust',         swatches: sw('#EAE7DC','#2E2E2E','#8E8D8A','#2A2520','#EDE9E2') },
+  { id:'qn-2',  mood:'quiet-neutral',     name:'Warm Greyscale',       swatches: sw('#F5F5F0','#2A2A28','#7E685A','#252525','#EEECEA') },
+  { id:'qn-3',  mood:'quiet-neutral',     name:'Blush & Stone',        swatches: sw('#EEE2DC','#2A2020','#E3AFBC','#2E2828','#EEEEED') },
+  { id:'qn-4',  mood:'quiet-neutral',     name:'Walnut & Pewter',      swatches: sw('#F2EDE8','#474853','#844D36','#2E2820','#EDEAE8') },
+  { id:'qn-5',  mood:'quiet-neutral',     name:'Storm & Blush',        swatches: sw('#F2EEF0','#5F6366','#99CED3','#252E3A','#F0E8EA') },
+  { id:'qn-6',  mood:'quiet-neutral',     name:'Greige & Soft Black',  swatches: sw('#F0EDEA','#1E1C1A','#A89890','#252220','#EDEAE6') },
+  { id:'qn-7',  mood:'quiet-neutral',     name:'Chalk & Charcoal',     swatches: sw('#F8F8F5','#272727','#C2B9B0','#252525','#EEECEA') },
+  { id:'qn-8',  mood:'quiet-neutral',     name:'Parchment & Slate',    swatches: sw('#F4EFE4','#2A2A35','#8697C4','#252530','#EDEAE0') },
+  { id:'qn-9',  mood:'quiet-neutral',     name:'Oat & Nude Rose',      swatches: sw('#F6F2EC','#2A1F1A','#D4A59A','#2E2420','#EEE8E2') },
+  { id:'qn-10', mood:'quiet-neutral',     name:'Taupe & Ink',          swatches: sw('#EDE8E0','#181715','#9B786F','#252020','#EDEAE6') },
+
+  // ── COASTAL & CALM ───────────────────────────────────────
+  { id:'co-1',  mood:'coastal-calm',      name:'Deep Teal & Sand',     swatches: sw('#AFDDE5','#003135','#0FA4AF','#1A2E30','#D8EEF0') },
+  { id:'co-3',  mood:'coastal-calm',      name:'Sky, Cornflower & Surf',swatches: sw('#F7F9FB','#2A4090','#3A60C8','#1A2A50','#D5DCF0') },
+  { id:'co-4',  mood:'coastal-calm',      name:'Madeo',                swatches: sw('#EDEAE5','#025560','#D4B020','#1A4040','#D8EDE5') },
+  { id:'co-5',  mood:'coastal-calm',      name:'Coral, Sky & Sand',    swatches: sw('#ECECEC','#2A5880','#C85858','#2A4060','#E0D4B0') },
+  { id:'co-6',  mood:'coastal-calm',      name:'Peach & Teal',         swatches: sw('#FFF8F5','#025560','#C05080','#1E3A38','#D4EEE8') },
+  { id:'co-7',  mood:'coastal-calm',      name:'Salt & Sea Glass',     swatches: sw('#F4F0E6','#1B3A4B','#88BDBC','#1E5C65','#D8EEEE') },
+  { id:'co-8',  mood:'coastal-calm',      name:'Dusk & Horizon',       swatches: sw('#EDE8F5','#2A3A80','#5070C0','#1A2040','#D0D8EE') },
+  { id:'co-9',  mood:'coastal-calm',      name:'Warm Teal & Ivory',    swatches: sw('#F4F0E6','#024950','#4EC4B0','#1A3840','#D6E4E8') },
+  { id:'co-10', mood:'coastal-calm',      name:'Ocean & Seafoam',      swatches: sw('#F8FFFE','#17252A','#65CCB8','#1A4A38','#E4F5F2') },
+
+  // ── BOTANICAL & GROUNDED ─────────────────────────────────
+  { id:'bg-1',  mood:'botanical-grounded',name:'Forest Greens',        swatches: sw('#F2F2F0','#222629','#3A6820','#474B4F','#6A9040') },
+  { id:'bg-3',  mood:'botanical-grounded',name:'Sea Kelp & Mint',      swatches: sw('#F2F5F2','#182628','#3B945E','#57BA98','#65CCB8') },
+  { id:'bg-4',  mood:'botanical-grounded',name:'Teal Forest',          swatches: sw('#F5F0E8','#19181A','#00887A','#479761','#CEBC81') },
+  { id:'bg-5',  mood:'botanical-grounded',name:'Sage & Fern',          swatches: sw('#F0F5F0','#1A2A1A','#4A7A4A','#2C3E2D','#A8C8A8') },
+  { id:'bg-6',  mood:'botanical-grounded',name:'Moss & Terracotta',    swatches: sw('#F5F0E8','#2C3E2D','#B85C38','#6B7A50','#C4B9A8') },
+  { id:'bg-7',  mood:'botanical-grounded',name:'Olive & Sand',         swatches: sw('#F2EDE0','#2C3531','#687864','#116466','#D9C8A0') },
+  { id:'bg-8',  mood:'botanical-grounded',name:'Rainforest',           swatches: sw('#EBF5EB','#1F4A1F','#5A9A5A','#3A7A3A','#B8D8B8') },
+  { id:'bg-9',  mood:'botanical-grounded',name:'Bark & Blossom',       swatches: sw('#F7F0E6','#3E362E','#865D36','#A69080','#FFCCBC') },
+  { id:'bg-10', mood:'botanical-grounded',name:'Herb & Cream',         swatches: sw('#FAF6EE','#2A1F14','#4A7A60','#116466','#C9C8A0') },
+
+
+  // ── FORMAL & CLASSICAL ───────────────────────────────────
+  { id:'fc-1',  mood:'formal-classical',  name:'Charcoal & Navy',      swatches: sw('#D3D9D4','#212A31','#124E66','#2E3944','#748D92') },
+  { id:'fc-2',  mood:'formal-classical',  name:'Burgundy & Stone',     swatches: sw('#EEE2DC','#5D001E','#9A1750','#123C69','#BAB2B5') },
+  { id:'fc-3',  mood:'formal-classical',  name:'Claret & Deep Navy',   swatches: sw('#F3E0DC','#080F5B','#5C2018','#BC4639','#D4A59A') },
+  { id:'fc-4',  mood:'formal-classical',  name:'Admiralty Blues',      swatches: sw('#D3D9D4','#022140','#265077','#494B68','#1E4258') },
+  { id:'fc-5',  mood:'formal-classical',  name:'Crimson, Grey & Navy', swatches: sw('#F5F0EC','#314455','#C96567','#2A2030','#9E7A80') },
+  { id:'fc-6',  mood:'formal-classical',  name:'Forest & Ivory',       swatches: sw('#F4F0E6','#1F2605','#1F6521','#2C3531','#C4C0B0') },
+  { id:'fc-7',  mood:'formal-classical',  name:'Ink & Parchment',      swatches: sw('#F4EFE4','#141414','#474853','#2A2A35','#C4B8A8') },
+  { id:'fc-8',  mood:'formal-classical',  name:'Navy, Berry & Sage',   swatches: sw('#F8F6F2','#2F4454','#9A1750','#376E6F','#C4C0B0') },
+  { id:'fc-9',  mood:'formal-classical',  name:'Oxford & Gold',        swatches: sw('#F2EDE4','#002147','#C4903A','#1A3A4A','#A89890') },
+  { id:'fc-10', mood:'formal-classical',  name:'Slate & Crimson',      swatches: sw('#E8E4DC','#1A2A3A','#8B1A3A','#2E3944','#9AA8B0') },
+];
+
+/* ============================================================
+   MOOD METADATA
+   ============================================================ */
+const MOODS_META = [
+  { id:'warm-earthy',       name:'Warm & earthy',        desc:'Grounded, natural and warm. Terracotta, clay, sand and organic tones.' },
+  { id:'calm-collected',    name:'Calm & collected',      desc:'Airy and restrained. Blues, greens, soft greys and muted neutrals.' },
+  { id:'soft-modern',       name:'Soft & modern',         desc:'Contemporary and friendly. Unexpected pairings, confident pastels.' },
+  { id:'editorial-refined', name:'Editorial & refined',   desc:'Magazine-feel, confident colour moves. Cream, dark, strong accent.' },
+  { id:'bold-confident',    name:'Bold & confident',      desc:'Strong colour, high contrast, decisive. Energy and certainty.' },
+  { id:'quiet-neutral',     name:'Quiet & neutral',       desc:'Cream, taupe, off-white, near-black. Restrained professional.' },
+  { id:'coastal-calm',      name:'Coastal & calm',        desc:'Blue-led, water-adjacent. Teal, navy and sand. Spacious and calm.' },
+  { id:'botanical-grounded',name:'Botanical & grounded',  desc:'Green-led, organic. Sage, moss, fern. Growth and nature as hero.' },
+  { id:'formal-classical',  name:'Formal & classical',    desc:'Navy, oxblood, charcoal, brass. Old-money authority.' },
+];
+
+/* ============================================================
+   MOOD → RECOMMENDED FONT PAIR
+   (index into FONT_PAIRINGS array)
+   ============================================================ */
+const MOOD_FONT = {
+  'warm-earthy':       { heading: 'Fraunces',             body: 'Inter',         headingStyle: 'normal', headingWeight: 400 },
+  'calm-collected':    { heading: 'Cormorant Garamond',   body: 'Karla',         headingStyle: 'normal', headingWeight: 400 },
+  'soft-modern':       { heading: 'Spectral',             body: 'Karla',         headingStyle: 'normal', headingWeight: 400 },
+  'editorial-refined': { heading: 'Playfair Display',     body: 'Source Sans 3', headingStyle: 'normal', headingWeight: 400 },
+  'bold-confident':    { heading: 'Syne',                 body: 'Inter',         headingStyle: 'normal', headingWeight: 700 },
+  'quiet-neutral':     { heading: 'EB Garamond',          body: 'Karla',         headingStyle: 'normal', headingWeight: 400 },
+  'coastal-calm':      { heading: 'Cormorant Garamond',   body: 'Lato',          headingStyle: 'normal', headingWeight: 400 },
+  'botanical-grounded':{ heading: 'Fraunces',             body: 'Inter',         headingStyle: 'normal', headingWeight: 400 },
+  'formal-classical':  { heading: 'Cinzel',               body: 'Lora',          headingStyle: 'normal', headingWeight: 400 },
+};
+
+/* ============================================================
+   FONT PAIRINGS (20 — shown in typography panel)
+   ============================================================ */
+const FONT_PAIRINGS = [
+  { name:'Pixel & Scale',           heading:'Gilda Display',       body:'Lora',          headingStyle:'normal', headingWeight:400 },
+  { name:'Old-world editorial',     heading:'Cormorant Garamond',  body:'Inter',         headingStyle:'normal', headingWeight:400 },
+  { name:'Timeless elegance',       heading:'Playfair Display',    body:'Source Sans 3', headingStyle:'normal', headingWeight:400 },
+  { name:'Warm & earthy',           heading:'Fraunces',            body:'Inter',         headingStyle:'normal', headingWeight:400 },
+  { name:'Bold swagger',            heading:'Fraunces',            body:'DM Sans',       headingStyle:'italic', headingWeight:900 },
+  { name:'Scholarly calm',          heading:'EB Garamond',         body:'Karla',         headingStyle:'normal', headingWeight:400 },
+  { name:'Formal coastal',          heading:'Cormorant Garamond',  body:'Lato',          headingStyle:'normal', headingWeight:400 },
+  { name:'Fashion editorial',       heading:'Bodoni Moda',         body:'Inter',         headingStyle:'normal', headingWeight:400 },
+  { name:'Magazine didone',         heading:'Prata',               body:'Karla',         headingStyle:'normal', headingWeight:400 },
+  { name:'Evening-elegant',         heading:'Italiana',            body:'Karla',         headingStyle:'normal', headingWeight:400 },
+  { name:'New editorial',           heading:'Newsreader',          body:'Inter',         headingStyle:'normal', headingWeight:400 },
+  { name:'Library quiet',           heading:'Cardo',               body:'Inter',         headingStyle:'normal', headingWeight:400 },
+  { name:'Engraved formal',         heading:'Cinzel',              body:'Lora',          headingStyle:'normal', headingWeight:400 },
+  { name:'Thin elegant caps',       heading:'Forum',               body:'Karla',         headingStyle:'normal', headingWeight:400 },
+  { name:'Classical personality',   heading:'Marcellus',           body:'Inter',         headingStyle:'normal', headingWeight:400 },
+  { name:'Elegant curves',          heading:'Yeseva One',          body:'Inter',         headingStyle:'normal', headingWeight:400 },
+  { name:'Retro confident',         heading:'Caprasimo',           body:'Inter',         headingStyle:'normal', headingWeight:400 },
+  { name:'Soft modern',             heading:'Spectral',            body:'Karla',         headingStyle:'normal', headingWeight:400 },
+  { name:'Geometric edge',          heading:'Syne',                body:'Inter',         headingStyle:'normal', headingWeight:700 },
+  { name:'Sharp modern',            heading:'Manrope',             body:'Inter',         headingStyle:'normal', headingWeight:400 },
+];
+
+/* ── Unique heading / body fonts for visual pickers ── */
+const HEAD_FONTS = [...new Set(FONT_PAIRINGS.map(p => p.heading))];
+const BODY_FONTS = [...new Set(FONT_PAIRINGS.map(p => p.body))];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const DEFAULT_PAL = PALETTES[0];
+let palette = ROLES.map(r => ({ role: r, hex: DEFAULT_PAL.swatches[r] }));
+let originalPalette = null;
+let currentHeading = FONT_PAIRINGS[0].heading;
+let currentBody    = FONT_PAIRINGS[0].body;
+let currentHStyle  = FONT_PAIRINGS[0].headingStyle;
+let currentHWeight = FONT_PAIRINGS[0].headingWeight;
+let currentButtonPref = null;
+let activeEditIndex = null;
+let originalEditHex = null;
+
+function paletteHexes() { return palette.map(s => s.hex); }
+function rolesMap()     { return Object.fromEntries(palette.map(s => [s.role, s.hex])); }
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function isLight(hex) {
+  var c = hex.replace('#','');
+  var r = parseInt(c.substr(0,2),16);
+  var g = parseInt(c.substr(2,2),16);
+  var b = parseInt(c.substr(4,2),16);
+  return (0.299*r + 0.587*g + 0.114*b) > 160;
+}
+
+function hexToRgb(hex) {
+  var c = hex.replace('#','');
+  return [parseInt(c.substr(0,2),16), parseInt(c.substr(2,2),16), parseInt(c.substr(4,2),16)];
+}
+
+function toLinear(c) {
+  c = c/255;
+  return c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4);
+}
+
+function luminance(hex) {
+  var rgb = hexToRgb(hex);
+  return 0.2126*toLinear(rgb[0]) + 0.7152*toLinear(rgb[1]) + 0.0722*toLinear(rgb[2]);
+}
+
+function contrastRatio(a, b) {
+  var l1 = luminance(a), l2 = luminance(b);
+  var hi = Math.max(l1,l2), lo = Math.min(l1,l2);
+  return (hi+0.05)/(lo+0.05);
+}
+
+function hslLightness(hex) {
+  var c = hex.replace('#','');
+  var r = parseInt(c.substr(0,2),16)/255;
+  var g = parseInt(c.substr(2,2),16)/255;
+  var b = parseInt(c.substr(4,2),16)/255;
+  return (Math.max(r,g,b) + Math.min(r,g,b)) / 2;
+}
+
+function computeButtonColours(byRole, preferText) {
+  var accent = byRole['accent'];
+  var light  = byRole['background-light'];
+  var dark   = byRole['background-dark'];
+  var lightOn = contrastRatio(light, accent);
+  var darkOn  = contrastRatio(dark,  accent);
+  if (preferText === 'white' && lightOn >= 3) return { bg: accent, text: light };
+  if (preferText === 'dark'  && darkOn  >= 3) return { bg: accent, text: dark };
+  if (lightOn >= 3 || darkOn >= 3) return { bg: accent, text: (lightOn >= darkOn ? light : dark) };
+  return { bg: dark, text: light };
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 1800);
+}
+
+function scrollToDownstream() {
+  var el = document.getElementById('downstreamAnchor');
+  if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+/* ============================================================
+   FONT APPLICATION
+   ============================================================ */
+function applyFonts() {
+  var hFamily = "'" + currentHeading + "', Georgia, serif";
+  var bFamily = "'" + currentBody    + "', sans-serif";
+  var root = document.documentElement;
+  root.style.setProperty('--heading-font', hFamily);
+  root.style.setProperty('--body-font',    bFamily);
+  /* update heading display to use current heading style/weight */
+  /* (browser re-renders CSS var automatically) */
+}
+
+function setFontPair(heading, body, hStyle, hWeight, updatePickers) {
+  currentHeading = heading;
+  currentBody    = body;
+  currentHStyle  = hStyle  || 'normal';
+  currentHWeight = hWeight || 400;
+  applyFonts();
+
+  /* update pickers display */
+  var hd = document.getElementById('headDisplay');
+  var bd = document.getElementById('bodyDisplay');
+  if (hd) { hd.textContent = heading; hd.style.fontFamily = "'" + heading + "',serif"; hd.style.fontStyle = currentHStyle; hd.style.fontWeight = currentHWeight; }
+  if (bd) { bd.textContent = body;    bd.style.fontFamily = "'" + body    + "',sans-serif"; }
+
+  /* mark active option in pickers */
+  document.querySelectorAll('#headDropdown .font-pick-option').forEach(function(o){
+    o.classList.toggle('selected', o.dataset.font === heading);
+  });
+  document.querySelectorAll('#bodyDropdown .font-pick-option').forEach(function(o){
+    o.classList.toggle('selected', o.dataset.font === body);
+  });
+
+  /* mark active preset */
+  document.querySelectorAll('.preset').forEach(function(p, i){
+    var pair = FONT_PAIRINGS[i];
+    p.classList.toggle('active', pair.heading === heading && pair.body === body);
+  });
+}
+
+/* ============================================================
+   PALETTE APPLICATION
+   ============================================================ */
+function loadPaletteFull(palObj, noScroll) {
+  palette = ROLES.map(function(r){ return { role: r, hex: palObj.swatches[r] }; });
+  originalPalette = palObj;
+  currentButtonPref = null;
+
+  /* apply recommended font pair for this mood */
+  var mFont = MOOD_FONT[palObj.mood];
+  if (mFont) setFontPair(mFont.heading, mFont.body, mFont.headingStyle, mFont.headingWeight, true);
+
+  renderSwatches();
+  applyBrandVars();
+  if (!noScroll) scrollToDownstream();
+}
+
+function applyBrandVars() {
+  var root = document.documentElement;
+  var by = rolesMap();
+  root.style.setProperty('--bg-light', by['background-light']);
+  root.style.setProperty('--bg-dark',  by['background-dark']);
+  root.style.setProperty('--accent',   by['accent']);
+  root.style.setProperty('--heading',  by['heading']);
+  root.style.setProperty('--body',     by['body']);
+  root.style.setProperty('--muted',    by['muted']);
+
+  var headingOnDark = hslLightness(by['heading']) > 0.5 ? by['heading'] : by['background-light'];
+  var bodyOnDark    = hslLightness(by['body'])    > 0.5 ? by['body']    : by['background-light'];
+  var btn = computeButtonColours(by, currentButtonPref);
+  root.style.setProperty('--heading-on-dark', headingOnDark);
+  root.style.setProperty('--body-on-dark',    bodyOnDark);
+  root.style.setProperty('--button-bg',       btn.bg);
+  root.style.setProperty('--button-text',     btn.text);
+
+  renderA11yCheck();
+}
+
+/* ============================================================
+   SWATCHES
+   ============================================================ */
+function renderSwatches() {
+  var grid = document.getElementById('swatchGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  palette.forEach(function(slot, i) {
+    var hex = slot.hex;
+    var sw = document.createElement('div');
+    sw.className = 'swatch' + (isLight(hex) ? ' light' : '');
+    sw.style.background = hex;
+    sw.dataset.index = i;
+    sw.innerHTML = '<span class="swatch-role">' + ROLE_LABELS[slot.role] + '</span><span class="swatch-hex">' + hex + '</span>';
+    sw.addEventListener('click', function(){ openSwatchPicker(i, sw); });
+    grid.appendChild(sw);
+  });
+}
+
+/* ── Swatch picker ── */
+function positionPicker(picker, anchor) {
+  var r = anchor.getBoundingClientRect();
+  var pw = 260;
+  var left = r.right + 10;
+  if (left + pw > window.innerWidth) left = Math.max(4, r.left - pw - 10);
+  picker.style.left = left + 'px';
+  picker.style.top  = Math.min(r.top, window.innerHeight - 200) + 'px';
+}
+
+function openSwatchPicker(i, anchor) {
+  var picker = document.getElementById('swatchPicker');
+  activeEditIndex = i;
+  originalEditHex = palette[i].hex;
+  document.getElementById('spRole').textContent = ROLE_LABELS[palette[i].role];
+  document.getElementById('spColour').value = palette[i].hex;
+  document.getElementById('spHex').value    = palette[i].hex;
+  positionPicker(picker, anchor);
+  picker.classList.add('show');
+  setTimeout(function(){ document.getElementById('spColour').click(); }, 0);
+}
+
+function closeSwatchPicker() {
+  document.getElementById('swatchPicker').classList.remove('show');
+  activeEditIndex = null;
+  originalEditHex = null;
+}
+
+function setPaletteSlotHex(i, hex) {
+  palette[i].hex = hex.toUpperCase();
+  currentButtonPref = null;
+  renderSwatches();
+  applyBrandVars();
+}
+
+function initSwatchPicker() {
+  var colour   = document.getElementById('spColour');
+  var hexInput = document.getElementById('spHex');
+
+  colour.addEventListener('input', function(e) {
+    if (activeEditIndex === null) return;
+    var hex = e.target.value.toUpperCase();
+    hexInput.value = hex;
+    setPaletteSlotHex(activeEditIndex, hex);
+  });
+
+  hexInput.addEventListener('input', function(e) {
+    if (activeEditIndex === null) return;
+    var v = e.target.value.trim();
+    if (!v.startsWith('#')) v = '#' + v;
+    if (/^#[A-Fa-f0-9]{6}$/.test(v)) {
+      colour.value = v;
+      setPaletteSlotHex(activeEditIndex, v);
+    }
+  });
+
+  document.getElementById('spBack').addEventListener('click', function() {
+    if (activeEditIndex === null || originalEditHex === null) return;
+    setPaletteSlotHex(activeEditIndex, originalEditHex);
+    colour.value   = originalEditHex;
+    hexInput.value = originalEditHex;
+  });
+
+  document.getElementById('spDone').addEventListener('click', closeSwatchPicker);
+
+  document.addEventListener('mousedown', function(e) {
+    var picker = document.getElementById('swatchPicker');
+    if (!picker.classList.contains('show')) return;
+    if (picker.contains(e.target)) return;
+    if (e.target.closest('.swatch')) return;
+    closeSwatchPicker();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSwatchPicker();
+  });
+}
+
+/* ============================================================
+   ACCESSIBILITY CHECK
+   ============================================================ */
+function renderA11yCheck() {
+  var by = rolesMap();
+  var container = document.getElementById('a11yRows');
+  if (!container) return;
+
+  var pairs = [
+    { label: 'Body on light bg',    fg: by['body'],    bg: by['background-light'] },
+    { label: 'Body on dark bg',     fg: by['body'],    bg: by['background-dark'] },
+    { label: 'Heading on light bg', fg: by['heading'], bg: by['background-light'] },
+    { label: 'Heading on dark bg',  fg: by['heading'], bg: by['background-dark'] },
+    { label: 'Accent on light bg',  fg: by['accent'],  bg: by['background-light'] },
+    { label: 'Accent on dark bg',   fg: by['accent'],  bg: by['background-dark'] },
+  ];
+
+  container.innerHTML = '';
+  pairs.forEach(function(p) {
+    var ratio = contrastRatio(p.fg, p.bg);
+    var pass  = ratio >= 4.5;
+    var row = document.createElement('div');
+    row.className = 'a11y-row';
+    row.innerHTML =
+      '<div class="a11y-swatch-pair">' +
+        '<div class="a11y-sw" style="background:' + p.fg + '"></div>' +
+        '<div class="a11y-sw" style="background:' + p.bg + '"></div>' +
+      '</div>' +
+      '<div class="a11y-label">' + p.label + '</div>' +
+      '<div class="a11y-status">' +
+        '<div class="a11y-mark ' + (pass ? 'pass' : 'fail') + '">' + (pass ? '✓' : '✕') + '</div>' +
+        ratio.toFixed(1) + ':1' +
+      '</div>';
+    container.appendChild(row);
+  });
+}
+
+/* ============================================================
+   VISUAL FONT PICKER
+   ============================================================ */
+function buildFontPicker(triggerEl, dropdownEl, fonts, currentFont, cssGroup, onSelect) {
+  /* build options */
+  fonts.forEach(function(font) {
+    var opt = document.createElement('button');
+    opt.className = 'font-pick-option' + (font === currentFont ? ' selected' : '');
+    opt.type = 'button';
+    opt.dataset.font = font;
+    opt.style.fontFamily = "'" + font + "'," + cssGroup;
+    opt.textContent = font;
+    opt.setAttribute('role', 'option');
+    opt.setAttribute('aria-selected', font === currentFont ? 'true' : 'false');
+    opt.addEventListener('click', function() {
+      onSelect(font);
+      dropdownEl.classList.remove('open');
+      triggerEl.setAttribute('aria-expanded', 'false');
+    });
+    dropdownEl.appendChild(opt);
+  });
+
+  /* toggle open */
+  triggerEl.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = dropdownEl.classList.contains('open');
+    /* close all other dropdowns */
+    document.querySelectorAll('.font-pick-dropdown').forEach(function(d){ d.classList.remove('open'); });
+    document.querySelectorAll('.font-pick-trigger').forEach(function(t){ t.setAttribute('aria-expanded','false'); });
+    if (!isOpen) {
+      dropdownEl.classList.add('open');
+      triggerEl.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  document.addEventListener('click', function() {
+    dropdownEl.classList.remove('open');
+    triggerEl.setAttribute('aria-expanded', 'false');
+  });
+
+  dropdownEl.addEventListener('click', function(e){ e.stopPropagation(); });
+}
+
+function buildFontPickers() {
+  buildFontPicker(
+    document.getElementById('headTrigger'),
+    document.getElementById('headDropdown'),
+    HEAD_FONTS, currentHeading, 'Georgia,serif',
+    function(font) {
+      currentHeading = font;
+      applyFonts();
+      var hd = document.getElementById('headDisplay');
+      hd.textContent = font;
+      hd.style.fontFamily = "'" + font + "',serif";
+      hd.style.fontStyle  = 'normal';
+      hd.style.fontWeight = '400';
+      document.querySelectorAll('#headDropdown .font-pick-option').forEach(function(o){
+        o.classList.toggle('selected', o.dataset.font === font);
+      });
+      /* deactivate preset if it no longer matches */
+      document.querySelectorAll('.preset').forEach(function(p, i){
+        p.classList.toggle('active', FONT_PAIRINGS[i].heading === currentHeading && FONT_PAIRINGS[i].body === currentBody);
+      });
+    }
+  );
+
+  buildFontPicker(
+    document.getElementById('bodyTrigger'),
+    document.getElementById('bodyDropdown'),
+    BODY_FONTS, currentBody, 'sans-serif',
+    function(font) {
+      currentBody = font;
+      applyFonts();
+      var bd = document.getElementById('bodyDisplay');
+      bd.textContent = font;
+      bd.style.fontFamily = "'" + font + "',sans-serif";
+      document.querySelectorAll('#bodyDropdown .font-pick-option').forEach(function(o){
+        o.classList.toggle('selected', o.dataset.font === font);
+      });
+      document.querySelectorAll('.preset').forEach(function(p, i){
+        p.classList.toggle('active', FONT_PAIRINGS[i].heading === currentHeading && FONT_PAIRINGS[i].body === currentBody);
+      });
+    }
+  );
+}
+
+/* ============================================================
+   PRESET LIST (font pairings)
+   ============================================================ */
+var DEFAULT_HEADLINE = 'You are already well established';
+var DEFAULT_SUBHEAD  = 'A one-page website that reflects the depth of your work.';
+
+function getPreviewTexts() {
+  var h = document.getElementById('previewHeadline');
+  var s = document.getElementById('previewSubhead');
+  return {
+    headline: (h && h.value.trim()) || DEFAULT_HEADLINE,
+    subhead:  (s && s.value.trim()) || DEFAULT_SUBHEAD
+  };
+}
+
+function buildPresetList() {
+  var list = document.getElementById('presetList');
+  if (!list) return;
+  var texts = getPreviewTexts();
+  FONT_PAIRINGS.forEach(function(pair, idx) {
+    var isActive = idx === 0;
+    var btn = document.createElement('button');
+    btn.className = 'preset' + (isActive ? ' active' : '');
+    btn.type = 'button';
+    btn.innerHTML =
+      '<div class="preset-headline" style="font-family:\'' + pair.heading + '\',serif;font-style:' + pair.headingStyle + ';font-weight:' + pair.headingWeight + '">' +
+        texts.headline +
+      '</div>' +
+      '<div class="preset-subhead" style="font-family:\'' + pair.body + '\',sans-serif">' +
+        texts.subhead +
+      '</div>' +
+      '<div class="preset-pair">' + pair.heading + ' + ' + pair.body + ' · ' + pair.name + '</div>';
+    btn.addEventListener('click', function() {
+      setFontPair(pair.heading, pair.body, pair.headingStyle, pair.headingWeight, true);
+    });
+    list.appendChild(btn);
+  });
+}
+
+function updatePresetPreviews() {
+  var texts = getPreviewTexts();
+  document.querySelectorAll('.preset').forEach(function(btn, i) {
+    var pair = FONT_PAIRINGS[i];
+    var hEl = btn.querySelector('.preset-headline');
+    var sEl = btn.querySelector('.preset-subhead');
+    if (hEl) hEl.textContent = texts.headline;
+    if (sEl) sEl.textContent = texts.subhead;
+  });
+}
+
+/* ============================================================
+   DOORS
+   ============================================================ */
+function buildLibraryWrap() {
+  var wrap = document.getElementById('libraryWrap');
+  if (!wrap) return;
+
+  MOODS_META.forEach(function(mood) {
+    var moodPals = PALETTES.filter(function(p){ return p.mood === mood.id; });
+    var section = document.createElement('div');
+
+    var header = '<div class="library-mood-header">' +
+      '<div class="library-mood-title">' + mood.name + '</div>' +
+      '<div class="library-mood-desc">' + mood.desc + '</div>' +
+      '</div>';
+
+    var gridHtml = '<div class="library-grid">';
+    moodPals.forEach(function(pal) {
+      gridHtml += '<button class="lib-card" data-id="' + pal.id + '" type="button" aria-label="Load ' + pal.name + '">' +
+        '<div class="mini-palette">' +
+          '<div class="mini-sw" style="background:' + pal.swatches['background-light'] + '"></div>' +
+          '<div class="mini-sw" style="background:' + pal.swatches['background-dark']  + '"></div>' +
+          '<div class="mini-sw" style="background:' + pal.swatches['accent']           + '"></div>' +
+          '<div class="mini-sw" style="background:' + pal.swatches['heading']          + '"></div>' +
+          '<div class="mini-sw" style="background:' + pal.swatches['muted']            + '"></div>' +
+        '</div>' +
+        '<div class="lib-name">' + pal.name + '</div>' +
+        '</button>';
+    });
+    gridHtml += '</div>';
+
+    section.innerHTML = header + gridHtml;
+    wrap.appendChild(section);
+  });
+
+  /* delegate click on lib-cards */
+  wrap.addEventListener('click', function(e) {
+    var card = e.target.closest('.lib-card');
+    if (!card) return;
+    var pal = PALETTES.find(function(p){ return p.id === card.dataset.id; });
+    if (pal) loadPaletteFull(pal);
+  });
+}
+
+function buildMoodGrid() {
+  var grid = document.getElementById('moodGrid');
+  if (!grid) return;
+
+  MOODS_META.forEach(function(mood) {
+    var firstPal = PALETTES.find(function(p){ return p.mood === mood.id; });
+    var btn = document.createElement('button');
+    btn.className = 'mood-btn';
+    btn.dataset.mood = mood.id;
+    btn.type = 'button';
+
+    var strip = firstPal ?
+      '<div class="mood-swatch-strip">' +
+        '<div style="background:' + firstPal.swatches['background-light'] + '"></div>' +
+        '<div style="background:' + firstPal.swatches['background-dark']  + '"></div>' +
+        '<div style="background:' + firstPal.swatches['accent']           + '"></div>' +
+        '<div style="background:' + firstPal.swatches['heading']          + '"></div>' +
+        '<div style="background:' + firstPal.swatches['muted']            + '"></div>' +
+      '</div>' : '';
+
+    btn.innerHTML = strip + '<div class="mood-btn-name">' + mood.name + '</div>';
+
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.mood-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      showMoodResult(mood);
+    });
+
+    grid.appendChild(btn);
+  });
+}
+
+function showMoodResult(mood) {
+  var result = document.getElementById('moodResult');
+  if (!result) return;
+
+  var moodPals = PALETTES.filter(function(p){ return p.mood === mood.id; });
+
+  var html = '<div class="mood-result-label">' + mood.name + ' — ' + moodPals.length + ' palettes</div>' +
+    '<div class="mood-palettes">';
+
+  moodPals.forEach(function(pal) {
+    html += '<button class="lib-card" data-id="' + pal.id + '" type="button" aria-label="Load ' + pal.name + '">' +
+      '<div class="mini-palette">' +
+        '<div class="mini-sw" style="background:' + pal.swatches['background-light'] + '"></div>' +
+        '<div class="mini-sw" style="background:' + pal.swatches['background-dark']  + '"></div>' +
+        '<div class="mini-sw" style="background:' + pal.swatches['accent']           + '"></div>' +
+        '<div class="mini-sw" style="background:' + pal.swatches['heading']          + '"></div>' +
+        '<div class="mini-sw" style="background:' + pal.swatches['muted']            + '"></div>' +
+      '</div>' +
+      '<div class="lib-name">' + pal.name + '</div>' +
+      '</button>';
+  });
+
+  html += '</div>';
+  result.innerHTML = html;
+
+  result.addEventListener('click', function(e) {
+    var card = e.target.closest('.lib-card');
+    if (!card) return;
+    var pal = PALETTES.find(function(p){ return p.id === card.dataset.id; });
+    if (pal) loadPaletteFull(pal);
+  });
+}
+
+/* ============================================================
+   DOOR TABS
+   ============================================================ */
+function initDoors() {
+  document.querySelectorAll('.door-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var door = tab.dataset.door;
+      document.querySelectorAll('.door-tab').forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.door-content').forEach(function(c){ c.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      var content = document.querySelector('.door-content[data-door="' + door + '"]');
+      if (content) content.classList.add('active');
+    });
+  });
+}
+
+/* ============================================================
+   COPY / EXPORT
+   ============================================================ */
+function copyHex() {
+  var by = rolesMap();
+  var lines = ROLES.map(function(r){ return ROLE_LABELS[r] + ': ' + by[r]; });
+  navigator.clipboard.writeText(lines.join('\n')).then(function(){ showToast('Hex values copied'); });
+}
+
+function copyCSS() {
+  var by = rolesMap();
+  var lines = [':root {',
+    '  --color-bg-light: ' + by['background-light'] + ';',
+    '  --color-bg-dark: '  + by['background-dark']  + ';',
+    '  --color-accent: '   + by['accent']            + ';',
+    '  --color-heading: '  + by['heading']           + ';',
+    '  --color-body: '     + by['body']              + ';',
+    '  --color-muted: '    + by['muted']             + ';',
+    '}'
+  ];
+  navigator.clipboard.writeText(lines.join('\n')).then(function(){ showToast('CSS variables copied'); });
+}
+
+function resetPalette() {
+  if (!originalPalette) return;
+  loadPaletteFull(originalPalette);
+}
+
+function exportPNG() {
+  buildExportSheet();
+  var sheet = document.getElementById('exportSheet');
+  html2canvas(sheet, { scale: 1.5, useCORS: true, allowTaint: false })
+    .then(function(canvas) {
+      var a = document.createElement('a');
+      a.href     = canvas.toDataURL('image/png');
+      a.download = 'brand-sheet.png';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      document.getElementById('postExport').classList.add('show');
+    });
+}
+
+function buildExportSheet() {
+  var by   = rolesMap();
+  var sheet = document.getElementById('exportSheet');
+  var palName = originalPalette ? originalPalette.name : 'My palette';
+
+  sheet.innerHTML =
+    '<div class="es-eyebrow">Brand Lab · Pixel &amp; Scale</div>' +
+    '<div class="es-title">' + palName + '</div>' +
+
+    '<div class="es-section">' +
+      '<div class="es-label">Colour palette</div>' +
+      '<div class="es-swatches">' +
+        ROLES.map(function(r){
+          var light = isLight(by[r]);
+          return '<div class="es-swatch' + (light ? ' light' : '') + '" style="background:' + by[r] + '">' +
+            '<div class="es-swatch-label">' + ROLE_LABELS[r].replace(' · ',' ') + '<br>' + by[r] + '</div>' +
+            '</div>';
+        }).join('') +
+      '</div>' +
+    '</div>' +
+
+    '<div class="es-section">' +
+      '<div class="es-label">Typography</div>' +
+      '<div class="es-fonts">' +
+        '<div class="es-font-card">' +
+          '<div class="es-font-role">Heading font</div>' +
+          '<div class="es-font-name" style="font-family:\'' + currentHeading + '\',serif;font-style:' + currentHStyle + ';font-weight:' + currentHWeight + '">' + currentHeading + '</div>' +
+          '<div class="es-font-sample" style="font-family:\'' + currentHeading + '\',serif">You are Already Established</div>' +
+        '</div>' +
+        '<div class="es-font-card">' +
+          '<div class="es-font-role">Body font</div>' +
+          '<div class="es-font-name" style="font-family:\'' + currentBody + '\',sans-serif">' + currentBody + '</div>' +
+          '<div class="es-font-sample" style="font-family:\'' + currentBody + '\',sans-serif">A one-page website designed around your work.</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="es-section">' +
+      '<div class="es-label">Mockup preview</div>' +
+      '<div class="es-mockup-wrap">' + document.getElementById('mockupFrame').outerHTML + '</div>' +
+    '</div>' +
+
+    '<div class="es-footer">' +
+      '<span>Created with Brand Lab</span>' +
+      '<span>pixelandscale.com</span>' +
+    '</div>';
+}
+
+/* ============================================================
+   PASTE HEX EXTRACTION (Door 03)
+   ============================================================ */
+function extractHex(text) {
+  var out = [], seen = {};
+  function push(h) { var up = h.toUpperCase(); if (!seen[up]) { seen[up] = true; out.push(up); } }
+  /* with # prefix */
+  var withHash = text.match(/#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\b/g) || [];
+  withHash.forEach(function(m) {
+    if (m.length === 4) push('#' + m[1]+m[1] + m[2]+m[2] + m[3]+m[3]);
+    else push(m);
+  });
+  /* bare 6-char hex tokens */
+  text.split(/[^A-Fa-f0-9]+/).forEach(function(t) {
+    if (/^[A-Fa-f0-9]{6}$/.test(t)) push('#' + t);
+  });
+  return out;
+}
+
+function chroma(hex) {
+  var c = hex.replace('#','');
+  var r = parseInt(c.substr(0,2),16), g = parseInt(c.substr(2,2),16), b = parseInt(c.substr(4,2),16);
+  return Math.max(r,g,b) - Math.min(r,g,b);
+}
+
+function colourDistance(a, b) {
+  var ca = a.replace('#',''), cb = b.replace('#','');
+  var dr = parseInt(ca.substr(0,2),16) - parseInt(cb.substr(0,2),16);
+  var dg = parseInt(ca.substr(2,2),16) - parseInt(cb.substr(2,2),16);
+  var db = parseInt(ca.substr(4,2),16) - parseInt(cb.substr(4,2),16);
+  return Math.sqrt(dr*dr + dg*dg + db*db);
+}
+
+function dedupeColours(hexes, minDist) {
+  minDist = minDist || 18;
+  var out = [];
+  for (var i = 0; i < hexes.length; i++) {
+    var h = hexes[i];
+    if (out.every(function(o){ return colourDistance(h, o) >= minDist; })) out.push(h);
+  }
+  return out;
+}
+
+function assignRoles(rawHexes) {
+  // Absolute fallback — only used if nothing was pasted
+  if (!rawHexes || rawHexes.length === 0) {
+    var fb = ROLES.map(function(r){ return PALETTES[0].swatches[r]; });
+    return ROLES.map(function(r, i){ return { role: r, hex: fb[i] }; });
+  }
+
+  // Work entirely from the user's colors — no fallback padding
+  var seed = rawHexes.filter(function(h, i, arr){ return arr.indexOf(h) === i; });
+  if (seed.length > 6) seed = dedupeColours(seed);
+
+  var byLum = seed.slice().sort(function(a,b){ return luminance(a) - luminance(b); });
+  var lightest = byLum[byLum.length - 1];
+  var darkest  = byLum[0];
+
+  var remaining = seed.filter(function(h){ return h !== lightest && h !== darkest; });
+  if (!remaining.length) remaining = [darkest];
+
+  var accent = remaining.reduce(function(best, h){ return chroma(h) > chroma(best) ? h : best; }, remaining[0]);
+
+  var afterAccent = remaining.filter(function(h){ return h !== accent; });
+  if (!afterAccent.length) afterAccent = [darkest];
+
+  var darkSorted = afterAccent.slice().sort(function(a,b){ return luminance(a) - luminance(b); });
+  var heading = null;
+  for (var i = 0; i < darkSorted.length; i++) {
+    if (contrastRatio(darkSorted[i], lightest) >= 4.5) { heading = darkSorted[i]; break; }
+  }
+  if (!heading) heading = darkSorted[0] || darkest;
+
+  var afterHeading = afterAccent.filter(function(h){ return h !== heading; });
+
+  var body;
+  if (afterHeading.length) {
+    var bodySorted = afterHeading.slice().sort(function(a,b){ return luminance(a) - luminance(b); });
+    body = null;
+    for (var j = 0; j < bodySorted.length; j++) {
+      if (contrastRatio(bodySorted[j], lightest) >= 4.5) { body = bodySorted[j]; break; }
+    }
+    if (!body) body = bodySorted[0];
+  } else {
+    body = heading;
+  }
+
+  var afterBody = afterHeading.filter(function(h){ return h !== body; });
+  var muted;
+  if (afterBody.length) {
+    muted = afterBody.reduce(function(best, h){ return chroma(h) < chroma(best) ? h : best; }, afterBody[0]);
+  } else {
+    // Reuse the least chromatic color from the full seed rather than pulling a random default palette color
+    muted = seed.reduce(function(best, h){ return chroma(h) < chroma(best) ? h : best; }, seed[0]);
+  }
+
+  return [
+    { role:'background-light', hex: lightest },
+    { role:'background-dark',  hex: darkest  },
+    { role:'accent',           hex: accent   },
+    { role:'heading',          hex: heading  },
+    { role:'body',             hex: body     },
+    { role:'muted',            hex: muted    }
+  ];
+}
+
+/* ============================================================
+   IMAGE COLOUR EXTRACTION (Door 04) — median-cut algorithm
+   ============================================================ */
+var lastUploadedImage = null;
+
+function extractPaletteFromImage(img, k) {
+  k = k || 6;
+  var canvas = document.createElement('canvas');
+  var maxDim = 100;
+  var scale = Math.min(1, maxDim / Math.max(img.naturalWidth, img.naturalHeight));
+  canvas.width  = Math.max(1, Math.round(img.naturalWidth  * scale));
+  canvas.height = Math.max(1, Math.round(img.naturalHeight * scale));
+  var ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  var data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+
+  var pixels = [];
+  for (var i = 0; i < data.length; i += 4) {
+    if (data[i+3] < 125) continue;
+    pixels.push([data[i], data[i+1], data[i+2]]);
+  }
+  if (!pixels.length) return [];
+
+  /* median cut */
+  var boxes = [pixels];
+  while (boxes.length < k) {
+    var bestIdx = -1, bestRange = -1, bestAxis = 0;
+    for (var bi = 0; bi < boxes.length; bi++) {
+      var box = boxes[bi];
+      if (box.length < 2) continue;
+      for (var axis = 0; axis < 3; axis++) {
+        var mn = 255, mx = 0;
+        for (var pi = 0; pi < box.length; pi++) {
+          if (box[pi][axis] < mn) mn = box[pi][axis];
+          if (box[pi][axis] > mx) mx = box[pi][axis];
+        }
+        var range = mx - mn;
+        if (range > bestRange) { bestRange = range; bestIdx = bi; bestAxis = axis; }
+      }
+    }
+    if (bestIdx === -1) break;
+    var splitBox = boxes[bestIdx];
+    var ax = bestAxis;
+    splitBox.sort(function(a, b){ return a[ax] - b[ax]; });
+    var mid = Math.floor(splitBox.length / 2);
+    boxes.splice(bestIdx, 1, splitBox.slice(0, mid), splitBox.slice(mid));
+  }
+
+  return boxes.map(function(box) {
+    var r=0, g=0, b=0;
+    for (var pi=0; pi<box.length; pi++) { r+=box[pi][0]; g+=box[pi][1]; b+=box[pi][2]; }
+    r=Math.round(r/box.length); g=Math.round(g/box.length); b=Math.round(b/box.length);
+    return '#' + [r,g,b].map(function(v){ return v.toString(16).padStart(2,'0'); }).join('').toUpperCase();
+  });
+}
+
+function renderExtractedPreview(hexes) {
+  var wrap = document.getElementById('imageExtracted');
+  if (!wrap) return;
+  wrap.innerHTML = hexes.map(function(hex) {
+    var light = isLight(hex) ? ' light' : '';
+    return '<div class="image-extracted-swatch' + light + '" style="background:' + hex + '">' +
+      '<span class="image-extracted-hex">' + hex + '</span></div>';
+  }).join('');
+}
+
+function loadImageFile(file) {
+  if (!file || !file.type.startsWith('image/')) { showToast('Not an image file'); return; }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      lastUploadedImage = img;
+      document.getElementById('imagePreview').src = img.src;
+      var hexes = extractPaletteFromImage(img, 8);
+      if (!hexes.length) { showToast('Could not extract colours'); return; }
+      palette = assignRoles(hexes);
+      originalPalette = null; currentButtonPref = null;
+      renderExtractedPreview(palette.map(function(s){ return s.hex; }));
+      renderSwatches();
+      applyBrandVars();
+      document.getElementById('imageDrop').classList.add('has-image');
+      document.getElementById('imageReextractBtn').style.display = '';
+      document.getElementById('imageClearBtn').style.display = '';
+      showToast('Palette extracted');
+      scrollToDownstream();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ============================================================
+   TOPBAR BUTTONS
+   ============================================================ */
+function initTopbar() {
+  document.getElementById('resetBtn').addEventListener('click', resetPalette);
+  document.getElementById('copyHexBtn').addEventListener('click', copyHex);
+  document.getElementById('copyCSSBtn').addEventListener('click', copyCSS);
+  document.getElementById('exportBtn').addEventListener('click', exportPNG);
+
+  /* copy-row buttons in palette panel */
+  document.querySelectorAll('.copy-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var type = btn.dataset.copy;
+      if (type === 'hex') copyHex();
+      if (type === 'css') copyCSS();
+    });
+  });
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+(function init() {
+  initDoors();
+  buildLibraryWrap();
+  buildMoodGrid();
+  buildFontPickers();
+  buildPresetList();
+  initSwatchPicker();
+  initTopbar();
+
+  /* load default palette without scrolling — page should open at top */
+  loadPaletteFull(DEFAULT_PAL, true);
+  applyFonts();
+
+  /* preview copy inputs */
+  var previewHeadline = document.getElementById('previewHeadline');
+  var previewSubhead  = document.getElementById('previewSubhead');
+  if (previewHeadline) previewHeadline.addEventListener('input', updatePresetPreviews);
+  if (previewSubhead)  previewSubhead.addEventListener('input', updatePresetPreviews);
+
+  /* Door 03 — paste handler */
+  var parseBtn = document.getElementById('parseBtn');
+  if (parseBtn) {
+    parseBtn.addEventListener('click', function() {
+      var text = document.getElementById('pasteZone').value;
+      var found = extractHex(text);
+      if (found.length === 0) { showToast('No hex codes found'); return; }
+      palette = assignRoles(found);
+      originalPalette = null;
+      currentButtonPref = null;
+      renderSwatches();
+      applyBrandVars();
+      showToast('Loaded ' + Math.min(found.length, 6) + ' colour' + (found.length === 1 ? '' : 's'));
+      scrollToDownstream();
+    });
+  }
+
+  /* Door 04 — image upload */
+  var imageInput = document.getElementById('imageInput');
+  if (imageInput) {
+    imageInput.addEventListener('change', function(e) {
+      if (e.target.files && e.target.files[0]) loadImageFile(e.target.files[0]);
+    });
+  }
+
+  var dropEl = document.getElementById('imageDrop');
+  if (dropEl) {
+    ['dragenter','dragover'].forEach(function(evt) {
+      dropEl.addEventListener(evt, function(e) {
+        e.preventDefault(); e.stopPropagation();
+        dropEl.classList.add('is-dragover');
+      });
+    });
+    ['dragleave','drop'].forEach(function(evt) {
+      dropEl.addEventListener(evt, function(e) {
+        e.preventDefault(); e.stopPropagation();
+        dropEl.classList.remove('is-dragover');
+      });
+    });
+    dropEl.addEventListener('drop', function(e) {
+      var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (file) loadImageFile(file);
+    });
+  }
+
+  var reextractBtn = document.getElementById('imageReextractBtn');
+  if (reextractBtn) {
+    reextractBtn.addEventListener('click', function(e) {
+      e.preventDefault(); e.stopPropagation();
+      if (!lastUploadedImage) return;
+      var hexes = extractPaletteFromImage(lastUploadedImage, 8);
+      palette = assignRoles(hexes);
+      originalPalette = null; currentButtonPref = null;
+      renderExtractedPreview(palette.map(function(s){ return s.hex; }));
+      renderSwatches();
+      applyBrandVars();
+      showToast('Re-extracted');
+    });
+  }
+
+  var clearBtn = document.getElementById('imageClearBtn');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function(e) {
+      e.preventDefault(); e.stopPropagation();
+      lastUploadedImage = null;
+      document.getElementById('imageInput').value = '';
+      document.getElementById('imageDrop').classList.remove('has-image');
+      document.getElementById('imageReextractBtn').style.display = 'none';
+      document.getElementById('imageClearBtn').style.display = 'none';
+    });
+  }
+})();
+
+/* ── TEMP SAVE (remove before launch) ── */
+(function() {
+  var KEY = 'brandlab_overrides';
+
+  try {
+    var stored = JSON.parse(localStorage.getItem(KEY) || '{}');
+    PALETTES.forEach(function(p) {
+      if (stored[p.id]) Object.assign(p.swatches, stored[p.id]);
+    });
+  } catch(e) {}
+
+  var saveBtn = document.getElementById('saveBtn');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', function() {
+      if (!originalPalette) { showToast('Load a palette first'); return; }
+      try {
+        var stored = JSON.parse(localStorage.getItem(KEY) || '{}');
+        stored[originalPalette.id] = rolesMap();
+        localStorage.setItem(KEY, JSON.stringify(stored));
+        var match = PALETTES.find(function(p){ return p.id === originalPalette.id; });
+        if (match) match.swatches = Object.assign({}, rolesMap());
+        showToast('Saved ✓');
+      } catch(e) { showToast('Save failed'); }
+    });
+  }
+})();
+/* ── /TEMP SAVE ── */
+</script>
+
+</body>
+</html>
