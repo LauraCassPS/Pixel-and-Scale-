@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Site in 90 Minutes — A Live Workshop by Pixel & Scale</title>
+<meta name="description" content="A 90-minute live workshop where you build and publish your own one-page website using AI tools. No tech background needed. Recording included.">
+<link rel="canonical" href="https://www.pixelandscale.com/build-your-own.html">
+<meta property="og:title" content="Your Site in 90 Minutes — A Live Workshop by Pixel & Scale">
+<meta property="og:description" content="Build and publish your own one-page website in 90 minutes, live, using AI tools. No tech background needed. Recording included.">
+<meta property="og:image" content="https://www.pixelandscale.com/Images/web-brand-design-pixel-scale.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.pixelandscale.com/build-your-own.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Site in 90 Minutes — A Live Workshop by Pixel & Scale">
+<meta name="twitter:description" content="Build and publish your own one-page website in 90 minutes, live, using AI tools. No tech background needed.">
+<meta name="twitter:image" content="https://www.pixelandscale.com/Images/web-brand-design-pixel-scale.png">
+<link rel="icon" type="image/png" href="Images/pixel-scale-website.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ===== RESET & BASE ===== */
+.ps-wrap *, .ps-wrap *::before, .ps-wrap *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.ps-wrap {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #181715;
+  background: #f6f3ee;
+  overflow-x: hidden;
+}
+.ps-wrap a { text-decoration: none; color: inherit; }
+.ps-wrap img { max-width: 100%; display: block; }
+
+/* ===== CONTAINERS ===== */
+.ps-wrap .container { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+.ps-wrap .container-wide { max-width: 1000px; margin: 0 auto; padding: 0 28px; }
+.ps-wrap .container-narrow { max-width: 600px; margin: 0 auto; padding: 0 28px; }
+
+/* ===== SECTIONS ===== */
+.ps-wrap .section { padding: 100px 0; }
+.ps-wrap .section-sm { padding: 60px 0; }
+@media (max-width: 768px) {
+  .ps-wrap .section { padding: 70px 0; }
+  .ps-wrap .section-sm { padding: 44px 0; }
+}
+
+/* ===== TYPOGRAPHY ===== */
+.ps-wrap h1 {
+  font-family: 'Gilda Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+.ps-wrap h2 {
+  font-family: 'Gilda Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+.ps-wrap h3 {
+  font-family: 'Gilda Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  line-height: 1.25;
+}
+.ps-wrap p { margin-bottom: 1.3rem; }
+.ps-wrap p:last-child { margin-bottom: 0; }
+.ps-wrap .eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 1.1rem;
+  color: #9E2259;
+}
+.ps-wrap em, .ps-wrap .italic-accent {
+  font-style: italic;
+  font-family: 'Lora', serif;
+}
+/* Home-page heading pattern: ink headline, teal italic phrase */
+.ps-wrap h2 em, .ps-wrap h1 em { color: #0b6e7e; }
+
+/* ===== BUTTONS ===== */
+.ps-wrap .btn {
+  display: inline-block;
+  background: #0b6e7e;
+  color: #f6f3ee;
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 18px 40px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s ease;
+  text-decoration: none;
+}
+.ps-wrap .btn:hover { background: #085c6a; }
+.ps-wrap .btn-berry { background: #9E2259; }
+.ps-wrap .btn-berry:hover { background: #801a47; }
+
+/* ===== FOCUS & SKIP LINK (accessibility) ===== */
+.ps-wrap a:focus-visible,
+.ps-wrap button:focus-visible,
+.ps-wrap summary:focus-visible,
+.ps-wrap [role="button"]:focus-visible,
+.ps-wrap input:focus-visible,
+.ps-wrap textarea:focus-visible {
+  outline: 2px solid #0b6e7e;
+  outline-offset: 2px;
+}
+/* Light outline for interactive elements on the deep-teal sections */
+.ps-wrap .final-cta a:focus-visible,
+.ps-wrap .about a:focus-visible {
+  outline-color: #f6f3ee;
+}
+.ps-wrap .skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background: #0b6e7e;
+  color: #f6f3ee;
+  padding: 12px 20px;
+  z-index: 1000;
+  font-family: 'Lora', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+.ps-wrap .skip-link:focus {
+  left: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ps-wrap *, .ps-wrap *::before, .ps-wrap *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ===== FORM ===== */
+.ps-wrap .form-field { margin-bottom: 16px; }
+.ps-wrap .form-field label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #181715;
+  margin-bottom: 6px;
+  font-family: 'Lora', serif;
+}
+.ps-wrap .form-field input,
+.ps-wrap .form-field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ccc8c0;
+  background: #faf8f4;
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  color: #181715;
+  outline: none;
+  transition: border-color 0.2s ease;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+.ps-wrap .form-field input:focus,
+.ps-wrap .form-field textarea:focus { border-color: #0b6e7e; }
+.ps-wrap .form-field textarea { height: 100px; resize: vertical; }
+.ps-wrap .form-note { font-size: 0.82rem; color: #5a564f; margin-top: 12px; font-style: italic; }
+.ps-wrap .form-success {
+  display: none;
+  padding: 20px 24px;
+  background: #edf6f7;
+  border-left: 3px solid #0b6e7e;
+  font-size: 1rem;
+  color: #181715;
+}
+
+/* ===========================
+   NAV
+=========================== */
+.ps-wrap .nav {
+  background: #f6f3ee;
+  border-bottom: 1px solid #e4e0d8;
+  padding: 20px 0;
+}
+.ps-wrap .nav-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ps-wrap .nav-logo {
+  font-family: 'Gilda Display', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: #181715;
+  display: flex;
+  align-items: center;
+}
+.ps-wrap .nav-logo span { color: #0b6e7e; }
+.ps-wrap .nav-logo-img { height: 46px; width: auto; display: block; }
+.ps-wrap .nav-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5a564f;
+  font-family: 'Lora', serif;
+  transition: color 0.2s ease;
+}
+.ps-wrap .nav-link:hover { color: #181715; }
+
+/* ===========================
+   HERO
+=========================== */
+.ps-wrap .hero {
+  position: relative;
+  background-color: #f6f3ee;
+  background-image: url('Images/build-your-own.png');
+  background-size: cover;
+  background-position: center;
+  padding: 120px 0 100px;
+  text-align: center;
+  border-bottom: 1px solid #e4e0d8;
+}
+.ps-wrap .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(246,243,238,0.82);
+  pointer-events: none;
+}
+.ps-wrap .hero .container { position: relative; z-index: 1; }
+.ps-wrap .hero h1 {
+  margin-bottom: 1.6rem;
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ps-wrap .hero-sub {
+  font-size: 1.1rem;
+  color: #3d3b38;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.65;
+  font-style: italic;
+}
+/* Berry for "Built live." teal for "Done by the time..." */
+.ps-wrap .hero-berry { color: #9E2259; font-style: normal; }
+.ps-wrap .hero-teal { color: #0b6e7e; font-style: italic; }
+
+@media (max-width: 768px) {
+  .ps-wrap .hero { padding: 80px 0 70px; }
+}
+
+/* ===========================
+   PROBLEM (empathy + failed attempts)
+=========================== */
+.ps-wrap .problem { background: #f6f3ee; }
+
+.ps-wrap .problem-lead {
+  max-width: 620px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+.ps-wrap .problem-lead .eyebrow { color: #9E2259; }
+.ps-wrap .problem-lead h2 { margin-bottom: 1.75rem; }
+.ps-wrap .problem-lead p {
+  font-size: 1.1rem;
+  color: #181715;
+  line-height: 1.7;
+}
+.ps-wrap .problem-lead .lead-emphasis {
+  font-style: italic;
+  color: #9E2259;
+}
+
+.ps-wrap .attempts-intro {
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0b6e7e;
+  font-family: 'Lora', serif;
+  margin-bottom: 1.75rem;
+}
+
+.ps-wrap .attempts {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ps-wrap .attempt {
+  background: #fffdfa;
+  border: 1px solid #ece6da;
+  border-left: 3px solid transparent;
+  margin-bottom: 14px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(158,34,89,0.12);
+  transition: border-left-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.ps-wrap .attempt:hover { background: #c5dde0; box-shadow: 6px 6px 0 rgba(158,34,89,0.18); }
+.ps-wrap .attempt.open { border-left-color: #0b6e7e; background: #c5dde0; box-shadow: 6px 6px 0 rgba(158,34,89,0.22); }
+
+.ps-wrap .attempt-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 26px;
+}
+
+.ps-wrap .attempt-label {
+  font-family: 'Gilda Display', serif;
+  font-size: 1.15rem;
+  color: #181715;
+  flex-grow: 1;
+}
+
+.ps-wrap .attempt-tag {
+  font-family: 'Lora', serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5a564f;
+  flex-shrink: 0;
+}
+
+.ps-wrap .attempt-toggle {
+  font-size: 1.4rem;
+  color: #0b6e7e;
+  flex-shrink: 0;
+  line-height: 1;
+  font-family: 'Lora', serif;
+  width: 16px;
+  text-align: center;
+}
+.ps-wrap .attempt.open .attempt-toggle { color: #0b6e7e; }
+
+.ps-wrap .attempt-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.ps-wrap .attempt.open .attempt-body { max-height: 320px; }
+
+.ps-wrap .attempt-body-inner {
+  padding: 0 26px 24px 26px;
+  font-size: 1rem;
+  color: #3d3b38;
+  line-height: 1.7;
+}
+
+.ps-wrap .problem-close {
+  max-width: 620px;
+  margin: 3.5rem auto 0;
+  text-align: center;
+}
+.ps-wrap .problem-close p {
+  font-size: 1.1rem;
+  color: #181715;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .ps-wrap .attempt-head { gap: 12px; padding: 18px 20px; flex-wrap: wrap; }
+  .ps-wrap .attempt-tag { order: 3; width: 100%; }
+  .ps-wrap .attempt-body-inner { padding: 0 20px 20px; }
+}
+
+/* ===========================
+   PIVOT — DEEP TEAL
+=========================== */
+.ps-wrap .pivot {
+  background: #0b6e7e;
+  color: #f6f3ee;
+  padding: 80px 0;
+  text-align: center;
+}
+.ps-wrap .pivot h2 {
+  color: #f6f3ee;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.4;
+  max-width: 760px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+.ps-wrap .pivot h2 em { color: #c5dde0; }
+
+/* ===========================
+   OFFER INTRO — POWDER BLUE
+=========================== */
+.ps-wrap .offer-intro {
+  background: #c5dde0;
+  text-align: center;
+}
+.ps-wrap .offer-intro .eyebrow { color: #9E2259; }
+.ps-wrap .offer-name {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  color: #0b6e7e;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+.ps-wrap .offer-desc {
+  font-size: 1.1rem;
+  max-width: 560px;
+  margin: 0 auto 1.2rem;
+  color: #2d4448;
+}
+.ps-wrap .offer-outcome {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #0b6e7e;
+  margin-bottom: 2.5rem;
+  display: block;
+}
+.ps-wrap .offer-intro .btn {
+  background: #0b6e7e;
+  color: #f6f3ee;
+}
+.ps-wrap .offer-intro .btn:hover { background: #085c6a; }
+
+/* ===========================
+   WHAT'S INSIDE — FLIP CARDS
+=========================== */
+.ps-wrap .inside { background: #EBE5D6; }
+.ps-wrap .inside-head { text-align: center; margin-bottom: 3.5rem; }
+.ps-wrap .inside-head h2 { margin-top: 0.5rem; }
+
+.ps-wrap .flip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .ps-wrap .flip-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .ps-wrap .flip-grid { grid-template-columns: 1fr; }
+}
+
+.ps-wrap .flip-card {
+  position: relative;
+  cursor: pointer;
+  min-height: 380px;
+}
+
+.ps-wrap .flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.ps-wrap .flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.ps-wrap .flip-front,
+.ps-wrap .flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: 32px 26px;
+  border: 1px solid #e4e0d8;
+  display: flex;
+  flex-direction: column;
+}
+
+.ps-wrap .flip-front {
+  background: #f6f3ee;
+  justify-content: space-between;
+}
+
+.ps-wrap .flip-back {
+  background: #0b6e7e;
+  border-color: #0b6e7e;
+  color: #f6f3ee;
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+.ps-wrap .flip-num {
+  font-family: 'Gilda Display', serif;
+  font-size: 1.8rem;
+  color: #9E2259;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.ps-wrap .flip-front h3 {
+  font-size: 1.15rem;
+  color: #181715;
+  margin-bottom: 0;
+  flex-grow: 1;
+  line-height: 1.3;
+}
+
+.ps-wrap .flip-tap {
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0b6e7e;
+  margin-top: 1.5rem;
+  font-family: 'Lora', serif;
+  border-top: 1px solid #e4e0d8;
+  padding-top: 14px;
+}
+
+.ps-wrap .flip-back p {
+  font-size: 0.92rem;
+  color: rgba(246,243,238,0.92);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.ps-wrap .flip-back .back-outcome {
+  font-style: italic;
+  color: rgba(246,243,238,0.9);
+  font-size: 0.85rem;
+}
+
+.ps-wrap .flip-back-tap {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(246,243,238,0.9);
+  margin-top: auto;
+  padding-top: 12px;
+  font-family: 'Lora', serif;
+}
+
+.ps-wrap .inside-hint {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0b6e7e;
+  font-family: 'Lora', serif;
+}
+
+/* ===========================
+   WHO FOR — LEFT LIST / RIGHT PANEL
+=========================== */
+.ps-wrap .who-for { background: #f6f3ee; padding: 100px 0; }
+@media (max-width: 768px) { .ps-wrap .who-for { padding: 70px 0; } }
+
+.ps-wrap .who-for .eyebrow { color: #9E2259; }
+.ps-wrap .who-for .who-header { margin-bottom: 2.5rem; }
+.ps-wrap .who-for .who-header p {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0b6e7e;
+  font-family: 'Lora', serif;
+  margin-top: 1rem;
+}
+
+.ps-wrap .who-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  border: 1px solid #cfdfe2;
+}
+
+.ps-wrap .who-list-nav {
+  border-right: 1px solid #e4e0d8;
+}
+
+.ps-wrap .who-list-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 20px 24px;
+  cursor: pointer;
+  border-bottom: 1px solid #e4e0d8;
+  background: #f6f3ee;
+  transition: background 0.15s ease;
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  color: #3d3b38;
+  border-left: 3px solid transparent;
+}
+.ps-wrap .who-list-item:last-child { border-bottom: none; }
+.ps-wrap .who-list-item:hover { background: #c5dde0; }
+.ps-wrap .who-list-item.active {
+  background: #c5dde0;
+  color: #181715;
+  font-style: normal;
+  border-left-color: #0b6e7e;
+}
+
+.ps-wrap .who-list-num {
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  color: #0b6e7e;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.ps-wrap .who-list-item.active .who-list-num { color: #9E2259; }
+
+.ps-wrap .who-panels { }
+
+.ps-wrap .who-panel {
+  display: none;
+  padding: 44px 48px;
+  background: #c5dde0;
+}
+.ps-wrap .who-panel.active { display: block; }
+
+.ps-wrap .who-panel-tag {
+  display: inline-block;
+  background: #0b6e7e;
+  color: #f6f3ee;
+  font-family: 'Lora', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  margin-bottom: 1.5rem;
+}
+
+.ps-wrap .who-panel h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #181715;
+  margin-bottom: 1.25rem;
+  font-family: 'Gilda Display', serif;
+  font-weight: 400;
+}
+
+.ps-wrap .who-panel p {
+  font-size: 1rem;
+  color: #3d3b38;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.ps-wrap .who-tick {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #9E2259;
+  font-style: italic;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e4e0d8;
+}
+.ps-wrap .who-tick-mark {
+  font-style: normal;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #9E2259;
+}
+
+/* Progress bar under panel (like screenshot) */
+.ps-wrap .who-progress {
+  display: flex;
+  gap: 6px;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e4e0d8;
+}
+.ps-wrap .who-pip {
+  height: 3px;
+  flex: 1;
+  background: #e4e0d8;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.ps-wrap .who-pip.active { background: #9E2259; }
+
+@media (max-width: 720px) {
+  .ps-wrap .who-layout { grid-template-columns: 1fr; }
+  .ps-wrap .who-list-nav { border-right: none; border-bottom: 1px solid #e4e0d8; }
+  .ps-wrap .who-list-item { padding: 14px 20px; }
+  .ps-wrap .who-panel { padding: 28px 24px; }
+}
+
+/* ===========================
+   VIDEO / DEMO
+=========================== */
+.ps-wrap .demo { background: #EBE5D6; }
+.ps-wrap .demo-head { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+.ps-wrap .demo-head p {
+  font-size: 1.05rem;
+  color: #3d3b38;
+  margin-top: 1rem;
+}
+
+.ps-wrap .demo-video {
+  max-width: 880px;
+  margin: 0 auto 3.5rem;
+}
+.ps-wrap .video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #0b6e7e;
+  border: 1px solid #cfdfe2;
+  box-shadow: 8px 8px 0 rgba(158,34,89,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.ps-wrap .video-frame video,
+.ps-wrap .video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;
+}
+.ps-wrap .video-placeholder {
+  text-align: center;
+  color: #f6f3ee;
+  padding: 24px;
+}
+.ps-wrap .video-play {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #9E2259;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+.ps-wrap .video-play::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 13px 0 13px 22px;
+  border-color: transparent transparent transparent #f6f3ee;
+  margin-left: 5px;
+}
+.ps-wrap .video-placeholder .vp-label {
+  font-family: 'Gilda Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.ps-wrap .video-placeholder .vp-note {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(246,243,238,0.6);
+  font-family: 'Lora', serif;
+}
+
+/* Example builds */
+.ps-wrap .examples-label {
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #9E2259;
+  font-family: 'Lora', serif;
+  margin-bottom: 1.75rem;
+}
+.ps-wrap .examples-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) { .ps-wrap .examples-grid { grid-template-columns: 1fr; } }
+
+.ps-wrap .example-card {
+  background: #f6f3ee;
+  border: 1px solid #e4e0d8;
+  overflow: hidden;
+}
+.ps-wrap .example-shot {
+  aspect-ratio: 4 / 3;
+  background: #c5dde0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b6e7e;
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e4e0d8;
+}
+.ps-wrap .example-shot img { width: 100%; height: 100%; object-fit: cover; }
+.ps-wrap .example-caption {
+  padding: 20px 24px;
+}
+.ps-wrap .example-caption h3 {
+  font-size: 1.1rem;
+  color: #181715;
+  margin-bottom: 0.35rem;
+}
+.ps-wrap .example-caption p {
+  font-size: 0.9rem;
+  color: #3d3b38;
+  margin: 0;
+}
+
+/* ===========================
+   PROOF
+=========================== */
+.ps-wrap .proof { background: #c5dde0; }
+.ps-wrap .proof-head { text-align: center; margin-bottom: 3rem; }
+.ps-wrap .proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+@media (max-width: 640px) { .ps-wrap .proof-grid { grid-template-columns: 1fr; } }
+
+.ps-wrap .proof-card {
+  background: #f6f3ee;
+  padding: 36px 32px;
+  border: 1px solid #e4e0d8;
+}
+.ps-wrap .proof-quote {
+  font-style: italic;
+  font-size: 0.92rem;
+  color: #3d3b38;
+  margin-bottom: 1.25rem;
+  line-height: 1.65;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(158,34,89,0.35);
+}
+.ps-wrap .proof-quote::before {
+  content: "\201C";
+  font-family: 'Gilda Display', serif;
+  font-size: 2.2rem;
+  color: #9E2259;
+  line-height: 0.5;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.ps-wrap .proof-name {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5a564f;
+  font-family: 'Lora', serif;
+}
+.ps-wrap .proof-placeholder {
+  text-align: center;
+  padding: 20px 0 0;
+  font-size: 0.82rem;
+  color: #5a564f;
+  font-style: italic;
+}
+
+/* ===========================
+   ABOUT — DEEP TEAL
+=========================== */
+.ps-wrap .about {
+  background: #0b6e7e;
+  padding: 110px 0;
+}
+@media (max-width: 768px) { .ps-wrap .about { padding: 80px 0; } }
+
+.ps-wrap .about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (max-width: 768px) { .ps-wrap .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+.ps-wrap .about-photo {
+  border: 1px solid rgba(246,243,238,0.25);
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  box-shadow: 10px 10px 0 rgba(246,243,238,0.12);
+}
+.ps-wrap .about-photo img { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+
+.ps-wrap .about-copy .eyebrow { color: rgba(246,243,238,0.9); }
+.ps-wrap .about-copy h2 { color: #f6f3ee; margin-bottom: 1.5rem; }
+.ps-wrap .about-copy h2 em { color: #f6f3ee; }
+.ps-wrap .about-copy p {
+  color: rgba(246,243,238,0.9);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+/* ===========================
+   FAQ
+=========================== */
+.ps-wrap .faq { background: #f6f3ee; }
+.ps-wrap .faq-head { text-align: center; max-width: 580px; margin: 0 auto 3.5rem; }
+.ps-wrap .faq-item {
+  background: #fffdfa;
+  border: 1px solid #ece6da;
+  margin-bottom: 14px;
+  box-shadow: 4px 4px 0 rgba(158,34,89,0.12);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.ps-wrap .faq-item:hover {
+  box-shadow: 6px 6px 0 rgba(158,34,89,0.18);
+}
+.ps-wrap .faq-item[open] {
+  box-shadow: 6px 6px 0 rgba(158,34,89,0.22);
+}
+.ps-wrap .faq-item summary {
+  padding: 22px 52px 22px 24px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 1rem;
+  list-style: none;
+  position: relative;
+  color: #181715;
+  font-family: 'Lora', serif;
+}
+.ps-wrap .faq-item summary::-webkit-details-marker { display: none; }
+.ps-wrap .faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  color: #0b6e7e;
+  font-family: 'Lora', serif;
+}
+.ps-wrap .faq-item[open] summary::after { content: "\2212"; }
+.ps-wrap .faq-answer {
+  padding: 4px 24px 24px;
+  color: #3d3b38;
+  font-size: 0.97rem;
+  border-top: 1px solid #e4e0d8;
+  padding-top: 18px;
+}
+
+/* ===========================
+   PRICING
+=========================== */
+.ps-wrap .pricing { background: #EBE5D6; }
+.ps-wrap .pricing-head { text-align: center; margin-bottom: 3rem; }
+.ps-wrap .price-card {
+  background: #f6f3ee;
+  border-top: 4px solid #0b6e7e;
+  padding: 56px 44px;
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+  box-shadow: 0 18px 40px rgba(11,110,126,0.08);
+}
+.ps-wrap .price-title { font-size: 1.6rem; color: #181715; margin-bottom: 1.5rem; letter-spacing: 0.02em; }
+.ps-wrap .price-amount {
+  font-family: 'Gilda Display', serif;
+  color: #0b6e7e;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+}
+.ps-wrap .price-dollar { font-size: 2rem; padding-top: 10px; }
+.ps-wrap .price-num { font-size: 5rem; }
+.ps-wrap .price-sub { color: #5a564f; margin-bottom: 2.5rem; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.ps-wrap .price-includes { list-style: none; text-align: left; max-width: 380px; margin: 0 auto 2.5rem; }
+.ps-wrap .price-includes li {
+  padding: 11px 0 11px 28px;
+  position: relative;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e4e0d8;
+  color: #181715;
+}
+.ps-wrap .price-includes li:last-child { border-bottom: none; }
+.ps-wrap .price-includes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0b6e7e;
+  font-size: 0.9rem;
+}
+.ps-wrap .price-date { margin-top: 1.5rem; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: #5a564f; }
+@media (max-width: 640px) {
+  .ps-wrap .price-card { padding: 40px 24px; }
+  .ps-wrap .price-num { font-size: 4rem; }
+}
+
+/* ===========================
+   REGISTER FORM
+=========================== */
+.ps-wrap .register { background: #f6f3ee; }
+.ps-wrap .register-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+.ps-wrap .register-inner h2 { margin-bottom: 0.75rem; }
+.ps-wrap .register-inner .intro-text { color: #3d3b38; font-size: 1rem; margin-bottom: 2.5rem; font-style: italic; }
+.ps-wrap .register-form { text-align: left; }
+.ps-wrap .register-embed {
+  width: 100%;
+  min-height: 1500px;
+  border: none;
+  background: transparent;
+  display: block;
+}
+
+/* ===========================
+   FINAL CTA
+=========================== */
+.ps-wrap .final-cta {
+  background: #0b6e7e;
+  color: #f6f3ee;
+  padding: 110px 0;
+  text-align: center;
+}
+.ps-wrap .final-cta h2 { color: #f6f3ee; margin-bottom: 1.5rem; }
+.ps-wrap .final-cta p { color: rgba(246,243,238,0.9); font-size: 1.05rem; max-width: 500px; margin: 0 auto 2.5rem; }
+.ps-wrap .final-eyebrow { color: rgba(246,243,238,0.9) !important; }
+.ps-wrap .final-cta .btn-berry { background: #9E2259; }
+.ps-wrap .final-cta .btn-berry:hover { background: #801a47; }
+.ps-wrap .final-note { margin-top: 1.25rem; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(246,243,238,0.9) !important; }
+
+/* ===========================
+   GUARANTEE
+=========================== */
+.ps-wrap .guarantee { background: #f6f3ee; border-top: 1px solid #e4e0d8; }
+.ps-wrap .guarantee-inner { max-width: 580px; margin: 0 auto; text-align: center; }
+.ps-wrap .guarantee-inner p { font-size: 0.95rem; color: #5a564f; font-style: italic; }
+
+/* ===========================
+   FOOTER
+=========================== */
+.ps-wrap .footer {
+  background: #EBE5D6;
+  color: #5a564f;
+  padding: 36px 0;
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'Lora', serif;
+  border-top: 1px solid #e0dace;
+}
+.ps-wrap .footer a { color: #0b6e7e; text-decoration: underline; text-underline-offset: 3px; }
+
+</style>
+<!-- Event structured data — re-add once the workshop date is confirmed (Event schema requires a startDate). Template:
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Event","name":"Your Site in 90 Minutes — A Live Workshop","description":"A 90-minute live workshop where you build and publish your own one-page website using AI tools.","startDate":"YYYY-MM-DD","eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","location":{"@type":"VirtualLocation","url":"https://www.pixelandscale.com/build-your-own.html"},"image":"https://www.pixelandscale.com/Images/web-brand-design-pixel-scale.png","organizer":{"@type":"Organization","name":"Pixel & Scale","url":"https://www.pixelandscale.com"},"offers":{"@type":"Offer","price":"97","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://www.pixelandscale.com/build-your-own.html"}}
+</script>
+-->
+</head>
+<body>
+<div class="ps-wrap">
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Pixel and Scale — home">
+        <img src="Images/web-brand-design-pixel-scale.png" alt="Pixel and Scale" class="nav-logo-img">
+      </a>
+      <a href="#register" class="nav-link">Register interest</a>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">A live workshop for virtual assistants</span>
+      <h1>Your website. <span class="hero-berry">Built live.</span><br><span class="hero-teal">Done by the time we close the Zoom.</span></h1>
+      <p class="hero-sub">A 90-minute workshop where you build a real, published one-page website using AI tools. No tech background needed, no decisions to agonise over, no "I'll get to it eventually."</p>
+      <a href="#register" class="btn">Register your interest</a>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem section">
+    <div class="container-wide">
+
+      <div class="problem-lead">
+        <span class="eyebrow">The website on your list</span>
+        <h2>You've been meaning to sort it <em>for months.</em></h2>
+        <p>You do good work, and your clients know it. But when someone asks "do you have a website?" there's <span class="lead-emphasis">a small pause before you answer.</span> In the meantime, you send people to your Instagram bio, or a PDF of your services, and hope it does the job.</p>
+      </div>
+
+      <p class="attempts-intro">&#8594; Tap the one that sounds like you</p>
+
+      <div class="attempts">
+
+        <div class="attempt" onclick="toggleAttempt(this)" tabindex="0" role="button" aria-expanded="false">
+          <div class="attempt-head">
+            <span class="attempt-label">"I started a Squarespace trial."</span>
+            <span class="attempt-tag">The unfinished build</span>
+            <span class="attempt-toggle">+</span>
+          </div>
+          <div class="attempt-body">
+            <div class="attempt-body-inner">
+              You spent a few hours choosing a template, changed it twice, got stuck on the fonts, and decided you needed to do more research before committing. The trial quietly expired. It wasn't a skill problem. There were just too many decisions, and nobody to keep things moving.
+            </div>
+          </div>
+        </div>
+
+        <div class="attempt" onclick="toggleAttempt(this)" tabindex="0" role="button" aria-expanded="false">
+          <div class="attempt-head">
+            <span class="attempt-label">"Someone said Canva was easy."</span>
+            <span class="attempt-tag">The one that felt off</span>
+            <span class="attempt-toggle">+</span>
+          </div>
+          <div class="attempt-body">
+            <div class="attempt-body-inner">
+              It looked fine on screen but never quite felt like yours. You couldn't work out how to connect a domain, asked in a Facebook group, and got twelve different answers. So it sat there, half-done, and you went back to client work instead.
+            </div>
+          </div>
+        </div>
+
+        <div class="attempt" onclick="toggleAttempt(this)" tabindex="0" role="button" aria-expanded="false">
+          <div class="attempt-head">
+            <span class="attempt-label">"I'll do it when things are quieter."</span>
+            <span class="attempt-tag">The waiting</span>
+            <span class="attempt-toggle">+</span>
+          </div>
+          <div class="attempt-body">
+            <div class="attempt-body-inner">
+              You're waiting until you have better testimonials, a clearer niche, a logo you actually like, or a quiet week with no deadlines. That quiet week hasn't arrived. Meanwhile, people land on your profile and try to piece together what you do. Some get in touch. Some don't bother.
+            </div>
+          </div>
+        </div>
+
+        <div class="attempt" onclick="toggleAttempt(this)" tabindex="0" role="button" aria-expanded="false">
+          <div class="attempt-head">
+            <span class="attempt-label">"I have a website. I just don't like it."</span>
+            <span class="attempt-tag">The one you hide</span>
+            <span class="attempt-toggle">+</span>
+          </div>
+          <div class="attempt-body">
+            <div class="attempt-body-inner">
+              You built something a while back, and it no longer matches where your business is now. The wording sounds like an older version of you, the look feels dated, and you'd rather not send the link. So when someone asks, you point them somewhere else instead.
+            </div>
+          </div>
+        </div>
+
+        <div class="attempt" onclick="toggleAttempt(this)" tabindex="0" role="button" aria-expanded="false">
+          <div class="attempt-head">
+            <span class="attempt-label">"It exists, but it's a bit of a mess on a phone."</span>
+            <span class="attempt-tag">The half-built one</span>
+            <span class="attempt-toggle">+</span>
+          </div>
+          <div class="attempt-body">
+            <div class="attempt-body-inner">
+              You got something live, but it sits on a free builder address, the layout breaks on mobile, or the contact form has never quite worked. It's technically there, but it isn't doing the one job you need it to do: making the right first impression.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="problem-close">
+        <p>You've seen other VAs with clean, simple sites and thought: I could do that. It doesn't need to be this complicated.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PIVOT -->
+  <section class="pivot">
+    <div class="container">
+      <h2>The problem isn't that you're not ready.<br><em>It's that you're trying to make thirty decisions alone.</em></h2>
+    </div>
+  </section>
+
+  <!-- OFFER INTRO -->
+  <section class="offer-intro section">
+    <div class="container">
+      <span class="eyebrow">Introducing</span>
+      <h2 class="offer-name">Your Site in 90 Minutes</h2>
+      <p class="offer-desc">A live workshop where you build and publish your own one-page website alongside me, using AI tools to cut through every decision that's been slowing you down.</p>
+      <span class="offer-outcome">So you finish the session with a real site, not a draft.</span>
+      <a href="#register" class="btn">Register your interest</a>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE — FLIP CARDS -->
+  <section class="inside section">
+    <div class="container-wide">
+      <div class="inside-head">
+        <span class="eyebrow">What you get</span>
+        <h2>Everything you need to go from <em>blank screen to live site.</em></h2>
+      </div>
+      <p class="inside-hint">&#8594; Tap each card to see what's included</p>
+      <div class="flip-grid">
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')" tabindex="0" role="button" aria-label="Card 01: The live build session">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div>
+                <div class="flip-num">01</div>
+                <h3>The live build session</h3>
+              </div>
+              <div class="flip-tap">Tap to reveal &#8594;</div>
+            </div>
+            <div class="flip-back">
+              <p>90 minutes. You follow along and build your own site, not a copy of mine. AI tools work through the copy and layout decisions with you so nothing gets stuck.</p>
+              <p class="back-outcome">You make the calls. I keep things moving.</p>
+              <p class="flip-back-tap">&#8592; Tap to go back</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')" tabindex="0" role="button" aria-label="Card 02: A process that cuts decision fatigue">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div>
+                <div class="flip-num">02</div>
+                <h3>A process that cuts decision fatigue</h3>
+              </div>
+              <div class="flip-tap">Tap to reveal &#8594;</div>
+            </div>
+            <div class="flip-back">
+              <p>We use AI to generate your copy, narrow your options, and give you a clear direction before you touch a single template.</p>
+              <p class="back-outcome">No more staring at a blank screen.</p>
+              <p class="flip-back-tap">&#8592; Tap to go back</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')" tabindex="0" role="button" aria-label="Card 03: A published site by the end">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div>
+                <div class="flip-num">03</div>
+                <h3>A published site by the end</h3>
+              </div>
+              <div class="flip-tap">Tap to reveal &#8594;</div>
+            </div>
+            <div class="flip-back">
+              <p>Not a mock-up. Not a "good enough for now" draft. A live, working one-page site connected to your domain, done before we close the call.</p>
+              <p class="back-outcome">You leave with something real.</p>
+              <p class="flip-back-tap">&#8592; Tap to go back</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')" tabindex="0" role="button" aria-label="Card 04: Recording and tools list">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div>
+                <div class="flip-num">04</div>
+                <h3>Recording and tools list</h3>
+              </div>
+              <div class="flip-tap">Tap to reveal &#8594;</div>
+            </div>
+            <div class="flip-back">
+              <p>Can't make it live? The full recording is yours. Plus a list of every tool used so you can follow the same process again with a client.</p>
+              <p class="back-outcome">Yours to keep and revisit.</p>
+              <p class="flip-back-tap">&#8592; Tap to go back</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO FOR — LEFT LIST / RIGHT PANEL -->
+  <section class="who-for">
+    <div class="container-wide">
+      <div class="who-header">
+        <span class="eyebrow">Is this for you?</span>
+        <h2>This workshop is <em>for you if&hellip;</em></h2>
+        <p>&#8594; Tap the one that sounds like you</p>
+      </div>
+
+      <div class="who-layout">
+        <nav class="who-list-nav" aria-label="Who is this for">
+          <div class="who-list-item active" role="button" tabindex="0" onclick="showWho(0)" onkeydown="if(event.key==='Enter')showWho(0)">
+            <span class="who-list-num">01</span>No website yet
+          </div>
+          <div class="who-list-item" role="button" tabindex="0" onclick="showWho(1)" onkeydown="if(event.key==='Enter')showWho(1)">
+            <span class="who-list-num">02</span>Tried before, got stuck
+          </div>
+          <div class="who-list-item" role="button" tabindex="0" onclick="showWho(2)" onkeydown="if(event.key==='Enter')showWho(2)">
+            <span class="who-list-num">03</span>Tired of the PDF workaround
+          </div>
+          <div class="who-list-item" role="button" tabindex="0" onclick="showWho(3)" onkeydown="if(event.key==='Enter')showWho(3)">
+            <span class="who-list-num">04</span>Want something that's yours
+          </div>
+          <div class="who-list-item" role="button" tabindex="0" onclick="showWho(4)" onkeydown="if(event.key==='Enter')showWho(4)">
+            <span class="who-list-num">05</span>Done putting it off
+          </div>
+        </nav>
+
+        <div class="who-panels">
+          <div class="who-panel active" role="tabpanel">
+            <span class="who-panel-tag">No website yet</span>
+            <h3>You're sending people to your Instagram bio.</h3>
+            <p>You have services to sell and no single place to send people. You're relying on your Instagram bio or a PDF you fire into DMs. It does the job, sort of, but it isn't the same as having a proper place online that represents your work clearly.</p>
+            <div class="who-tick"><span class="who-tick-mark">&#10003;</span>This workshop gets you from nothing to live in 90 minutes.</div>
+            <div class="who-progress">
+              <div class="who-pip active" onclick="showWho(0)"></div>
+              <div class="who-pip" onclick="showWho(1)"></div>
+              <div class="who-pip" onclick="showWho(2)"></div>
+              <div class="who-pip" onclick="showWho(3)"></div>
+              <div class="who-pip" onclick="showWho(4)"></div>
+            </div>
+          </div>
+          <div class="who-panel" role="tabpanel">
+            <span class="who-panel-tag">Tried before</span>
+            <h3>You've had a go and run out of steam.</h3>
+            <p>You've tried Squarespace, Canva, or something else. The decisions piled up, the momentum dropped, and you quietly closed the tab. It wasn't a skill problem. It was a process problem, and there was nobody to keep things moving.</p>
+            <div class="who-tick"><span class="who-tick-mark">&#10003;</span>This time you'll have someone next to you from start to finish.</div>
+            <div class="who-progress">
+              <div class="who-pip" onclick="showWho(0)"></div>
+              <div class="who-pip active" onclick="showWho(1)"></div>
+              <div class="who-pip" onclick="showWho(2)"></div>
+              <div class="who-pip" onclick="showWho(3)"></div>
+              <div class="who-pip" onclick="showWho(4)"></div>
+            </div>
+          </div>
+          <div class="who-panel" role="tabpanel">
+            <span class="who-panel-tag">PDF workaround</span>
+            <h3>The workaround is wearing thin.</h3>
+            <p>Dropping a PDF of your services into someone's DMs works until it doesn't. Potential clients are trying to piece together what you do from a document that wasn't built to do that job. A focused one-page site handles it properly, and doesn't need updating every time you DM it.</p>
+            <div class="who-tick"><span class="who-tick-mark">&#10003;</span>You'll leave with a professional place to send every new enquiry.</div>
+            <div class="who-progress">
+              <div class="who-pip" onclick="showWho(0)"></div>
+              <div class="who-pip" onclick="showWho(1)"></div>
+              <div class="who-pip active" onclick="showWho(2)"></div>
+              <div class="who-pip" onclick="showWho(3)"></div>
+              <div class="who-pip" onclick="showWho(4)"></div>
+            </div>
+          </div>
+          <div class="who-panel" role="tabpanel">
+            <span class="who-panel-tag">Something that's yours</span>
+            <h3>Generic templates don't feel right.</h3>
+            <p>You want something that reflects how you actually work and what makes your services worth hiring. Using AI to generate from your own words means the output is specific to your business, not a reused layout with your name swapped in at the top.</p>
+            <div class="who-tick"><span class="who-tick-mark">&#10003;</span>Your site will be built from your content, your offer, your language.</div>
+            <div class="who-progress">
+              <div class="who-pip" onclick="showWho(0)"></div>
+              <div class="who-pip" onclick="showWho(1)"></div>
+              <div class="who-pip" onclick="showWho(2)"></div>
+              <div class="who-pip active" onclick="showWho(3)"></div>
+              <div class="who-pip" onclick="showWho(4)"></div>
+            </div>
+          </div>
+          <div class="who-panel" role="tabpanel">
+            <span class="who-panel-tag">Done putting it off</span>
+            <h3>The website has been on the list long enough.</h3>
+            <p>You've set aside 90 minutes and you're ready to just get it done. It doesn't need to be perfect. It needs to exist, to be live, and to be something you can confidently send people to without a pause before you hit send.</p>
+            <div class="who-tick"><span class="who-tick-mark">&#10003;</span>90 minutes and it's done. No follow-up homework required.</div>
+            <div class="who-progress">
+              <div class="who-pip" onclick="showWho(0)"></div>
+              <div class="who-pip" onclick="showWho(1)"></div>
+              <div class="who-pip" onclick="showWho(2)"></div>
+              <div class="who-pip" onclick="showWho(3)"></div>
+              <div class="who-pip active" onclick="showWho(4)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO / DEMO -->
+  <section class="demo section">
+    <div class="container-wide">
+      <div class="demo-head">
+        <span class="eyebrow">See it happen</span>
+        <h2>Watch a site come together <em>in real time.</em></h2>
+        <p>A quick look at the build itself, from blank screen to a published page, plus a couple of finished sites so you can see how different they turn out.</p>
+      </div>
+
+      <div class="demo-video">
+        <!-- Replace this placeholder with your video.
+             For a hosted file:
+               <video controls poster="poster.jpg"><source src="your-demo.mp4" type="video/mp4"></video>
+             For YouTube/Vimeo:
+               <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+        -->
+        <div class="video-frame" role="button" tabindex="0" aria-label="Workshop demo video, coming soon">
+          <div class="video-placeholder">
+            <div class="video-play"></div>
+            <div class="vp-label">Build walkthrough</div>
+            <div class="vp-note">Video coming soon</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="examples-label">&#8594; A look at two finished sites</p>
+      <div class="examples-grid">
+        <div class="example-card">
+          <div class="example-shot">
+            <!-- Replace with <img src="example-1.jpg" alt="Finished VA website example"> -->
+            Example screenshot
+          </div>
+          <div class="example-caption">
+            <h3>A virtual assistant</h3>
+            <p>One clear page: services, a short introduction, and an easy way to get in touch.</p>
+          </div>
+        </div>
+        <div class="example-card">
+          <div class="example-shot">
+            <!-- Replace with <img src="example-2.jpg" alt="Finished service business website example"> -->
+            Example screenshot
+          </div>
+          <div class="example-caption">
+            <h3>An online business manager</h3>
+            <p>A different look entirely, shaped around a different offer and a different client.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="proof section">
+    <div class="container-wide">
+      <div class="proof-head">
+        <span class="eyebrow">What people say</span>
+        <h2>Results from <em>the workshop.</em></h2>
+      </div>
+      <div class="proof-grid">
+        <!--
+          PLACEHOLDER — do NOT launch with invented testimonials.
+          When you have real quotes, duplicate this block (one per testimonial):
+
+          <div class="proof-card">
+            <p class="proof-quote">Real client quote goes here.</p>
+            <p class="proof-name">Real name &mdash; Role</p>
+          </div>
+        -->
+        <div class="proof-card" style="grid-column:1 / -1;text-align:center;">
+          <p style="margin:0;color:#5a564f;font-style:italic;">Real attendee testimonials will be added here after the first workshop. This space is intentionally left empty rather than filled with invented quotes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container-wide">
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="https://pixelandscale.com/Images/Laura-cassidy-web-design.png" alt="Laura Cassidy, Pixel and Scale">
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">Who's running it</span>
+          <h2>I'm <em>Laura.</em></h2>
+          <p>I design and build one-page websites for service-based independents through Pixel &amp; Scale. My workflow brings together AI tools, considered copy, and a real understanding of how people move through a page: what they read, what they skip, and what makes them decide to get in touch.</p>
+          <p>In this workshop you get that same process, live. AI handles the heavy parts of the copy and layout while we make deliberate choices about structure, visual direction, and the journey from landing on your site to reaching out. The result is specific to your business, not a template with your name on it.</p>
+          <p>I built this workshop because getting started is the part most people get stuck on. Everything else is manageable once the page exists.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq section">
+    <div class="container">
+      <div class="faq-head">
+        <span class="eyebrow">Questions</span>
+        <h2>A few things <em>people ask.</em></h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>I'm not technical at all. Will I manage?</summary>
+          <div class="faq-answer">
+            <p>Yes. The whole process is designed so the AI tools do the work on decisions and copy. You don't need to know anything about code or web design going in.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Will my site look the same as everyone else's?</summary>
+          <div class="faq-answer">
+            <p>No. We work from your specific offer, your words, your business. The output is yours, not a shared template.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>What if I can't make it live?</summary>
+          <div class="faq-answer">
+            <p>The full recording is included. You can follow the same process at your own pace.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How will I be able to edit it myself after?</summary>
+          <div class="faq-answer">
+            <p>We cover this in the session. You'll leave knowing how to make basic updates yourself.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>What if I'm not ready? I don't have my niche fully sorted.</summary>
+          <div class="faq-answer">
+            <p>You're ready enough. One page doesn't need to cover everything. It needs to tell people what you do and how to get in touch. We can work with where you are right now.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a refund policy?</summary>
+          <div class="faq-answer">
+            <p>This is a live workshop with a recording included. All sales are final. If you're on the fence, get in touch before you register and I'll give you a straight answer.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing section">
+    <div class="container">
+      <div class="pricing-head">
+        <span class="eyebrow">Your investment</span>
+        <h2>One price. <em>Everything included.</em></h2>
+      </div>
+      <div class="price-card">
+        <h3 class="price-title">Your Site in 90 Minutes</h3>
+        <div class="price-amount">
+          <span class="price-dollar">€</span>
+          <span class="price-num">97</span>
+        </div>
+        <p class="price-sub">One-time payment</p>
+        <ul class="price-includes">
+          <li>90-minute live build workshop</li>
+          <li>A published one-page site by the end of the call</li>
+          <li>Full recording</li>
+          <li>Tools list and resources</li>
+        </ul>
+        <a href="#register" class="btn btn-berry">Register your interest</a>
+        <p class="price-date">Date to be announced</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER FORM -->
+  <section class="register section" id="register">
+    <div class="register-inner">
+      <span class="eyebrow">Register your interest</span>
+      <h2>Get <em>the details.</em></h2>
+      <p class="intro-text">Leave your details below and I'll send you everything you need to know before we go live.</p>
+      <!-- Registration handled by an embedded Google Form -->
+      <iframe
+        class="register-embed"
+        title="Register your interest for the Your Site in 90 Minutes workshop"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdOA6qjb0alD9I9HadvDoyc4ZQcRf7ZsRB2wHss2s4Bhtu4Kg/viewform?embedded=true&hl=en"
+        loading="lazy">Loading the registration form…</iframe>
+      <p class="form-note">Your details won't be shared or added to a mailing list without your permission. See our <a href="privacy.html" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;color:#0b6e7e;">privacy policy</a>.</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <span class="eyebrow final-eyebrow">Date to be announced</span>
+      <h2>The website can come off the list this month.</h2>
+      <p>Ninety minutes together, and you'll have a real site, live and ready to share. A clear place to send people, finally sorted.</p>
+      <a href="#register" class="btn btn-berry">Register your interest</a>
+      <p class="final-note">€97 &nbsp;&middot;&nbsp; Recording included</p>
+    </div>
+  </section>
+
+  <!-- GUARANTEE -->
+  <section class="guarantee section-sm">
+    <div class="container">
+      <div class="guarantee-inner">
+        <p>This is a live workshop with a recording included. All sales are final. If you're not sure it's right for you, get in touch before you book and I'll give you a straight answer.</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Pixel &amp; Scale &nbsp;&middot;&nbsp; <a href="https://www.pixelandscale.com">pixelandscale.com</a></p>
+      <p style="margin-top:10px;"><a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a></p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+// Problem — failed attempts accordion
+function toggleAttempt(el) {
+  var isOpen = el.classList.contains('open');
+  el.classList.toggle('open');
+  el.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  el.querySelector('.attempt-toggle').textContent = isOpen ? '+' : '\u2212';
+}
+document.querySelectorAll('.ps-wrap .attempt').forEach(function(a) {
+  a.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleAttempt(a); }
+  });
+});
+
+// Flip cards — keyboard support
+document.querySelectorAll('.ps-wrap .flip-card').forEach(function(card) {
+  card.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.classList.toggle('flipped');
+    }
+  });
+});
+
+// Who for — left list / right panel
+function showWho(index) {
+  var items = document.querySelectorAll('.ps-wrap .who-list-item');
+  var panels = document.querySelectorAll('.ps-wrap .who-panel');
+  items.forEach(function(item, i) { item.classList.toggle('active', i === index); });
+  panels.forEach(function(panel, i) { panel.classList.toggle('active', i === index); });
+}
+</script>
+
+</body>
+</html>
