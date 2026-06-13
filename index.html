@@ -546,10 +546,22 @@
     .psp-process__card {
       background: var(--cream); padding: 2.5rem 2rem;
       border: 1px solid rgba(11,110,126,.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .psp-process__card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(11,110,126,.14);
+      border-color: rgba(11,110,126,.4);
     }
     .psp-process__num {
       display: block; font-family: 'Gilda Display', serif;
       font-size: 2.4rem; color: var(--berry); margin-bottom: 0.9rem;
+      transition: color 0.25s ease;
+    }
+    .psp-process__card:hover .psp-process__num { color: var(--teal); }
+    @media (prefers-reduced-motion: reduce) {
+      .psp-process__card { transition: border-color 0.25s ease; }
+      .psp-process__card:hover { transform: none; box-shadow: none; }
     }
     .psp-process__card h3 { color: var(--teal); margin-bottom: 0.75rem; }
     .psp-process__card p  { font-size: 0.93rem; color: rgba(24,23,21,.75); line-height: 1.68; }
@@ -668,6 +680,8 @@
     .psp-tool {
       padding: 90px 0;
     }
+    /* Offset anchor jump so the heading clears the sticky header */
+    #build-your-own { scroll-margin-top: 90px; }
     .psp-tool__grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 4rem; align-items: center;
@@ -906,6 +920,7 @@
           <a href="#how-it-works" class="psp-nav__link">How it works</a>
           <a href="#portfolio" class="psp-nav__link">Portfolio</a>
           <a href="#about" class="psp-nav__link">About</a>
+          <a href="#build-your-own" class="psp-nav__link">Build your own</a>
           <a href="brand-lab.html" class="psp-nav__link" target="_blank" rel="noopener noreferrer">Brand Lab</a>
         </nav>
         <div class="psp-header__cta-group">
@@ -1308,7 +1323,7 @@
       <!-- ============================================================
            BUILD YOUR OWN — live workshop
       ============================================================ -->
-      <section class="psp-tool psp-bg-stone" aria-labelledby="byo-h2">
+      <section id="build-your-own" class="psp-tool psp-bg-stone" aria-labelledby="byo-h2">
         <div class="psp-container">
           <div class="psp-tool__grid psp-tool__grid--flip">
             <div class="psp-tool__copy">
